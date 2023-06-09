@@ -3,7 +3,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { About, Home } from "./pages";
+import { About, Category, Home, NotFound } from "./pages";
 import App from "./App";
 import { Layout } from "./components/Layout/Layout";
 
@@ -14,6 +14,8 @@ const router = createBrowserRouter(
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="about" element={<About />} />
+          <Route path="category" element={<Category />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Route>
     </>

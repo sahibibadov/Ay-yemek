@@ -1,0 +1,43 @@
+.categroy__silder {
+  text-align: center;
+  position: relative;
+  & > h1 {
+    margin-bottom: 8px;
+  }
+  & > a {
+    font-weight: 500;
+    font-size: 18px;
+    white-space: nowrap;
+    text-decoration-line: underline;
+    color: #00072d;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    transition: color 0.3s;
+    &:hover {
+      color: #f75c03;
+    }
+  }
+  & .categoryCard {
+    max-width: 320px;
+    display: inline-flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .categroy__silder {
+    text-align: center;
+    position: relative;
+    & > h1 {
+      margin-bottom: 5px;
+      font-size: 35px;
+    }
+    & > a {
+      left: 50%;
+      top: 15%;
+      transform: translateX(-50%);
+    }
+  }
+}

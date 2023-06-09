@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const HeaderStyleCont = styled.div`
   position: fixed;
+  z-index: 999;
   top: 0;
   left: 0;
   width: 100%;
@@ -15,7 +16,7 @@ const HeaderStyleCont = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.3s;
+  transition: all 0.3s;
   &.hiden {
     transform: translateY(-100px);
   }
@@ -30,7 +31,7 @@ const HeaderStyle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: transform 0.3s;
+  transition: all 0.3s;
 
   @media screen and (max-width: 880px) {
     flex-direction: column;
@@ -47,6 +48,7 @@ const Headercontent = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  transition: all 0.3;
 
   & > div {
     display: flex;
@@ -73,7 +75,7 @@ export const HeaderContact = () => {
   const [hide, setHide] = useState(false);
   const hideHeaderContact = () => {
     let windowHeight = window.scrollY;
-    windowHeight > 400 ? setHide(true) : setHide(false);
+    windowHeight > 100 ? setHide(true) : setHide(false);
   };
 
   useEffect(() => {
