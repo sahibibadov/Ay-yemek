@@ -1,7 +1,7 @@
 import { Headline, Paragraf } from "../uikits";
-
-import "./commetslider.scss";
 import { CustomSlider } from "../Slider/Slider";
+import { commetData } from "../../data/commetdata";
+import "./commetslider.scss";
 
 export const CoometSilder = () => {
   return (
@@ -14,86 +14,21 @@ export const CoometSilder = () => {
       </Paragraf>
 
       <CustomSlider comp={2}>
-        <div className="commetcard">
-          <Paragraf size="sm" color="green">
-            Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget
-            nec. Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet
-            eget nec. Eget laoreet eget nec. Donec pellentesque turpis sit dolor
-            nisi, purus. .
-          </Paragraf>
-          <div className="commetcard__img">
-            <img src="../../../public/user.png" alt="img" />
-            <img
-              className="tick"
-              src="../../../public/usertick.svg"
-              alt="img"
-            />
-            <div className="commetcard__user">
-              <p className="commetcard__user__name">Fidan Valiyeva</p>
-              <p className="commetcard__user__work">Designer</p>
+        {commetData.map((item) => (
+          <div className="commetcard">
+            <Paragraf size="sm" color="green">
+              {item.commet}
+            </Paragraf>
+            <div className="commetcard__img">
+              <img src={item.image} alt="img" />
+              <img className="tick" src={item.tick} alt="img" />
+              <div className="commetcard__user">
+                <p className="commetcard__user__name"> {item.userName}</p>
+                <p className="commetcard__user__work"> {item.work}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="commetcard">
-          <Paragraf size="sm" color="green">
-            Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget
-            nec. Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet
-            eget nec. Eget laoreet eget nec. Donec pellentesque turpis sit dolor
-            nisi, purus. .
-          </Paragraf>
-          <div className="commetcard__img">
-            <img src="../../../public/user.png" alt="img" />
-            <img
-              className="tick"
-              src="../../../public/usertick.svg"
-              alt="img"
-            />
-            <div className="commetcard__user">
-              <p className="commetcard__user__name">Fidan Valiyeva</p>
-              <p className="commetcard__user__work">Designer</p>
-            </div>
-          </div>
-        </div>
-        <div className="commetcard">
-          <Paragraf size="sm" color="green">
-            Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget
-            nec. Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet
-            eget nec. Eget laoreet eget nec. Donec pellentesque turpis sit dolor
-            nisi, purus. .
-          </Paragraf>
-          <div className="commetcard__img">
-            <img src="../../../public/user.png" alt="img" />
-            <img
-              className="tick"
-              src="../../../public/usertick.svg"
-              alt="img"
-            />
-            <div className="commetcard__user">
-              <p className="commetcard__user__name">Fidan Valiyeva</p>
-              <p className="commetcard__user__work">Designer</p>
-            </div>
-          </div>
-        </div>
-        <div className="commetcard">
-          <Paragraf size="sm" color="green">
-            Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget
-            nec. Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet
-            eget nec. Eget laoreet eget nec. Donec pellentesque turpis sit dolor
-            nisi, purus. .
-          </Paragraf>
-          <div className="commetcard__img">
-            <img src="../../../public/user.png" alt="img" />
-            <img
-              className="tick"
-              src="../../../public/usertick.svg"
-              alt="img"
-            />
-            <div className="commetcard__user">
-              <p className="commetcard__user__name">Fidan Valiyeva</p>
-              <p className="commetcard__user__work">Designer</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </CustomSlider>
     </div>
   );
