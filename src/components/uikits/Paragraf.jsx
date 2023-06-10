@@ -15,7 +15,7 @@ export const Paragraf = styled.p`
       : size === "md"
       ? "25px"
       : size === "sm"
-      ? "20px"
+      ? "23px"
       : "18px"};
   color: ${({ color }) =>
     color === "primary"
@@ -25,7 +25,5 @@ export const Paragraf = styled.p`
       : color === "green"
       ? "#172A14"
       : "black"};
-  opacity: ${({ color }) => {
-    color === "green" ? "0.7" : "1";
-  }};
+  opacity: ${({ color }) => (color === "green" ? "0.7" : "1")};
 `;

@@ -114,7 +114,7 @@ export const HomeWork = () => {
       </Paragraf>
       <Wordcards>
         {workCard.map((item) => (
-          <Wordcard>
+          <Wordcard key={item.id}>
             <div>
               <img src={item.image} alt="workimage" />
             </div>

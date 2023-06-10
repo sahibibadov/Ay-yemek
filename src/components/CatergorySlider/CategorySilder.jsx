@@ -18,7 +18,7 @@ export const CategorySilder = () => {
       </Paragraf>
       <Link to="category">Hamısına bax</Link>
 
-      <CustomSlider>
+      <CustomSlider comp={3}>
         {category.map((item) => (
           <div key={item.id} className="categoryCard">
             <div className="categoryCard__image">

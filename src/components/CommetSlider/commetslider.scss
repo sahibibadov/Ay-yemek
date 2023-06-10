@@ -1,0 +1,188 @@
+.commetcard__silder {
+  text-align: center;
+  position: relative;
+  & > h1 {
+    margin-bottom: 8px;
+  }
+  & > p {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 80%;
+      height: 2px;
+      background-color: #00072d;
+      opacity: 0.5;
+      top: 180%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  & .commetcard {
+    text-align: justify;
+    max-width: 640px;
+    background: #ffffff;
+    border-radius: 8px;
+    gap: 36px;
+    display: inline-flex !important;
+    flex-direction: column;
+
+    padding: 24px 35px;
+    & .commetcard__img {
+      display: flex;
+      gap: 20px;
+      position: relative;
+      padding: 0px 20px;
+      align-items: center;
+      & .tick {
+        position: absolute;
+        left: 0;
+        top: 8px;
+      }
+      & .commetcard__user {
+        & p:nth-child(1) {
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 22px;
+          color: #172a14;
+        }
+        & p:nth-child(2) {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+          color: #172a14;
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .commetcard {
+    max-width: 540px !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .commetcard {
+    max-width: 500px !important;
+  }
+}
+@media screen and (max-width: 1111px) {
+  .commetcard {
+    max-width: 440px !important;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .commetcard {
+    max-width: 400px !important;
+  }
+}
+@media screen and (max-width: 900px) {
+  .commetcard__silder {
+    text-align: center;
+    position: relative;
+    & > p {
+      &::after {
+        display: none !important;
+      }
+    }
+    & .slick-slider {
+      margin-top: 20px !important;
+    }
+
+    & > h1 {
+      margin-bottom: 5px;
+      font-size: 35px;
+    }
+  }
+}
+.commetcard__silder {
+  .slick-slider {
+    margin-top: 100px;
+  }
+  .slick-next,
+  .slick-prev {
+    background: none;
+    width: auto;
+    height: auto;
+  }
+  .slick-prev {
+    background: none;
+  }
+  .slick-next::before {
+    content: url(../../../public/rightcommetarrow.svg);
+  }
+  .slick-prev::before {
+    content: url(../../../public/leftcommetarrow.svg);
+  }
+  .slick-prev {
+    left: 93.5%;
+    top: -80px;
+  }
+  .slick-next {
+    right: 0;
+    top: -80px;
+  }
+  .slick-dots {
+    display: inline-flex !important;
+    width: auto;
+    top: -80px;
+    left: 0;
+
+    & li {
+      width: auto;
+      height: auto;
+      border: 50%;
+      transition: all 0.3s;
+      opacity: 0.5;
+      &.slick-active {
+        flex: 0 0 17px;
+        opacity: 1;
+        & button {
+          width: 17px;
+        }
+      }
+      & button {
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 3px;
+        background: #f75c03;
+        transition: all 0.3s;
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1100px) {
+    .commetcard__silder {
+      & .slick-prev {
+        left: 93.5%;
+        top: -80px;
+      }
+    }
+  }
+  @media screen and (max-width: 900px) {
+    .slick-dots {
+      display: inline-flex !important;
+      width: auto;
+      bottom: -20%;
+      left: 50%;
+      top: auto;
+      transform: translate(-50%, -50%);
+    }
+    .slick-next {
+      right: 10%;
+      top: 45%;
+      transform: scale(1.8);
+    }
+    .slick-prev {
+      left: 10%;
+      top: 45%;
+      z-index: 1;
+      transform: scale(1.8);
+    }
+  }
+}

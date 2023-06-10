@@ -6,5 +6,8 @@ export * from "./HamburgerButton/HmButton";
 export * from "./HomePageComp/HomeTitle/HomeTitle";
 export * from "./HomePageComp/HomeWork/HomeWork";
 export * from "./Slider/Slider";
+export * from "./FoodSlider/FoodSlider";
+export * from "./CatergorySlider/CategorySilder";
+export * from "./CommetSlider/CommetSlider";
 
 export * from "./uikits";

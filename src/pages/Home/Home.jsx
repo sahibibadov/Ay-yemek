@@ -1,8 +1,11 @@
-import React from "react";
-import { Section } from "../../components/uikits/Section";
-
-import { HomeTitle, HomeWork } from "../../components";
-import { CategorySilder } from "../../components/CatergorySlider/CategorySilder";
+import {
+  Section,
+  CategorySilder,
+  CoometSilder,
+  FoodSilder,
+  HomeTitle,
+  HomeWork,
+} from "../../components";
 
 export const Home = () => {
   return (
@@ -16,6 +19,13 @@ export const Home = () => {
       <Section>
         <HomeWork />
       </Section>
+      <Section>
+        <FoodSilder />
+      </Section>
+      <Section>
+        <CoometSilder />
+      </Section>
+      <Section>asds</Section>
     </>
   );
 };
