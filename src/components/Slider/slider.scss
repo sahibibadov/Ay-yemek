@@ -25,11 +25,11 @@
   }
 }
 .slick-next::before {
-  content: url(rightarrow.png);
+  content: url(../../../public/rightarrow.png);
   opacity: 1;
 }
 .slick-prev::before {
-  content: url(leftarrow.png);
+  content: url(../../../public/leftarrow.png);
   opacity: 1;
 }
 .slick-prev {
