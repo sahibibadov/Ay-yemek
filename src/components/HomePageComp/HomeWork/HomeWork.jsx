@@ -1,4 +1,5 @@
-import { Button, Headline, Paragraf } from "../../index";
+import { Headline, Paragraf } from "../../index";
+import { map } from "lodash";
 import styled from "styled-components";
 import homework1 from "../../../../public/homework1.png";
 import homework2 from "../../../../public/homework2.png";
@@ -113,7 +114,7 @@ export const HomeWork = () => {
         Lorem Ipsum is simply dummy text of the printing
       </Paragraf>
       <Wordcards>
-        {workCard.map((item) => (
+        {map(workCard, (item) => (
           <Wordcard key={item.id}>
             <div>
               <img src={item.image} alt="workimage" />

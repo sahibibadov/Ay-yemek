@@ -1,7 +1,6 @@
-import { Headline, Paragraf } from "../uikits";
-
+import { map } from "lodash";
 import "./foodslider.scss";
-import { CustomSlider } from "../Slider/Slider";
+import { CustomSlider, Headline, Paragraf } from "../../components";
 import { foodImage } from "../../data/foodimage";
 
 export const FoodSilder = () => {
@@ -15,7 +14,7 @@ export const FoodSilder = () => {
       </Paragraf>
 
       <CustomSlider comp={5}>
-        {foodImage.map((item) => (
+        {map(foodImage, (item) => (
           <div key={item.id} className="foodcard">
             <img src={item.image} alt="img" />
             <p>{item.name}</p>

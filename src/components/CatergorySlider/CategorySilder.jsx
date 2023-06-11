@@ -1,4 +1,4 @@
-import React from "react";
+import { map } from "lodash";
 import { Button, Headline, Paragraf } from "../uikits";
 import { Link } from "react-router-dom";
 
@@ -19,7 +19,7 @@ export const CategorySilder = () => {
       <Link to="category">Hamısına bax</Link>
 
       <CustomSlider comp={3}>
-        {category.map((item) => (
+        {map(category, (item) => (
           <div key={item.id} className="categoryCard">
             <div className="categoryCard__image">
               <img src={item.image} alt="img" />

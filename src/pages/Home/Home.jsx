@@ -5,6 +5,7 @@ import {
   FoodSilder,
   HomeTitle,
   HomeWork,
+  HomeAskQuest,
 } from "../../components";
 
 export const Home = () => {
@@ -25,7 +26,10 @@ export const Home = () => {
       <Section>
         <CoometSilder />
       </Section>
-      <Section>asds</Section>
+      <Section>
+        <HomeAskQuest />
+      </Section>
+      <Section>asdas</Section>
     </>
   );
 };

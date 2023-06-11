@@ -1,6 +1,7 @@
 import { Headline, Paragraf } from "../uikits";
 import { CustomSlider } from "../Slider/Slider";
 import { commetData } from "../../data/commetdata";
+import { map } from "lodash";
 import "./commetslider.scss";
 
 export const CoometSilder = () => {
@@ -14,8 +15,8 @@ export const CoometSilder = () => {
       </Paragraf>
 
       <CustomSlider comp={2}>
-        {commetData.map((item) => (
-          <div className="commetcard">
+        {map(commetData, (item) => (
+          <div key={item.id} className="commetcard">
             <Paragraf size="sm" color="green">
               {item.commet}
             </Paragraf>

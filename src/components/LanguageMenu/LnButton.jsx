@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { map } from "lodash";
 import {
   toggleOpen,
   close,
@@ -107,7 +108,7 @@ export const LnButton = () => {
       <Dropdown className={`dropdown ${open ? "open" : ""}`}>
         <button onClick={handleDropdownClicked}>{selected}</button>
         <Menu className="menu">
-          {langButton.map((item) => (
+          {map(langButton, (item) => (
             <button
               className={tapActive === item.id ? "active" : ""}
               key={item.id}
