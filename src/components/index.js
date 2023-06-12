@@ -1,6 +1,7 @@
 export * from "./Container/Container";
 export * from "./HeaderContact/HeaderContact";
 export * from "./Header/Header";
+export * from "./Footer/Footer";
 export * from "./LanguageMenu/LnButton";
 export * from "./HamburgerButton/HmButton";
 export * from "./HomePageComp/HomeTitle/HomeTitle";

@@ -134,8 +134,8 @@
 @media screen and (max-width: 1090px) {
   .navbar {
     position: absolute;
-    background-color: #ffffff;
-    border-top: 1px solid #f75c03;
+    background: #f75c03;
+    border: 1px solid #f75c03;
     bottom: -170px;
     left: 0;
     width: 100%;
@@ -154,7 +154,6 @@
       align-items: center;
       padding: 20px 0px;
       gap: 15px;
-      background: #f75c03;
       & a {
         color: #ffffff;
 

@@ -15,14 +15,15 @@ export const HomeAskQuest = () => {
       </Paragraf>
 
       <div className="homequest__accordiong">
-        <Accordion transition transitionTimeout={300}>
+        <Accordion transition transitionTimeout={250}>
           {map(items, ({ header, content, id }) => (
             <AccordionItem header={header} key={id}>
               {content}
             </AccordionItem>
           ))}
         </Accordion>
-        <div className="bacshadow"></div>
+
+        {/* <div className="bacshadow"></div> */}
       </div>
     </div>
   );

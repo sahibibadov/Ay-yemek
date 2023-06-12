@@ -29,7 +29,6 @@ export const Home = () => {
       <Section>
         <HomeAskQuest />
       </Section>
-      <Section>asdas</Section>
     </>
   );
 };

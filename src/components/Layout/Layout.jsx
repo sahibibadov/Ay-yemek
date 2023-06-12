@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Container, Header, HideDiv, HeaderContact } from "../";
+import { Container, Header, HideDiv, HeaderContact, Footer } from "../";
 
 export const Layout = () => {
   return (
@@ -11,6 +11,9 @@ export const Layout = () => {
         <main>
           <Outlet />
         </main>
+      </Container>
+      <Container>
+        <Footer />
       </Container>
     </>
   );

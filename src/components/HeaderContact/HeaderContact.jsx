@@ -16,9 +16,13 @@ const HeaderStyleCont = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s;
+  transition: transform 0.3s;
   &.hiden {
-    transform: translateY(-100px);
+    transform: translateY(-52px);
+    @media screen and (max-width: 880px) {
+      height: auto;
+      transform: translateY(-86px);
+    }
   }
   @media screen and (max-width: 880px) {
     height: auto;
