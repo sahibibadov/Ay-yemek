@@ -13,5 +13,6 @@ export * from "./CatergorySlider/CategorySilder";
 export * from "./CommetSlider/CommetSlider";
 export * from "./Accordiong/Accordiong";
 export * from "./Layout/Layout";
+export * from "./Scrolltop/ScrollTop";
 
 export * from "./uikits";

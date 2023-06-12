@@ -8,6 +8,28 @@
     width: min(90%, 940px);
     margin-inline: auto;
     position: relative;
+    display: flex;
+    flex-direction: column;
+
+    & > button {
+      margin-top: 15px;
+      display: inline-flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      font-weight: 500;
+      font-size: 16px;
+      text-transform: capitalize;
+      color: #00072d;
+      align-self: flex-end;
+      transition: all 0.25s;
+      &:hover {
+        color: #f75c03;
+      }
+    }
   }
   // & .bacshadow {
   //   width: 450px;
