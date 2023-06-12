@@ -21,7 +21,7 @@ export const CoometSilder = () => {
               {item.commet}
             </Paragraf>
             <div className="commetcard__img">
-              <img src={item.image} alt="img" />
+              <img src={item.image} alt="img" width={56} />
               <img className="tick" src={item.tick} alt="img" />
               <div className="commetcard__user">
                 <p className="commetcard__user__name"> {item.userName}</p>

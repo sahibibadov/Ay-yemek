@@ -2,6 +2,16 @@ import styled from "styled-components";
 import { FaArrowUp } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
+export const ScrollContainer = styled.div`
+  width: min(100% - 6.25rem, 1340px);
+  margin-inline: auto;
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  @media screen and (max-width: 700px) {
+    width: min(100% - 3.25rem, 1340px);
+  }
+`;
 const TopButton = styled.button`
   width: 70px;
   height: 70px;
@@ -14,8 +24,9 @@ const TopButton = styled.button`
   z-index: 999;
   background-color: #ffffff;
   position: fixed;
-  bottom: ${({ hide }) => (hide === "true" ? "72px" : "-72px")};
-  right: 50px;
+  bottom: ${({ hide }) => (hide === "true" ? "8%" : "-8%")};
+  left: auto;
+
   transition: all 0.25s;
   visibility: ${({ hide }) => (hide === "true" ? "visible" : "hidden")};
   opacity: ${({ hide }) => (hide === "true" ? "1" : "0")};
@@ -43,8 +54,10 @@ export const ScrollTop = () => {
     window.addEventListener("scroll", hideHeaderContact);
   }, []);
   return (
-    <TopButton hide={hide.toString()} onClick={scrollToTop}>
-      <FaArrowUp size={30} />
-    </TopButton>
+    <ScrollContainer>
+      <TopButton hide={hide.toString()} onClick={scrollToTop}>
+        <FaArrowUp size={30} />
+      </TopButton>
+    </ScrollContainer>
   );
 };

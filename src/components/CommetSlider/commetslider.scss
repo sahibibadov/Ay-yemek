@@ -34,6 +34,9 @@
       position: relative;
       padding: 0px 20px;
       align-items: center;
+      & img:first-child {
+        border-radius: 50%;
+      }
       & .tick {
         position: absolute;
         left: 0;
@@ -45,6 +48,7 @@
           font-size: 18px;
           line-height: 22px;
           color: #172a14;
+          text-transform: capitalize;
         }
         & p:nth-child(2) {
           font-weight: 400;

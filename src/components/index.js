@@ -14,5 +14,7 @@ export * from "./CommetSlider/CommetSlider";
 export * from "./Accordiong/Accordiong";
 export * from "./Layout/Layout";
 export * from "./Scrolltop/ScrollTop";
+export * from "./AboutMain/AboutMain";
+export * from "./Errorboundary/ErrorBoundary";
 
 export * from "./uikits";

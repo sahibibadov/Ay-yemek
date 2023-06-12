@@ -1,5 +1,13 @@
-import React from "react";
+import { AboutMain, Container, Section } from "../../components";
 
 export const About = () => {
-  return <div>About</div>;
+  return (
+    <>
+      <Container>
+        <Section>
+          <AboutMain />
+        </Section>
+      </Container>
+    </>
+  );
 };
