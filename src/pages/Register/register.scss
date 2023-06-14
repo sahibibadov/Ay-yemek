@@ -1,0 +1,52 @@
+.register__page {
+  & .register__wrapper {
+    width: min(100% - 2.25rem, 620px);
+    margin-inline: auto;
+  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  & .register__content {
+    padding: 27px 0;
+    & > a {
+      margin-bottom: 35px;
+    }
+    & > h1 {
+      margin-bottom: 16px;
+    }
+
+    & .register__content__img {
+      cursor: pointer;
+      position: relative;
+      top: -4px;
+      left: -40px;
+      margin-bottom: 20px;
+      & > img {
+        min-width: 240px;
+      }
+    }
+    & .contact__form {
+      display: flex;
+      flex-direction: column;
+      & button {
+        align-self: center;
+      }
+      & .contact__form__username {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        & > div {
+          flex: 1;
+          & input {
+            min-width: inherit;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  .register__page .register__content .contact__form .contact__form__username {
+    display: block;
+  }
+}

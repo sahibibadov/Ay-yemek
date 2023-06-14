@@ -1,0 +1,40 @@
+.login__page {
+  & .login__wrapper {
+    width: min(100% - 2.25rem, 620px);
+    margin-inline: auto;
+  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  & .login__content {
+    padding: 27px 0;
+    & .login__content__img {
+      cursor: pointer;
+      position: relative;
+      top: -4px;
+      left: -40px;
+      margin-bottom: 20px;
+      & > img {
+        min-width: 240px;
+      }
+    }
+    & > a {
+      margin-bottom: 35px;
+    }
+    & > h1 {
+      margin-bottom: 8px;
+    }
+    & > p {
+      margin-bottom: 40px;
+    }
+
+    & .contact__form {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      & button {
+        align-self: center;
+      }
+    }
+  }
+}

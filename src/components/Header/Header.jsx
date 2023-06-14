@@ -53,8 +53,8 @@ export const Header = () => {
           </ul>
         </nav>
         <div className="profile">
-          <Link>Daxil ol</Link>
-          <Link>Qeydiyyat</Link>
+          <Link to="login">Daxil ol</Link>
+          <Link to="register">Qeydiyyat</Link>
           <LnButton />
           <HmButton handleToggleMenu={handleToggleMenu} />
         </div>

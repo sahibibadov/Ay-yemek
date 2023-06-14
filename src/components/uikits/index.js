@@ -6,3 +6,5 @@ export * from "./HideDiv";
 export * from "./Section";
 export * from "./Paragraf";
 export * from "./Button";
+export * from "./ReturnButton";
+export * from "./SubmitButton";

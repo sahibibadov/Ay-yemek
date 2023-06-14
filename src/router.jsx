@@ -45,6 +45,26 @@ const router = createBrowserRouter(
           />
           <Route path="*" element={<NotFound />} />
         </Route>
+
+        {/* register ve login routlari */}
+        <Route
+          path="login"
+          lazy={async () => {
+            const { Login } = await import("./pages/Login/Login");
+            return {
+              Component: Login,
+            };
+          }}
+        />
+        <Route
+          path="register"
+          lazy={async () => {
+            const { Register } = await import("./pages/Register/Register");
+            return {
+              Component: Register,
+            };
+          }}
+        />
       </Route>
     </>
   )

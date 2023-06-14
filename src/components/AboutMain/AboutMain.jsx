@@ -12,8 +12,8 @@ export const AboutMain = () => {
         ullamcorper .
       </Paragraf>
       <div className="about-main__images">
-        <img src="../../../public/aboutimg1.jpg" alt="aboutimg1" />
-        <img src="../../../public/aboutimg2.jpg" alt="aboutimg2" />
+        <img src="aboutimg1.jpg" alt="aboutimg1" />
+        <img src="aboutimg2.jpg" alt="aboutimg2" />
       </div>
       <div className="about-main__content">
         <Headline level={2} color="secondary">

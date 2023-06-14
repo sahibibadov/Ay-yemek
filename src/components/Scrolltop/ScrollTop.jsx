@@ -35,7 +35,7 @@ const TopButton = styled.button`
     color: #f75c03;
   }
   &:hover {
-    bottom: 80px;
+    bottom: 70px;
   }
 `;
 
