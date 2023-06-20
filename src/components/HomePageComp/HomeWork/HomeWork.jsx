@@ -14,6 +14,15 @@ const Wordcards = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   min-height: 500px;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #f75c03;
+    opacity: 0.1;
+    z-index: -1;
+    filter: blur(138px);
+  }
   & > div:nth-of-type(2) {
     align-self: flex-end;
   }
@@ -25,7 +34,7 @@ const Wordcard = styled.div`
   img {
     display: inline-block;
   }
-  filter: drop-shadow(0px 0px 200px #f75c03);
+  /* filter: drop-shadow(0px 0px 200px #f75c03); */
   & p {
     margin-top: 20px;
     margin-bottom: 12px;

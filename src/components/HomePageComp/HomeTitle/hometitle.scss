@@ -21,7 +21,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: drop-shadow(90px 299px 350px #f75c03);
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #f75c03;
+      opacity: 0.1;
+      z-index: -1;
+      filter: blur(138px);
+    }
+
+    // filter: drop-shadow(90px 299px 350px #f75c03);
   }
 }
 @media screen and (max-width: 1184px) {

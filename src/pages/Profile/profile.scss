@@ -1,0 +1,124 @@
+.profile__pages {
+  & > h1 {
+    margin-bottom: 52px;
+  }
+  & .profile__pages__main {
+    display: flex;
+    gap: 66px;
+
+    & .profile__pages__navbar {
+      background: #fbfbfb;
+      border-radius: 16px;
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 16px;
+      gap: 50px;
+      & ul {
+        & a {
+          display: block;
+          padding: 16px 73px;
+          background: #ffffff;
+          border-radius: 16px;
+          white-space: nowrap;
+          color: #35313f;
+          position: relative;
+          transition: background 0.2s;
+          &.active,
+          &:hover {
+            background: rgba(247, 92, 3, 0.14);
+          }
+          & a:not(:last-child) {
+            margin-bottom: 16px;
+          }
+          & img {
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+        & li:nth-child(2) a {
+          color: #2bad3f;
+        }
+        & li:not(:last-child) {
+          margin-bottom: 16px;
+        }
+      }
+      & button {
+        display: block;
+        padding: 16px 73px;
+        background: #ffffff;
+        border-radius: 16px;
+        white-space: nowrap;
+        color: #35313f;
+        border: none;
+        outline: none;
+        position: relative;
+        cursor: pointer;
+        transition: background 0.2s;
+        &:hover {
+          background: rgba(247, 92, 3, 0.14);
+        }
+        & img {
+          position: absolute;
+          left: 40px;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    /* right */
+    & .profile__pages__content {
+      background: #fbfbfb;
+      flex: 1;
+      padding: 41px 51px;
+      border-radius: 16px;
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .profile__pages {
+    & > h1 {
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 34px;
+    }
+    & .profile__pages__main {
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      align-items: center;
+      & .profile__pages__navbar {
+        width: 70%;
+        & ul li a {
+          display: grid;
+          place-items: center;
+        }
+      }
+      & .profile__pages__content {
+        width: 100%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  .profile__pages {
+    & > h1 {
+      margin-bottom: 15px;
+
+      font-size: 30px;
+    }
+    & .profile__pages__main {
+      gap: 10px;
+
+      & .profile__pages__navbar {
+        width: 100%;
+      }
+      & .profile__pages__content {
+        width: 100%;
+      }
+    }
+  }
+}

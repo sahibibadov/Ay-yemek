@@ -23,30 +23,34 @@ export const Header = () => {
     {
       title: "Ana səhifə",
       link: "/",
+      id: 1,
     },
     {
       title: "Haqqımızda",
       link: "about",
+      id: 2,
     },
     {
       title: "Paketlər",
       link: "category",
+      id: 3,
     },
     {
       title: "Əlaqə",
       link: "contact",
+      id: 4,
     },
   ];
   return (
     <header className={`header ${hide ? "scrollshadow" : ""}`}>
       <Container>
         <div className="logo">
-          <img src="logo.png" alt="logo" />
+          <img src="../../../public/logo.png" alt="logo" />
         </div>
         <nav className={`navbar ${open ? "visible" : ""}`}>
           <ul>
-            {map(navLink, (item, index) => (
-              <li key={index}>
+            {map(navLink, (item) => (
+              <li key={item.id}>
                 <NavLink to={item.link}>{item.title}</NavLink>
               </li>
             ))}
@@ -55,6 +59,7 @@ export const Header = () => {
         <div className="profile">
           <Link to="login">Daxil ol</Link>
           <Link to="register">Qeydiyyat</Link>
+          <Link to="profile">Profile</Link>
           <LnButton />
           <HmButton handleToggleMenu={handleToggleMenu} />
         </div>

@@ -43,6 +43,25 @@ const router = createBrowserRouter(
             }}
             errorElement={<ErrorBoundary />}
           />
+
+          {/* profile routlari */}
+          <Route
+            lazy={async () => {
+              const { Profile } = await import("./pages/Profile/Profile");
+              return {
+                Component: Profile,
+              };
+            }}
+            errorElement={<ErrorBoundary />}
+          >
+            <Route path="profile" element={<div>Məlumatlarım</div>} />
+            <Route
+              path="activeorders"
+              element={<div>Aktiv Sifarişlərim</div>}
+            />
+            <Route path="changepassword" element={<div>Şifrə dəyişdir</div>} />
+            <Route path="payments" element={<div>Ödənişlərim</div>} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Route>
 
@@ -55,6 +74,7 @@ const router = createBrowserRouter(
               Component: Login,
             };
           }}
+          errorElement={<ErrorBoundary />}
         />
         <Route
           path="register"
@@ -64,7 +84,9 @@ const router = createBrowserRouter(
               Component: Register,
             };
           }}
+          errorElement={<ErrorBoundary />}
         />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </>
   )

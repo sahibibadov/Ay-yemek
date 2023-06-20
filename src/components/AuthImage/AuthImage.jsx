@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Authimg from "../../../public/authimage.png";
 
 const ImgWrapper = styled.div`
   background: linear-gradient(
@@ -41,7 +42,7 @@ const Title = styled.div`
 export const AuthImage = () => {
   return (
     <ImgWrapper>
-      <Img src="../../../public/authimage.png" alt="asdsad" />
+      <Img src={Authimg} alt="authimg" />
       <Title>
         <h1>
           SİZ SEÇİN BİZ <br /> İSTƏDİYİNİZ ZAMANDA YEMƏKLƏRİNİZİ ÇATDIRAQ

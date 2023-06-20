@@ -1,0 +1,108 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(34, 31, 31, 0.51);
+  display: grid;
+  place-items: center;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  &.backdrop.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  & .modal {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    max-width: 700px;
+    width: 50%;
+    padding: 120px 90px 60px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    & h1 {
+      font-weight: 600;
+      font-size: 32px;
+      white-space: nowrap;
+      line-height: 39px;
+      text-align: center;
+      text-transform: capitalize;
+      color: #00072d;
+      & span {
+        color: #f75c03;
+      }
+    }
+    & .close-modal {
+      position: absolute;
+      top: 33px;
+      right: 33px;
+      cursor: pointer;
+    }
+    & .modal_btn {
+      display: flex;
+      gap: 40px;
+      width: 100%;
+      & button {
+        display: grid;
+        place-items: center;
+        background: #ffffff;
+        border: 1px solid #f75c03;
+        filter: drop-shadow(0px 6px 16px rgba(247, 92, 3, 0.06));
+        border-radius: 10px;
+        max-width: 240px;
+        flex: 1;
+        height: 48px;
+        font-weight: 600;
+        font-size: 19px;
+        line-height: 100%;
+        text-align: center;
+        color: #00072d;
+        cursor: pointer;
+        transition: all 0.25s;
+        &:hover {
+          background: #f3f3f3;
+        }
+      }
+      & button:last-child {
+        background: #f75c03;
+        color: #ffffff;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 870px) {
+  .backdrop .modal {
+    padding: 90px 30px 40px;
+    gap: 40px;
+    & h1 {
+      font-size: 26px;
+    }
+  }
+}
+@media screen and (max-width: 700px) {
+  .backdrop .modal {
+    padding: 40px 20px 20px;
+    gap: 20px;
+    & h1 {
+      font-size: 21px;
+    }
+    & .close-modal {
+      top: 10px;
+      right: 10px;
+    }
+    & .modal_btn {
+      gap: 10px;
+      & button {
+        height: 35px;
+      }
+    }
+  }
+}
