@@ -1,9 +1,11 @@
+import { forwardRef } from "react";
 import "./hmbutton.scss";
-export const HmButton = ({ handleToggleMenu }) => {
+export const HmButton = forwardRef(({ handleToggleMenu }, ref) => {
   return (
     <label className="burger" htmlFor="burger">
       <input
-        onClick={() => {
+        ref={ref}
+        onChange={() => {
           handleToggleMenu();
         }}
         type="checkbox"
@@ -14,4 +16,4 @@ export const HmButton = ({ handleToggleMenu }) => {
       <span></span>
     </label>
   );
-};
+});

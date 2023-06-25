@@ -1,15 +1,26 @@
 import { Container, HmButton, LnButton } from "../../components";
 import { NavLink, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { map } from "lodash";
 import logo from "../../../public/logo.png";
 
 import "./header.scss";
 export const Header = () => {
+  const ref = useRef(null);
   const [hide, setHide] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // hamburgermenunun klikle acilmasi
   const handleToggleMenu = () => {
     setOpen((pre) => !pre);
+  };
+  // routlara klikde menunun baglanmasi ver hamburger butonun deyismesi
+  const handleCloseMenu = () => {
+    setOpen(false);
+    const node = ref?.current;
+    if (node) {
+      node.checked = false;
+    }
   };
   const hideHeaderContact = () => {
     let windowHeight = window.scrollY;
@@ -56,7 +67,9 @@ export const Header = () => {
           <ul>
             {map(navLink, (item) => (
               <li key={item.id}>
-                <NavLink to={item.link}>{item.title}</NavLink>
+                <NavLink onClick={handleCloseMenu} to={item.link}>
+                  {item.title}
+                </NavLink>
               </li>
             ))}
             <div className="mobile-profile">
@@ -71,7 +84,7 @@ export const Header = () => {
           <Link to="register">Qeydiyyat</Link>
           <Link to="profile">Profile</Link>
           <LnButton />
-          <HmButton handleToggleMenu={handleToggleMenu} />
+          <HmButton ref={ref} handleToggleMenu={handleToggleMenu} />
         </div>
       </Container>
     </header>
