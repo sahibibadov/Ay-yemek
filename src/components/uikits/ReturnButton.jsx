@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import returnArrow from "../../../public/returnarrow.svg";
 
 const Return = styled(Link)`
   display: inline-block;
@@ -18,7 +19,7 @@ const Return = styled(Link)`
 export const ReturnButton = ({ ...props }) => {
   return (
     <Return {...props}>
-      <img src="../../../public/returnarrow.svg" alt="asdas" />
+      <img src={returnArrow} alt="asdas" />
     </Return>
   );
 };

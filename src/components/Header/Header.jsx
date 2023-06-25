@@ -2,6 +2,7 @@ import { Container, HmButton, LnButton } from "../../components";
 import { NavLink, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { map } from "lodash";
+import logo from "../../../public/logo.png";
 
 import "./header.scss";
 export const Header = () => {
@@ -17,6 +18,9 @@ export const Header = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", hideHeaderContact);
+    return () => {
+      window.removeEventListener("scroll", hideHeaderContact);
+    };
   }, []);
 
   const navLink = [
@@ -41,11 +45,12 @@ export const Header = () => {
       id: 4,
     },
   ];
+
   return (
     <header className={`header ${hide ? "scrollshadow" : ""}`}>
       <Container>
         <div className="logo">
-          <img src="../../../public/logo.png" alt="logo" />
+          <img src={logo} alt="logo" />
         </div>
         <nav className={`navbar ${open ? "visible" : ""}`}>
           <ul>
@@ -54,6 +59,11 @@ export const Header = () => {
                 <NavLink to={item.link}>{item.title}</NavLink>
               </li>
             ))}
+            <div className="mobile-profile">
+              <Link to="login">Daxil ol</Link>
+              <Link to="register">Qeydiyyat</Link>
+              <Link to="profile">Profile</Link>
+            </div>
           </ul>
         </nav>
         <div className="profile">

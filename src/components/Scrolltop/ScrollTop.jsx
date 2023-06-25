@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FaArrowUp } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const ScrollContainer = styled.div`
   width: min(100% - 6.25rem, 1340px);
@@ -46,12 +46,15 @@ export const ScrollTop = () => {
   };
   // asagi scrollda butonun gorsenmesi
   const [hide, setHide] = useState(false);
-  const hideHeaderContact = () => {
+  const hideScrollButton = useCallback(() => {
     let windowHeight = window.scrollY;
     windowHeight > 500 ? setHide(true) : setHide(false);
-  };
+  }, [hide, setHide]);
   useEffect(() => {
-    window.addEventListener("scroll", hideHeaderContact);
+    window.addEventListener("scroll", hideScrollButton);
+    return () => {
+      window.removeEventListener("scroll", hideScrollButton);
+    };
   }, []);
   return (
     <ScrollContainer>

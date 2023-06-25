@@ -26,4 +26,14 @@ export const Paragraf = styled.p`
       ? "#172A14"
       : "black"};
   opacity: ${({ color }) => (color === "green" ? "0.7" : "1")};
+  @media screen and (max-width: 900px) {
+    font-size: 17px;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 16px;
+    text-align: center;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 14px;
+  }
 `;

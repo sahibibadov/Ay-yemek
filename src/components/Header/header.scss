@@ -91,6 +91,9 @@
 .navbar ul {
   display: flex;
   gap: 64px;
+  & .mobile-profile {
+    display: none;
+  }
   & a {
     color: #00072d;
     font-weight: 400;
@@ -174,5 +177,36 @@
 @media screen and (max-width: 880px) {
   .header {
     margin-top: 86px;
+    & > div .logo {
+      left: -60px;
+      transform: scale(0.8);
+    }
+    & .profile {
+      & > a {
+        display: none !important;
+      }
+    }
+    & .navbar {
+      bottom: -217px;
+      & .mobile-profile {
+        display: flex;
+        gap: 10px;
+        & > a {
+          color: #f75c03;
+          background: #ffffff;
+          border-radius: 4px;
+          padding: 5px 0px;
+          width: 100px;
+          text-align: center;
+          transition: all 0.25s;
+          &:hover {
+            transform: translateY(-3px);
+          }
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }

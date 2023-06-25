@@ -1,4 +1,4 @@
-import { Section, Container } from "../";
+import { Container } from "../";
 import { map } from "lodash";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";

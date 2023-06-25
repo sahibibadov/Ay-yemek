@@ -18,5 +18,8 @@ export * from "./AboutMain/AboutMain";
 export * from "./Errorboundary/ErrorBoundary";
 export * from "./AuthImage/AuthImage";
 export * from "./Modal/Modal";
+export * from "./CategoryCard/CategoryCard";
+export * from "./CategoryProducts/CategoryProducts";
+export * from "./ScrollToTop/ScrollToTop";
 
 export * from "./uikits";

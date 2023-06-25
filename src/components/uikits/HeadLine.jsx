@@ -2,6 +2,7 @@ import styled from "styled-components";
 export const Headline = styled.h1`
   font-weight: 600;
   text-transform: uppercase;
+  margin-bottom: 16px;
   font-size: ${({ level }) =>
     level === 1
       ? "40px"
@@ -28,4 +29,15 @@ export const Headline = styled.h1`
       : color === "green"
       ? "#2BAD3F"
       : "white"};
+  @media screen and (max-width: 900px) {
+    font-size: 34px;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 25px;
+  }
 `;
