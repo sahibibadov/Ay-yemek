@@ -15,7 +15,8 @@
       padding: 24px 16px;
       gap: 50px;
       & ul {
-        & a {
+        & li {
+          cursor: pointer;
           display: block;
           padding: 16px 73px;
           background: #ffffff;
@@ -28,9 +29,7 @@
           &:hover {
             background: rgba(247, 92, 3, 0.14);
           }
-          & a:not(:last-child) {
-            margin-bottom: 16px;
-          }
+
           & img {
             position: absolute;
             left: 40px;

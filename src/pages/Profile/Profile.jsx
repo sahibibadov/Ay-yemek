@@ -1,8 +1,13 @@
-import { Container, Headline, Section, Modal } from "../../components";
-import React from "react";
+import {
+  Container,
+  Headline,
+  Section,
+  Modal,
+  Profiletab,
+} from "../../components";
+import React, { useState } from "react";
 import { map } from "lodash";
-import { NavLink } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+
 import "./profile.scss";
 import lock from "../../../public/profileacion/lock.svg";
 import order from "../../../public/profileacion/order.svg";
@@ -13,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { openModal } from "../../redux/modalSlice";
 
 export const Profile = () => {
+  const [activeTab, setActiveTab] = useState(1);
   const dispatch = useDispatch();
 
   const profileNavItems = [
@@ -21,26 +27,34 @@ export const Profile = () => {
       link: "profile",
       id: 1,
       icon: user,
+      content: "asdas",
     },
     {
       title: "Aktiv Sifarişlərim",
       link: "activeorders",
       id: 2,
       icon: order,
+      content: "dfgsdg",
     },
     {
       title: "Şifrə dəyişdir",
       link: "changepassword",
       id: 3,
       icon: lock,
+      content: "as",
     },
     {
       title: "Ödənişlərim",
       link: "payments",
       id: 4,
       icon: payment,
+      content: "aqw123123sdasfas",
     },
   ];
+  // klikde active klasin vermek
+  const handleTab = (id) => {
+    setActiveTab(id);
+  };
   return (
     <>
       <Container>
@@ -53,11 +67,13 @@ export const Profile = () => {
               <nav className="profile__pages__navbar">
                 <ul>
                   {map(profileNavItems, (item) => (
-                    <li key={item.id}>
-                      <NavLink to={item.link}>
-                        <img src={item.icon} alt={item.title} />
-                        {item.title}
-                      </NavLink>
+                    <li
+                      key={item.id}
+                      className={activeTab == item.id ? "active" : ""}
+                      onClick={() => handleTab(item.id)}
+                    >
+                      <img src={item.icon} alt={item.title} />
+                      {item.title}
                     </li>
                   ))}
                 </ul>
@@ -70,7 +86,11 @@ export const Profile = () => {
                 </button>
               </nav>
               <div className="profile__pages__content">
-                <Outlet />
+                {map(profileNavItems, (item) => (
+                  <Profiletab key={item.id} id={item.id} activeTab={activeTab}>
+                    {item.content}
+                  </Profiletab>
+                ))}
               </div>
             </div>
           </div>

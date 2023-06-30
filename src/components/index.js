@@ -21,5 +21,6 @@ export * from "./Modal/Modal";
 export * from "./CategoryCard/CategoryCard";
 export * from "./CategoryProducts/CategoryProducts";
 export * from "./ScrollToTop/ScrollToTop";
+export * from "./ProfileTab/Profiletab";
 
 export * from "./uikits";

@@ -46,6 +46,7 @@ const router = createBrowserRouter(
 
           {/* profile routlari */}
           <Route
+            path="profile"
             lazy={async () => {
               const { Profile } = await import("./pages/Profile/Profile");
               return {
@@ -53,15 +54,8 @@ const router = createBrowserRouter(
               };
             }}
             errorElement={<ErrorBoundary />}
-          >
-            <Route path="profile" element={<div>Məlumatlarım</div>} />
-            <Route
-              path="activeorders"
-              element={<div>Aktiv Sifarişlərim</div>}
-            />
-            <Route path="changepassword" element={<div>Şifrə dəyişdir</div>} />
-            <Route path="payments" element={<div>Ödənişlərim</div>} />
-          </Route>
+          />
+
           <Route path="*" element={<NotFound />} />
         </Route>
 

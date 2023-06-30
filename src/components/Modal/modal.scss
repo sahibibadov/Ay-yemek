@@ -102,6 +102,27 @@
       gap: 10px;
       & button {
         height: 35px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .backdrop .modal {
+    padding: 30px 15px 15px;
+    gap: 20px;
+    & h1 {
+      font-size: 16px;
+    }
+    & .close-modal {
+      top: 8px;
+      right: 8px;
+    }
+    & .modal_btn {
+      gap: 8px;
+      & button {
+        height: 30px;
       }
     }
   }
