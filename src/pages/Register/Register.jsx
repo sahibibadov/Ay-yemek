@@ -7,23 +7,54 @@ import {
   ErrorMessage,
   SubmitButton,
 } from "../../components";
+import { setUsers } from "../../redux/userSlice";
+import { auth } from "../../firebase/firebase";
 import "./register.scss";
-import resolverValidator from "../../validation/authvalidation";
+import resolverValidator from "../../validation/register";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
+  const [pasError, setPasError] = useState("");
+  const [mailError, setMailError] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: resolverValidator, //yup scheamlari yaziriq
-    shouldUseNativeValidation: false, //html default validatorunu baglamaq(default:false)
   });
 
-  const onSubmint = (e) => {
-    console.log(e);
+  const onRegister = async (data) => {
+    if (!data.email || !data.password) {
+      return;
+    }
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      const user = userCredential.user;
+      updateProfile(user, { displayName: `${data.name} ${data.surname}` });
+      navigate("/login");
+      dispatch(setUsers(user));
+    } catch (error) {
+      const errorCode = error?.code;
+
+      if (errorCode === "auth/wrong-password") {
+        setPasError("yanlis parola");
+      } else if (errorCode === "auth/user-not-found") {
+        setMailError("yanlis e-posta");
+      }
+    }
   };
+
   return (
     <div className="register__page">
       <div className="register__wrapper">
@@ -38,7 +69,7 @@ export const Register = () => {
             QEYDİYYAT
           </Headline>
           <form
-            onSubmit={handleSubmit(onSubmint)}
+            onSubmit={handleSubmit(onRegister)}
             className="contact__form"
             noValidate
           >
@@ -69,15 +100,17 @@ export const Register = () => {
                   )}
                 </div>
               </div>
-              <Label errors={errors.date}>Doğum tarixi</Label>
+
+              <Label errors={errors.email}>E-poçt </Label>
               <Input
-                placeholder="Doğum tarixi"
-                errors={errors.date}
-                {...register("date")}
-                type="date"
+                placeholder="E-poçt"
+                errors={errors.email}
+                {...register("email")}
+                type="email"
               />
-              {errors.date && (
-                <ErrorMessage>{errors.date?.message}</ErrorMessage>
+              {mailError && <ErrorMessage>{mailError}</ErrorMessage>}
+              {errors.email && (
+                <ErrorMessage>{errors.email?.message}</ErrorMessage>
               )}
               <Label errors={errors.password}>Parol</Label>
               <Input
@@ -86,38 +119,9 @@ export const Register = () => {
                 {...register("password")}
                 type="password"
               />
+              {pasError && <ErrorMessage>{pasError}</ErrorMessage>}
               {errors.password && (
                 <ErrorMessage>{errors.password?.message}</ErrorMessage>
-              )}
-              <Label errors={errors.email}>E-poçt </Label>
-              <Input
-                placeholder="E-poçt"
-                errors={errors.email}
-                {...register("email")}
-                type="email"
-              />
-              {errors.email && (
-                <ErrorMessage>{errors.email?.message}</ErrorMessage>
-              )}
-              <Label errors={errors.phoneNumber}>Telefon </Label>
-              <Input
-                placeholder="Telefon"
-                errors={errors.phoneNumber}
-                {...register("phoneNumber")}
-                type="text"
-              />
-              {errors.phoneNumber && (
-                <ErrorMessage>{errors.phoneNumber?.message}</ErrorMessage>
-              )}
-              <Label errors={errors.location}>Ünvan </Label>
-              <Input
-                placeholder="Ünvan"
-                errors={errors.location}
-                {...register("location")}
-                type="text"
-              />
-              {errors.location && (
-                <ErrorMessage>{errors.location?.message}</ErrorMessage>
               )}
             </div>
             <SubmitButton type="submit">Göndər</SubmitButton>

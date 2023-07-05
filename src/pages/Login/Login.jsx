@@ -8,11 +8,18 @@ import {
   SubmitButton,
   Paragraf,
 } from "../../components";
-import "./login.scss";
-import resolverValidator from "../../validation/authvalidation";
+import { auth } from "../../firebase/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import resolverValidator from "../../validation/login";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "./login.scss";
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const [pasError, setPasError] = useState("");
+  const [mailError, setMailError] = useState("");
   const {
     register,
     handleSubmit,
@@ -22,9 +29,27 @@ export const Login = () => {
     shouldUseNativeValidation: false, //html default validatorunu baglamaq(default:false)
   });
 
-  const onSubmint = (e) => {
-    console.log(e);
+  const onHandleLogin = async (data) => {
+    if (!data.email || !data.password) {
+      return;
+    }
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      navigate("/");
+    } catch (error) {
+      const errorCode = error?.code;
+      if (errorCode === "auth/wrong-password") {
+        setPasError("yanlis parola");
+      } else if (errorCode === "auth/user-not-found") {
+        setMailError("yanlis e-posta");
+      }
+    }
   };
+
   return (
     <div className="login__page">
       <div className="login__wrapper">
@@ -43,33 +68,36 @@ export const Login = () => {
           </Paragraf>
           <form
             className="contact__form"
-            onSubmit={handleSubmit(onSubmint)}
+            onSubmit={handleSubmit(onHandleLogin)}
             noValidate
           >
             <div>
-              <Label errors={errors.email}>E-poçt </Label>
+              <Label errors={errors?.email}>E-poçt </Label>
               <Input
                 placeholder="E-poçt"
-                errors={errors.email}
+                errors={errors?.email}
                 {...register("email")}
                 type="email"
               />
+              {mailError && <ErrorMessage>{mailError}</ErrorMessage>}
               {errors.email && (
                 <ErrorMessage>{errors.email?.message}</ErrorMessage>
               )}
             </div>
             <div>
-              <Label errors={errors.password}>Parol</Label>
+              <Label errors={errors?.password}>Parol</Label>
               <Input
                 placeholder="Parol"
-                errors={errors.password}
+                errors={errors?.password}
                 {...register("password")}
                 type="password"
               />
+              {pasError && <ErrorMessage>{pasError}</ErrorMessage>}
               {errors.password && (
                 <ErrorMessage>{errors.password?.message}</ErrorMessage>
               )}
             </div>
+
             <SubmitButton type="submit">Göndər</SubmitButton>
           </form>
         </div>

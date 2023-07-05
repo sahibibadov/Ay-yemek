@@ -3,7 +3,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { Home, NotFound } from "./pages";
+import { Home, Login, NotFound, Register } from "./pages";
 import App from "./App";
 import { ErrorBoundary, Layout } from "./components";
 
@@ -55,12 +55,22 @@ const router = createBrowserRouter(
             }}
             errorElement={<ErrorBoundary />}
           />
-
-          <Route path="*" element={<NotFound />} />
         </Route>
+        {/* layout route end */}
 
         {/* register ve login routlari */}
         <Route
+          path="/login"
+          element={<Login />}
+          errorElement={<ErrorBoundary />}
+        />
+        <Route
+          path="/register"
+          element={<Register />}
+          errorElement={<ErrorBoundary />}
+        />
+
+        {/* <Route
           path="login"
           lazy={async () => {
             const { Login } = await import("./pages/Login/Login");
@@ -79,7 +89,7 @@ const router = createBrowserRouter(
             };
           }}
           errorElement={<ErrorBoundary />}
-        />
+        /> */}
         <Route path="*" element={<NotFound />} />
       </Route>
     </>

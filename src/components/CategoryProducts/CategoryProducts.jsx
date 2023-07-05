@@ -20,7 +20,7 @@ export const CategoryProducts = () => {
 
   return (
     <div className="category-itmes">
-      <div>
+      <div className="category-itmes__wrapper">
         {map(currentItems, (item) => (
           <CategoryCard key={item.id} item={item} />
         ))}

@@ -1,14 +1,20 @@
 import { Container, HmButton, LnButton } from "../../components";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { map } from "lodash";
 import logo from "../../../public/logo.png";
 
+import { useSelector } from "react-redux";
 import "./header.scss";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
 export const Header = () => {
   const ref = useRef(null);
   const [hide, setHide] = useState(false);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const { users } = useSelector((state) => state.users);
+  const parseUser = JSON.parse(users);
 
   // hamburgermenunun klikle acilmasi
   const handleToggleMenu = () => {
@@ -26,7 +32,18 @@ export const Header = () => {
     let windowHeight = window.scrollY;
     windowHeight > 100 ? setHide(true) : setHide(false);
   };
-
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        navigate("/login", { replace: true });
+        console.log("Signed out successfully");
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log("error", error);
+      });
+  };
   useEffect(() => {
     window.addEventListener("scroll", hideHeaderContact);
     return () => {
@@ -80,9 +97,18 @@ export const Header = () => {
           </ul>
         </nav>
         <div className="profile">
-          <Link to="login">Daxil ol</Link>
-          <Link to="register">Qeydiyyat</Link>
-          <Link to="profile">Profile</Link>
+          {parseUser ? (
+            <div>
+              <Link to="profile">{parseUser.displayName}</Link>
+              <button onClick={handleLogout}>Logout</button>
+            </div>
+          ) : (
+            <>
+              <Link to="login">Daxil ol</Link>
+              <Link to="register">Qeydiyyat</Link>
+            </>
+          )}
+
           <LnButton />
           <HmButton ref={ref} handleToggleMenu={handleToggleMenu} />
         </div>
