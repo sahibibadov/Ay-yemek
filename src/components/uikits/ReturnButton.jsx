@@ -1,11 +1,14 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import returnArrow from "../../../public/returnarrow.svg";
 
-const Return = styled(Link)`
+const Return = styled.button`
   display: inline-block;
   width: 35px;
   height: 35px;
+  border: none;
+  outline: none;
+  cursor: pointer;
   background: rgba(14, 107, 168, 0.25);
   border-radius: 6px;
   display: grid;
@@ -14,11 +17,15 @@ const Return = styled(Link)`
   &:hover {
     background: rgba(14, 107, 168, 0.45);
   }
+  &:active {
+    background: rgba(14, 107, 168, 0.25);
+  }
 `;
 
-export const ReturnButton = ({ ...props }) => {
+export const ReturnButton = () => {
+  const navigate = useNavigate();
   return (
-    <Return {...props}>
+    <Return onClick={() => navigate("/")}>
       <img src={returnArrow} alt="asdas" />
     </Return>
   );

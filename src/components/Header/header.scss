@@ -205,6 +205,9 @@
           &::after {
             display: none;
           }
+          &:active {
+            background: #f75c03;
+          }
         }
       }
     }

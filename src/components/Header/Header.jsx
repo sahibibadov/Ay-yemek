@@ -4,15 +4,17 @@ import { useEffect, useState, useRef } from "react";
 import { map } from "lodash";
 import logo from "../../../public/logo.png";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./header.scss";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
+import { setUsers } from "../../redux/userSlice";
 export const Header = () => {
   const ref = useRef(null);
   const [hide, setHide] = useState(false);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { users } = useSelector((state) => state.users);
   const parseUser = JSON.parse(users);
 
@@ -32,17 +34,19 @@ export const Header = () => {
     let windowHeight = window.scrollY;
     windowHeight > 100 ? setHide(true) : setHide(false);
   };
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-        navigate("/login", { replace: true });
-        console.log("Signed out successfully");
-      })
-      .catch((error) => {
-        // An error happened.
-        console.log("error", error);
-      });
+
+  // logout butonuna klikde firebaseden sigout olmasi
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      // Oturum kapatma başarılı oldu.
+
+      navigate("/login", { replace: true });
+      dispatch(setUsers(null));
+    } catch (error) {
+      // Bir hata oluştu.
+      console.log("Hata:", error);
+    }
   };
   useEffect(() => {
     window.addEventListener("scroll", hideHeaderContact);
@@ -90,15 +94,20 @@ export const Header = () => {
               </li>
             ))}
             <div className="mobile-profile">
-              <Link to="login">Daxil ol</Link>
-              <Link to="register">Qeydiyyat</Link>
-              <Link to="profile">Profile</Link>
+              {parseUser ? (
+                <></>
+              ) : (
+                <>
+                  <Link to="login">Daxil ol</Link>
+                  <Link to="register">Qeydiyyat</Link>
+                </>
+              )}
             </div>
           </ul>
         </nav>
         <div className="profile">
           {parseUser ? (
-            <div>
+            <div className="profile__info">
               <Link to="profile">{parseUser.displayName}</Link>
               <button onClick={handleLogout}>Logout</button>
             </div>

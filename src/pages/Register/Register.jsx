@@ -45,6 +45,7 @@ export const Register = () => {
       navigate("/login");
       dispatch(setUsers(user));
     } catch (error) {
+      console.log(error);
       const errorCode = error?.code;
 
       if (errorCode === "auth/wrong-password") {

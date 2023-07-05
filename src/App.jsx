@@ -20,7 +20,7 @@ function App() {
         // ...
       }
     });
-  }, []);
+  }, [auth, dispatch]);
   return (
     <>
       <Outlet />

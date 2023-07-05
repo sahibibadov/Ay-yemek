@@ -39,8 +39,9 @@ export const Login = () => {
         data.email,
         data.password
       );
-      navigate("/");
+      navigate("/", { replace: true });
     } catch (error) {
+      console.log(error);
       const errorCode = error?.code;
       if (errorCode === "auth/wrong-password") {
         setPasError("yanlis parola");
@@ -57,7 +58,7 @@ export const Login = () => {
           <div className="login__content__img">
             <img src="logo.png" alt="logo" />
           </div>
-          <ReturnButton to="/" />
+          <ReturnButton />
 
           {/* form */}
           <Headline level={1} color="primary">
