@@ -20,7 +20,7 @@ export const CategoryCard = ({ item }) => {
         {item.category}
       </Headline>
       <p>{item.description}</p>
-      <Button to={`category/${item.category}`} color="primary">
+      <Button to={item.category} color="primary">
         Daha ətraflı
       </Button>
     </CategoryCardWrapper>

@@ -39,6 +39,7 @@ export const Login = () => {
         data.email,
         data.password
       );
+
       navigate("/", { replace: true });
     } catch (error) {
       console.log(error);

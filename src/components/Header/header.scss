@@ -28,7 +28,9 @@
       top: -4px;
       left: -40px;
       & > img {
-        min-width: 240px;
+        max-width: 210px;
+        height: auto;
+        object-fit: cover;
       }
     }
     & .profile {

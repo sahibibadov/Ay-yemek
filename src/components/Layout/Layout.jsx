@@ -7,6 +7,7 @@ import {
   ScrollTop,
   ScrollToTop,
   Container,
+  Modal,
 } from "../";
 
 export const Layout = () => {
@@ -24,7 +25,7 @@ export const Layout = () => {
       </Container>
 
       <Footer />
-
+      <Modal />
       <ScrollTop />
     </>
   );

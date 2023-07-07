@@ -1,10 +1,4 @@
-import {
-  Container,
-  Headline,
-  Section,
-  Modal,
-  Profiletab,
-} from "../../components";
+import { Container, Headline, Section, Profiletab } from "../../components";
 import React, { useState } from "react";
 import { map } from "lodash";
 
@@ -95,7 +89,6 @@ export const Profile = () => {
             </div>
           </div>
         </Section>
-        <Modal />
       </Container>
     </>
   );

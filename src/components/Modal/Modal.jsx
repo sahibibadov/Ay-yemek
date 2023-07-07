@@ -13,13 +13,11 @@ export const Modal = () => {
   const { isOpen } = useSelector((state) => state.modal);
   const handleLogout = async () => {
     try {
+      dispatch(setUsers(null));
       await signOut(auth);
       dispatch(closeModal());
-      // Oturum kapatma başarılı oldu.
       navigate("/login", { replace: true });
-      dispatch(setUsers(null));
     } catch (error) {
-      // Bir hata oluştu.
       console.log("Hata:", error);
     }
   };
