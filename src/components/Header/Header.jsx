@@ -1,19 +1,20 @@
 import { Container, HmButton, LnButton } from "../../components";
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { map } from "lodash";
-import logo from "../../../public/logo.png";
-
 import { useDispatch, useSelector } from "react-redux";
+
+import { AiOutlineUser } from "react-icons/ai";
+import { RiArrowDropDownLine } from "react-icons/ri";
 import "./header.scss";
-import { signOut } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
-import { setUsers } from "../../redux/userSlice";
+import logo from "../../../public/logo.png";
+import { openModal } from "../../redux/modalSlice";
+
 export const Header = () => {
   const ref = useRef(null);
   const [hide, setHide] = useState(false);
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.users);
   const parseUser = JSON.parse(users);
@@ -36,18 +37,7 @@ export const Header = () => {
   };
 
   // logout butonuna klikde firebaseden sigout olmasi
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      // Oturum kapatma başarılı oldu.
 
-      navigate("/login", { replace: true });
-      dispatch(setUsers(null));
-    } catch (error) {
-      // Bir hata oluştu.
-      console.log("Hata:", error);
-    }
-  };
   useEffect(() => {
     window.addEventListener("scroll", hideHeaderContact);
     return () => {
@@ -108,8 +98,15 @@ export const Header = () => {
         <div className="profile">
           {parseUser ? (
             <div className="profile__info">
-              <Link to="profile">{parseUser.displayName}</Link>
-              <button onClick={handleLogout}>Logout</button>
+              <div className="profile__name">
+                <AiOutlineUser size={24} color="#F75C03" />
+                <p>{parseUser.displayName}</p>
+                <RiArrowDropDownLine size={28} color="#0e6ba8" />
+                <div className="profile__name__dropmenu">
+                  <Link to="profile">Profil məlumatlarım</Link>
+                  <button onClick={() => dispatch(openModal())}>Çıxış </button>
+                </div>
+              </div>
             </div>
           ) : (
             <>

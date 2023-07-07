@@ -36,7 +36,81 @@
       column-gap: 15px;
       justify-content: center;
       align-items: center;
-      & a:first-child {
+      & .profile__info {
+        align-self: stretch;
+        display: flex;
+        & .profile__name {
+          position: relative;
+          display: flex;
+          align-items: center;
+          align-self: stretch;
+          gap: 10px;
+          cursor: pointer;
+          & > p {
+            white-space: nowrap;
+            color: #0e6ba8;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: capitalize;
+          }
+
+          & .profile__name__dropmenu {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: auto;
+            transform: translateY(74px);
+            border-radius: 8px;
+            border: 1px solid rgba(233, 236, 237, 0.9);
+            background: #fff;
+            transition: all 0.25s;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 999;
+            overflow-x: hidden;
+            &::after {
+              content: "";
+              position: absolute;
+              height: 1px;
+              width: 100%;
+              background-color: rgba(0, 0, 0, 0.15);
+              left: 0;
+              top: 50%;
+            }
+            & > a {
+              color: #000;
+              font-size: 12px;
+              font-weight: 400;
+              display: block;
+              white-space: nowrap;
+              position: relative;
+              padding: 13px;
+              transition: all 0.25s;
+            }
+            & > button {
+              border: none;
+              outline: none;
+              background: inherit;
+              color: #d81a1a;
+              font-size: 10px;
+              font-weight: 400;
+              cursor: pointer;
+              padding: 13px;
+              transition: all 0.25s;
+            }
+            & > :is(button, a):hover {
+              opacity: 0.5;
+            }
+          }
+          &:hover .profile__name__dropmenu {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(64px);
+          }
+        }
+      }
+      & > a:first-child {
         color: #00072d;
         font-weight: 400;
         font-size: 18px;
@@ -67,7 +141,7 @@
           left: 0%;
         }
       }
-      & a:nth-child(2) {
+      & > a:nth-child(2) {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -187,7 +261,7 @@
       }
     }
     & .navbar {
-      bottom: -217px;
+      bottom: -186px;
       & .mobile-profile {
         display: flex;
         gap: 10px;
@@ -210,6 +284,24 @@
           }
         }
       }
+    }
+  }
+}
+@media screen and (max-width: 615px) {
+  .header > div .profile .profile__info .profile__name {
+    & > :is(p, svg:nth-last-of-type(1)) {
+      display: none;
+    }
+    & .profile__name__dropmenu {
+      left: -30px;
+    }
+  }
+}
+@media screen and (max-width: 455px) {
+  .header > div .logo {
+    left: -60px;
+    & > img {
+      min-width: 100px;
     }
   }
 }

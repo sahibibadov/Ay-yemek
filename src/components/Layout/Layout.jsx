@@ -6,6 +6,7 @@ import {
   Footer,
   ScrollTop,
   ScrollToTop,
+  Container,
 } from "../";
 
 export const Layout = () => {
@@ -16,10 +17,11 @@ export const Layout = () => {
       <HeaderContact />
       <Header />
       <HideDiv />
-
-      <main>
-        <Outlet />
-      </main>
+      <Container>
+        <main>
+          <Outlet />
+        </main>
+      </Container>
 
       <Footer />
 

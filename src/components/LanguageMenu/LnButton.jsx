@@ -49,7 +49,7 @@ const Dropdown = styled.div`
 `;
 const DropMenu = styled.div`
   position: absolute;
-
+  background: #f7f7f7;
   border-radius: 11px;
   border: 1px solid #f75c03;
   display: grid;
