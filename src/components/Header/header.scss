@@ -300,10 +300,17 @@
   }
 }
 @media screen and (max-width: 455px) {
-  .header > div .logo {
-    left: -60px;
-    & > img {
-      min-width: 100px;
+  .header > div {
+    & .logo {
+      left: -40px;
+      width: 50%;
+      & > img {
+        min-width: 50px;
+      }
+    }
+    & .profile {
+      column-gap: 5px;
+      justify-content: flex-end;
     }
   }
 }
