@@ -3,18 +3,15 @@ import Authimg from "../../../public/authimage.png";
 
 const ImgWrapper = styled.div`
   background: linear-gradient(
-    0deg,
-    rgba(247, 92, 3, 0.28),
-    rgba(247, 92, 3, 0.28)
-  );
+      0deg,
+      rgba(247, 92, 3, 0.28),
+      rgba(247, 92, 3, 0.28)
+    ),
+    url(authimage.png) no-repeat center center / cover;
   position: relative;
   overflow: hidden;
 `;
-const Img = styled.img`
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-`;
+
 const Title = styled.div`
   position: absolute;
   top: 40%;
@@ -42,7 +39,6 @@ const Title = styled.div`
 export const AuthImage = () => {
   return (
     <ImgWrapper>
-      <Img src={Authimg} alt="authimg" />
       <Title>
         <h1>
           SİZ SEÇİN BİZ <br /> İSTƏDİYİNİZ ZAMANDA YEMƏKLƏRİNİZİ ÇATDIRAQ

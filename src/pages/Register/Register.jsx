@@ -1,4 +1,3 @@
-import { AuthImage } from "../../components/AuthImage/AuthImage";
 import {
   ReturnButton,
   Headline,
@@ -6,16 +5,17 @@ import {
   Input,
   ErrorMessage,
   SubmitButton,
+  AuthImage,
 } from "../../components";
 import { setUsers } from "../../redux/userSlice";
 import { auth } from "../../firebase/firebase";
-import "./register.scss";
-import resolverValidator from "../../validation/register";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useForm } from "react-hook-form";
+import resolverValidator from "../../validation/register";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import "./register.scss";
 
 export const Register = () => {
   const [pasError, setPasError] = useState("");

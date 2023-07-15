@@ -3,6 +3,7 @@ import { map } from "lodash";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
 import "./footer.scss";
+import Logo from "../../../public/logo.png";
 
 export const Footer = () => {
   const navLink = [
@@ -31,7 +32,7 @@ export const Footer = () => {
     <footer className="footer">
       <Container>
         <div className="footer__logo">
-          <img src="logo.png" alt="logo" />
+          <img src={Logo} alt="logo" />
         </div>
         <p>
           Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit, sed do

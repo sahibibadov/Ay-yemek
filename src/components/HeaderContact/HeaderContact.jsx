@@ -84,6 +84,7 @@ export const HeaderContact = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", hideHeaderContact);
+    return () => window.removeEventListener("scroll", hideHeaderContact);
   }, []);
   return (
     <HeaderStyleCont className={`${hide ? "hiden" : ""}`}>

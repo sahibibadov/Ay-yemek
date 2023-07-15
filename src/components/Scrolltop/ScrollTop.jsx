@@ -37,6 +37,12 @@ const TopButton = styled.button`
   &:hover {
     bottom: 70px;
   }
+  @media screen and (max-width: 700px) {
+    scale: 0.8;
+  }
+  @media screen and (max-width: 500px) {
+    scale: 0.5;
+  }
 `;
 
 export const ScrollTop = () => {

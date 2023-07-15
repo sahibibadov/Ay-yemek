@@ -11,8 +11,12 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route element={<App />}>
+
+        {/* layout route start*/}
         <Route element={<Layout />}>
+
           <Route path="/" element={<Home />} errorElement={<ErrorBoundary />} />
+
           <Route
             path="about"
             lazy={async () => {
@@ -23,6 +27,7 @@ const router = createBrowserRouter(
             }}
             errorElement={<ErrorBoundary />}
           />
+
           <Route
             path="category"
             lazy={async () => {
@@ -34,6 +39,56 @@ const router = createBrowserRouter(
             errorElement={<ErrorBoundary />}
           />
           <Route
+            path="category/:categoryUrl"
+            lazy={async () => {
+              const { CategoryProducts } = await import(
+                "./pages/CategoryProducts/CategoryProducts"
+              );
+              return {
+                Component: CategoryProducts,
+              };
+            }}
+            errorElement={<ErrorBoundary />}
+          />
+          <Route
+            path="category/:categoryUrl/:day"
+            lazy={async () => {
+              const { DayProducts } = await import(
+                "./pages/DayProducts/DayProducts"
+              );
+              return {
+                Component: DayProducts,
+              };
+            }}
+            errorElement={<ErrorBoundary />}
+          />
+
+          <Route
+            path="payment"
+            lazy={async () => {
+              const { Payment } = await import(
+                "./pages/Payment/Payment"
+              );
+              return {
+                Component: Payment,
+              };
+            }}
+            errorElement={<ErrorBoundary />}
+          />
+          <Route
+            path="succespage"
+            lazy={async () => {
+              const { SuccesPage } = await import(
+                "./pages/SuccesPage/SuccesPage"
+              );
+              return {
+                Component: SuccesPage,
+              };
+            }}
+            errorElement={<ErrorBoundary />}
+          />
+
+          <Route
             path="contact"
             lazy={async () => {
               const { Contact } = await import("./pages/Contact/Contact");
@@ -44,7 +99,6 @@ const router = createBrowserRouter(
             errorElement={<ErrorBoundary />}
           />
 
-          {/* profile routlari */}
           <Route
             path="profile"
             lazy={async () => {

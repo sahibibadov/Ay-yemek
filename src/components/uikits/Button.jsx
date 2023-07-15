@@ -59,7 +59,9 @@ export const Button = styled(Link)`
     }
     return "13px 40px";
   }};
-
+  &:active {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
   &:hover {
     border: ${({ color }) => {
       if (color === "primary") {
