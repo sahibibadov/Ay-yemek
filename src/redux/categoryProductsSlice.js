@@ -9,25 +9,26 @@ const initialState = {
 };
 
 const categoryProductsSlice = createSlice({
-   name: "lang",
+   name: "categoryProductsSlice",
    initialState,
    reducers: {
       setFilterProduct: (state, action) => {
          state.filteredProducts = filter(
-            meals,
+            state.allProducts,
             (meal) => meal.category === action.payload,
          );
       },
+
       setSelected: (state, action) => {
          state.selectedType = action.payload;
          state.filteredProducts = filter(
-            meals,
-            (meal) => meal.category === action.payload,
+            state.filteredProducts,
+            (meal) => meal.type === action.payload,
          );
       },
    },
 });
 
-export const {} = categoryProductsSlice.actions;
+export const { setFilterProduct, setSelected } = categoryProductsSlice.actions;
 
 export default categoryProductsSlice.reducer;

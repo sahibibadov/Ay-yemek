@@ -51,45 +51,40 @@ export const Profile = () => {
   };
   return (
     <>
-      <Container>
-        <Section>
-          <div className="profile__pages">
-            <Headline level={1} color="primary">
-              PROfİLİ MƏLUMATLARIM
-            </Headline>
-            <div className="profile__pages__main">
-              <nav className="profile__pages__navbar">
-                <ul>
-                  {map(profileNavItems, (item) => (
-                    <li
-                      key={item.id}
-                      className={activeTab == item.id ? "active" : ""}
-                      onClick={() => handleTab(item.id)}
-                    >
-                      <img src={item.icon} alt={item.title} />
-                      {item.title}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => dispatch(openModal())}
-                  className="logout"
-                >
-                  <img src={outarrow} alt="outarrow" />
-                  Çıxış
-                </button>
-              </nav>
-              <div className="profile__pages__content">
+      <Section>
+        <div className="profile__pages">
+          <Headline level={1} color="primary">
+            PROfİLİ MƏLUMATLARIM
+          </Headline>
+          <div className="profile__pages__main">
+            <nav className="profile__pages__navbar">
+              <ul>
                 {map(profileNavItems, (item) => (
-                  <Profiletab key={item.id} id={item.id} activeTab={activeTab}>
-                    {item.content}
-                  </Profiletab>
+                  <li
+                    key={item.id}
+                    className={activeTab == item.id ? "active" : ""}
+                    onClick={() => handleTab(item.id)}
+                  >
+                    <img src={item.icon} alt={item.title} />
+                    {item.title}
+                  </li>
                 ))}
-              </div>
+              </ul>
+              <button onClick={() => dispatch(openModal())} className="logout">
+                <img src={outarrow} alt="outarrow" />
+                Çıxış
+              </button>
+            </nav>
+            <div className="profile__pages__content">
+              {map(profileNavItems, (item) => (
+                <Profiletab key={item.id} id={item.id} activeTab={activeTab}>
+                  {item.content}
+                </Profiletab>
+              ))}
             </div>
           </div>
-        </Section>
-      </Container>
+        </div>
+      </Section>
     </>
   );
 };

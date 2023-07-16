@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 export const Button = styled(Link)`
+  @media screen and (max-width: 700px) {
+    font-size: 12px;
+    padding: 10px 20px;
+  }
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -38,6 +38,9 @@
       column-gap: 15px;
       justify-content: center;
       align-items: center;
+      & .cart_icon {
+        display: none;
+      }
       & .profile__info {
         align-self: stretch;
         display: flex;
@@ -260,6 +263,25 @@
     & .profile {
       & > a {
         display: none !important;
+      }
+      & .cart_icon {
+        display: block !important;
+        position: relative;
+        & span {
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid white;
+          background-color: #f75c03;
+          color: white;
+          border-radius: 50%;
+          width: 18px;
+          padding: 9px;
+          height: 18px;
+        }
       }
     }
     & .navbar {

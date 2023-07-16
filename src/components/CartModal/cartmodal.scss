@@ -1,0 +1,46 @@
+.backdrop-cart {
+  position: fixed;
+  inset: 0;
+  background: rgba(34, 31, 31, 0.51);
+  z-index: 999;
+  display: none;
+  transition: all 0.2s;
+  &.backdrop-cart.open {
+    display: block;
+  }
+  & .cart-modal {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    max-width: 600px;
+    width: 70%;
+    z-index: 9999;
+    background-color: white;
+    color: black;
+
+    & h1 {
+      font-weight: 600;
+      font-size: 32px;
+      white-space: nowrap;
+      line-height: 39px;
+      text-align: center;
+      text-transform: capitalize;
+      color: #00072d;
+      & span {
+        color: #f75c03;
+      }
+    }
+    & .close-cart-modal {
+      position: absolute;
+      top: 33px;
+      right: 33px;
+      cursor: pointer;
+    }
+  }
+}

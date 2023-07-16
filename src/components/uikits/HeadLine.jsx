@@ -4,21 +4,9 @@ export const Headline = styled.h1`
   text-transform: uppercase;
   margin-bottom: 16px;
   font-size: ${({ level }) =>
-    level === 1
-      ? "40px"
-      : level === 2
-      ? "35px"
-      : level === 3
-      ? "28px"
-      : "14px"};
+    level === 1 ? "40px" : level === 2 ? "35px" : level === 3 ? "28px" : "14px"};
   line-height: ${({ level }) =>
-    level === 1
-      ? "48px"
-      : level === 2
-      ? "39px"
-      : level === 3
-      ? "28px"
-      : "20px"};
+    level === 1 ? "48px" : level === 2 ? "39px" : level === 3 ? "28px" : "20px"};
   color: ${({ color }) =>
     color === "primary"
       ? "#F75C03"

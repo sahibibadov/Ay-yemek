@@ -1,6 +1,6 @@
 import "./category.scss";
 import {
-  CategoryProducts,
+  CategoryItems,
   Container,
   Headline,
   Paragraf,
@@ -11,18 +11,15 @@ export const Category = () => {
   return (
     <>
       <Section>
-        <Container>
-          <div className="category__pages">
-            <Headline level={1} color="primary">
-              KATEQORİYA
-            </Headline>
-            <Paragraf size="lg" color="secondary">
-              Aşağıdakı paketlərdən birini seçərək sifarişinizi təsdiqləyə
-              bilərsiniz
-            </Paragraf>
-            <CategoryProducts />
-          </div>
-        </Container>
+        <div className="category__pages">
+          <Headline level={1} color="primary">
+            KATEQORİYA
+          </Headline>
+          <Paragraf size="lg" color="secondary">
+            Aşağıdakı paketlərdən birini seçərək sifarişinizi təsdiqləyə bilərsiniz
+          </Paragraf>
+          <CategoryItems />
+        </div>
       </Section>
     </>
   );

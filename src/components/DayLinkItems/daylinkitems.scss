@@ -1,0 +1,37 @@
+.day_pages_buttons_item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 11px 18px 0px rgba(247, 92, 3, 0.11);
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+
+  & h3 {
+    padding: 13px 70px;
+    background-color: #f75c03;
+    color: #fff;
+    text-align: center;
+    font-size: clamp(0.88rem, calc(0.73rem + 0.74vw), 1.38rem);
+    font-weight: 500;
+    width: 100%;
+    white-space: nowrap;
+  }
+  & p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    font-size: clamp(0.69rem, calc(0.56rem + 0.65vw), 1.13rem);
+    & span {
+      color: #0e6ba8;
+    }
+  }
+  & a {
+    margin-bottom: 18px;
+  }
+}
+@media screen and (max-width: 850px) {
+}

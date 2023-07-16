@@ -8,9 +8,12 @@ import {
   ScrollToTop,
   Container,
   Modal,
+  CartModal,
 } from "../";
+import { useSelector } from "react-redux";
 
 export const Layout = () => {
+  const { cartOpen, isOpen } = useSelector((state) => state.modal);
   return (
     <>
       <ScrollToTop />
@@ -26,6 +29,7 @@ export const Layout = () => {
 
       <Footer />
       <Modal />
+      {cartOpen && <CartModal />}
       <ScrollTop />
     </>
   );

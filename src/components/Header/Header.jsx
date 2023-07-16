@@ -8,7 +8,8 @@ import { AiOutlineUser } from "react-icons/ai";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import "./header.scss";
 import logo from "../../../public/logo.png";
-import { openModal } from "../../redux/modalSlice";
+import { FiShoppingCart } from "react-icons/fi";
+import { openCart, openModal } from "../../redux/modalSlice";
 
 export const Header = () => {
   const ref = useRef(null);
@@ -99,7 +100,7 @@ export const Header = () => {
           {parseUser ? (
             <div className="profile__info">
               <div className="profile__name">
-                <AiOutlineUser size={24} color="#F75C03" />
+                <AiOutlineUser size={28} color="#F75C03" />
                 <p>{parseUser.displayName}</p>
                 <RiArrowDropDownLine size={28} color="#0e6ba8" />
                 <div className="profile__name__dropmenu">
@@ -114,7 +115,10 @@ export const Header = () => {
               <Link to="register">Qeydiyyat</Link>
             </>
           )}
-
+          <div onClick={() => dispatch(openCart())} className="cart_icon">
+            <span>1</span>
+            <FiShoppingCart color="#F75C03" size={28} />
+          </div>
           <LnButton />
           <HmButton ref={ref} handleToggleMenu={handleToggleMenu} />
         </div>

@@ -19,8 +19,11 @@ export * from "./Errorboundary/ErrorBoundary";
 export * from "./AuthImage/AuthImage";
 export * from "./Modal/Modal";
 export * from "./CategoryCard/CategoryCard";
-export * from "./CategoryProducts/CategoryProducts";
+export * from "./CategoryItems/CategoryItems";
 export * from "./ScrollToTop/ScrollToTop";
 export * from "./ProfileTab/Profiletab";
+export * from "./FilterProducts/FilterProducts";
+export * from "./DayLinkItems/DayLinkItems";
+export * from "./CartModal/CartModal";
 
 export * from "./uikits";

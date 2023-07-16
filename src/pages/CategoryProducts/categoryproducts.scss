@@ -1,38 +1,72 @@
 .products_page {
-   & > p {
-      margin-bottom: 40px;
-   }
-   & .type_buttons {
-      display: inline-flex;
+  & > p {
+    margin-bottom: 40px;
+  }
+  & .type_buttons {
+    display: inline-flex;
+    gap: 16px;
+    & .type_button {
+      cursor: pointer;
+      background-color: #ffffff;
+      color: #f75c03;
+      border: none;
+      outline: none;
+      margin-bottom: 30px;
+      border-radius: 14px;
+      white-space: nowrap;
+      padding: 8px 20px;
+      letter-spacing: 0.4px;
+      font-size: 14px;
+      box-shadow: 0px 6px 16px 0px rgba(247, 92, 3, 0.06);
+      transition: background-color 0.2s, color 0.2s;
+      &:is(.active, :hover) {
+        background-color: #f75c03;
+        color: #ffffff;
+      }
+      &:active {
+        background-color: #d84f00;
+      }
+    }
+  }
+  & .products_wrapper {
+    display: grid;
+    gap: 60px;
+    grid-template-columns: 2fr 1fr;
+    & .products_list {
+      display: flex;
+      flex-direction: column;
       gap: 16px;
+    }
+    & .day_pages_buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+  }
+}
+@media screen and (max-width: 850px) {
+  .products_page {
+    & > :is(h1, p) {
+      text-align: center;
+    }
+    & > p {
+      margin-bottom: 20px;
+    }
+    & .type_buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
       & .type_button {
-         cursor: pointer;
-         background-color: #ffffff;
-         color: #f75c03;
-         border: none;
-         outline: none;
-         margin-bottom: 30px;
-         border-radius: 14px;
-         white-space: nowrap;
-         padding: 8px 20px;
-         letter-spacing: 0.4px;
-         font-size: 14px;
-         transition: background-color 0.2s, color 0.2s;
-         &:is(.active, :hover) {
-            background-color: #f75c03;
-            color: #ffffff;
-         }
+        margin-bottom: 20px;
+        border-radius: 10px;
+        padding: 4px 10px;
+        letter-spacing: 0.4px;
+        font-size: 11px;
       }
-   }
-   & .products_wrapper {
-      display: grid;
-      gap: 60px;
-      grid-template-columns: 1fr 360px;
-      & .products_list {
-         border: 1px solid black;
-      }
-      & .day_pages_button {
-         border: 1px solid black;
-      }
-   }
+    }
+    & .products_wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }

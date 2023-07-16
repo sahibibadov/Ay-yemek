@@ -1,0 +1,18 @@
+.products_page {
+  & .products_wrapper {
+    & .card_wrapper {
+      background-color: red;
+    }
+  }
+}
+@media screen and (max-width: 880px) {
+  .products_page {
+    & .products_wrapper {
+      display: flex;
+      flex-direction: column;
+      & .card_wrapper {
+        display: none;
+      }
+    }
+  }
+}

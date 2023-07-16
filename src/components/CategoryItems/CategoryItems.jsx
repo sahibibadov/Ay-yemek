@@ -6,7 +6,7 @@ import { CategoryCard } from "../CategoryCard/CategoryCard";
 import { useState } from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 
-export const CategoryProducts = () => {
+export const CategoryItems = () => {
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 6; //nece denesin gostermek isdediyimiz eded
   const endOffset = itemOffset + itemsPerPage;
