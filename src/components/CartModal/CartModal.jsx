@@ -3,6 +3,7 @@ import { closeCart } from "../../redux/modalSlice";
 import { GrClose } from "react-icons/gr";
 import "./cartmodal.scss";
 import { motion } from "framer-motion";
+import { Cart } from "../Cart/Cart";
 
 export const CartModal = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export const CartModal = () => {
         onClick={(e) => e.stopPropagation()}
         className="cart-modal"
       >
-        <h1>cart</h1>
+        <Cart />
         <span onClick={() => dispatch(closeCart())} className="close-cart-modal">
           <GrClose size={24} />
         </span>

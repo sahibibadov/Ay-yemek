@@ -4,13 +4,14 @@ export const Input = styled.input`
   width: 100%;
   min-width: 200px;
   background: #ffffff;
-  border: ${({ errors }) =>
-    errors ? "1px solid#e10000;" : "1px solid#d3d3d3"};
+  border: ${({ errors }) => (errors ? "1px solid#e10000;" : "1px solid#d3d3d3")};
   border-radius: 6px;
   position: relative;
   padding: 12px 16px;
+  font-family: "Inter", sans-serif;
   margin-bottom: 8px;
   color: #797979;
+  transition: all 0.2s;
 
   &:focus,
   &:hover,

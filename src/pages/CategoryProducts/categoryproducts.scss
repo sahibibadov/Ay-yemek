@@ -31,7 +31,7 @@
   & .products_wrapper {
     display: grid;
     gap: 60px;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr 0.9fr;
     & .products_list {
       display: flex;
       flex-direction: column;

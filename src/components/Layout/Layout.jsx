@@ -30,6 +30,7 @@ export const Layout = () => {
       <Footer />
       <Modal />
       {cartOpen && <CartModal />}
+      {/* <CartModal /> */}
       <ScrollTop />
     </>
   );

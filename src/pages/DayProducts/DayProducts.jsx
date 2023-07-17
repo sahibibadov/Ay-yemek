@@ -2,21 +2,21 @@ import { useParams } from "react-router-dom";
 import { map } from "lodash";
 import { useEffect } from "react";
 import "./dayproducts.scss";
-import { FilterProducts, Headline, Paragraf, Section } from "../../components";
+import { Cart, FilterProducts, Headline, Paragraf, Section } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterProduct, setSelected } from "../../redux/categoryProductsSlice";
-const categoryButtons = [
-  { id: 1, title: "ana yemək" },
-  { id: 2, title: "garnir" },
-  { id: 3, title: "salat" },
-  { id: 4, title: "içki" },
-];
 
 export const DayProducts = () => {
   const { day, categoryUrl } = useParams();
   const dispatch = useDispatch();
-
   const { selectedType } = useSelector((state) => state.categoryProductsSlice);
+
+  const categoryButtons = [
+    { id: 1, title: "ana yemək" },
+    { id: 2, title: "garnir" },
+    { id: 3, title: "salat" },
+    { id: 4, title: "içki" },
+  ];
 
   // sehife ilk acildiginda ana yemekleri gostermek ve filter etmek(urlden gelen categoriUrlsi ile meali filter etmek)
   useEffect(() => {
@@ -80,7 +80,7 @@ export const DayProducts = () => {
               <FilterProducts />
             </div>
             <div className="card_wrapper">
-              <h1>cart</h1>
+              <Cart />
             </div>
           </div>
         </div>
@@ -88,7 +88,3 @@ export const DayProducts = () => {
     </>
   );
 };
-
-{
-  /*  const navigate = useNavigate(); const { day, categoryUrl } = useParams(); <button onClick={() => navigate('/payment', { state: { day, categoryUrl } })}>ÖDƏNİŞ testiqle</button> */
-}

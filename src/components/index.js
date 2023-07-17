@@ -25,5 +25,6 @@ export * from "./ProfileTab/Profiletab";
 export * from "./FilterProducts/FilterProducts";
 export * from "./DayLinkItems/DayLinkItems";
 export * from "./CartModal/CartModal";
+export * from "./Cart/Cart";
 
 export * from "./uikits";

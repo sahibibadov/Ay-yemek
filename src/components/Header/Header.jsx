@@ -18,8 +18,12 @@ export const Header = () => {
 
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.users);
+  const { cart } = useSelector((state) => state.cart);
   const parseUser = JSON.parse(users);
 
+  // cartin icindeki itemlerin sayi
+
+  const cartLenght = cart.length;
   // hamburgermenunun klikle acilmasi
   const handleToggleMenu = () => {
     setOpen((pre) => !pre);
@@ -116,7 +120,7 @@ export const Header = () => {
             </>
           )}
           <div onClick={() => dispatch(openCart())} className="cart_icon">
-            <span>1</span>
+            <span>{cartLenght}</span>
             <FiShoppingCart color="#F75C03" size={28} />
           </div>
           <LnButton />
