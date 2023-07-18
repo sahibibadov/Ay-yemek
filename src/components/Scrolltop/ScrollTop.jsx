@@ -26,7 +26,7 @@ const TopButton = styled.button`
   position: fixed;
   bottom: ${({ hide }) => (hide === "true" ? "8%" : "-8%")};
   left: auto;
-
+  box-shadow: 0px 8px 23px 0px rgba(14, 107, 168, 0.11);
   transition: all 0.25s;
   visibility: ${({ hide }) => (hide === "true" ? "visible" : "hidden")};
   opacity: ${({ hide }) => (hide === "true" ? "1" : "0")};
@@ -41,7 +41,7 @@ const TopButton = styled.button`
     scale: 0.8;
   }
   @media screen and (max-width: 500px) {
-    scale: 0.5;
+    scale: 0.7;
   }
 `;
 

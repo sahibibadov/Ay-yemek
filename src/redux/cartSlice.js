@@ -14,16 +14,24 @@ const daylocalPackage =
   localStorage.getItem("daylocalPackage") !== null
     ? JSON.parse(localStorage.getItem("daylocalPackage"))
     : "";
+
+const categoryLocal =
+  localStorage.getItem("categoryLocal") !== null
+    ? JSON.parse(localStorage.getItem("categoryLocal"))
+    : "";
+
 // her actiondan sonra local storage yazma
-const setItemFunc = (item, daylocalPackage, totalQuantity) => {
+const setItemFunc = (item, daylocalPackage, totalQuantity, categoryLocal) => {
   localStorage.setItem("cartItems", JSON.stringify(item));
   localStorage.setItem("daylocalPackage", JSON.stringify(daylocalPackage));
   localStorage.setItem("totalQuantity", JSON.stringify(totalQuantity));
+  localStorage.setItem("categoryLocal", JSON.stringify(categoryLocal));
 };
 const initialState = {
   cart: items,
   totalPrice: totalQuantity,
   dayPackage: daylocalPackage,
+  category: categoryLocal,
 };
 const cartSlice = createSlice({
   name: "cart",
@@ -37,7 +45,7 @@ const cartSlice = createSlice({
       }
       state.totalPrice = state.cart.reduce((total, item) => total + item.price, 0);
 
-      setItemFunc(state.cart, state.dayPackage, state.totalPrice);
+      setItemFunc(state.cart, state.dayPackage, state.totalPrice, state.category);
     },
 
     removeItem: (state, action) => {
@@ -45,24 +53,31 @@ const cartSlice = createSlice({
       state.cart = removeItem;
       state.totalPrice = state.cart.reduce((total, item) => total + item.price, 0);
 
-      setItemFunc(state.cart, state.dayPackage, state.totalPrice);
+      setItemFunc(state.cart, state.dayPackage, state.totalPrice, state.category);
     },
     clearCart: (state) => {
       state.cart = [];
       state.totalPrice = 0;
       state.dayPackage = "";
+      state.category = "";
 
-      setItemFunc(state.cart, state.dayPackage, state.totalPrice);
+      setItemFunc(state.cart, state.dayPackage, state.totalPrice, state.category);
     },
     addToPackage: (state, action) => {
       state.dayPackage = action.payload;
 
-      setItemFunc(state.cart, state.dayPackage, state.totalPrice);
+      setItemFunc(state.cart, state.dayPackage, state.totalPrice, state.category);
+    },
+    addToCategory: (state, action) => {
+      state.category = action.payload;
+
+      setItemFunc(state.cart, state.dayPackage, state.totalPrice, state.category);
     },
   },
 });
 export const selectCartItemsByType = (state, type) => {
   return state.cart.cart.filter((item) => item.type === type);
 };
-export const { addToCart, removeItem, addToPackage, clearCart } = cartSlice.actions;
+export const { addToCart, removeItem, addToPackage, addToCategory, clearCart } =
+  cartSlice.actions;
 export default cartSlice.reducer;

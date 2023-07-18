@@ -7,11 +7,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { map } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem, selectCartItemsByType } from "../../redux/cartSlice";
+import { closeCart } from "../../redux/modalSlice";
+import { FaTrash } from "react-icons/fa";
 
 export const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { day, categoryUrl } = useParams();
+
   const { totalPrice, cart } = useSelector((state) => state.cart);
   const cartLength = cart.length;
   // cartda itemlari tiplerine gore filer edib gostermek ucun
@@ -22,7 +24,8 @@ export const Cart = () => {
 
   // klikde odenis rourtuna datani oturmek
   const handlePaymentButton = () => {
-    navigate("/payment", { state: { day, categoryUrl } });
+    navigate("/payment");
+    dispatch(closeCart());
   };
 
   //  hansi gune kimi kecerli oldugunu gostermek
@@ -49,50 +52,52 @@ export const Cart = () => {
         <label>Əlavə qeydiniz?</label>
         <textarea type="textarea" placeholder="Bura yazın" />
       </div>
-      <div className="cart-day__product">
+      <ul className="cart-day__product">
         <h3>Seçilən yeməklər</h3>
 
         {anayemek.length > 0 && <h5>ana yemek</h5>}
         {map(anayemek, (item) => (
-          <p key={item.id}>
-            {item.title}{" "}
-            <button onClick={() => dispatch(removeItem(item.id))}>x</button>
-          </p>
+          <li key={item.id}>
+            <span>{item.title}</span>
+            <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
+          </li>
         ))}
 
         {garnir.length > 0 && <h5>garnir</h5>}
         {map(garnir, (item) => (
-          <p key={item.id}>
-            {item.title}{" "}
-            <button onClick={() => dispatch(removeItem(item.id))}>x</button>
-          </p>
+          <li key={item.id}>
+            <span>{item.title}</span>
+            <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
+          </li>
         ))}
 
         {icki.length > 0 && <h5>icki</h5>}
         {map(icki, (item) => (
-          <p key={item.id}>
-            {item.title}{" "}
-            <button onClick={() => dispatch(removeItem(item.id))}>x</button>
-          </p>
+          <li key={item.id}>
+            <span>{item.title}</span>
+            <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
+          </li>
         ))}
 
         {salat.length > 0 && <h5>salat</h5>}
         {map(salat, (item) => (
-          <p key={item.id}>
-            {item.title}{" "}
-            <button onClick={() => dispatch(removeItem(item.id))}>x</button>
-          </p>
+          <li key={item.id}>
+            <span>{item.title}</span>
+            <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
+          </li>
         ))}
 
-        <p>totalPrice: {totalPrice} manat</p>
+        <p>
+          Ümumi məbləğ: <strong>{totalPrice}</strong> AZN
+        </p>
         <button
           className="cart-day__button"
           disabled={cartLength === 0}
           onClick={handlePaymentButton}
         >
-          ÖDƏNİŞ testiqle
+          Menyunu Təsdiqlə
         </button>
-      </div>
+      </ul>
     </div>
   );
 };

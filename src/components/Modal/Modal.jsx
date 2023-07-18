@@ -6,6 +6,7 @@ import { auth } from "../../firebase/firebase";
 import { signOut } from "firebase/auth";
 import { setUsers } from "../../redux/userSlice";
 import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Modal = () => {
   const navigate = useNavigate();
@@ -22,11 +23,20 @@ export const Modal = () => {
     }
   };
   return (
-    <div
-      className={`backdrop ${isOpen && "open"}`}
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className={`backdrop `}
       onClick={() => dispatch(closeModal())}
     >
-      <div onClick={(e) => e.stopPropagation()} className="modal">
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0 }}
+        onClick={(e) => e.stopPropagation()}
+        className="modal"
+      >
         <h1>
           Profildən<span> çıxış etmək</span> <br /> İstədiyinizə əminsiniz?
         </h1>
@@ -37,7 +47,7 @@ export const Modal = () => {
           <button onClick={() => dispatch(closeModal())}>Xeyir</button>
           <button onClick={handleLogout}>Bəli</button>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };

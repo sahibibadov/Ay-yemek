@@ -5,24 +5,30 @@ import kcal from "../../../public/kcal.svg";
 import { GrCircleInformation } from "react-icons/gr";
 import { useParams } from "react-router-dom";
 import add from "../../../public/add.svg";
-import { addToCart, addToPackage, clearCart } from "../../redux/cartSlice";
+import {
+  addToCart,
+  addToPackage,
+  clearCart,
+  addToCategory,
+} from "../../redux/cartSlice";
 import { useEffect } from "react";
 
 export const FilterProducts = () => {
   const { categoryUrl, day } = useParams();
   const dispatch = useDispatch();
-  const { dayPackage, cart } = useSelector((state) => state.cart);
+  const { dayPackage, category } = useSelector((state) => state.cart);
 
   const addCart = (item) => {
     dispatch(addToCart(item));
     dispatch(addToPackage(day));
+    dispatch(addToCategory(categoryUrl));
   };
   // urlde secili paket yoxdursa cartin icin bowaltmaq
   useEffect(() => {
-    if (!day) {
+    if (day !== dayPackage || categoryUrl !== category) {
       dispatch(clearCart());
     }
-  }, [day, dispatch]);
+  }, [day, dispatch, categoryUrl, dayPackage, category]);
 
   const changeUrlColor = (url) => {
     switch (url) {

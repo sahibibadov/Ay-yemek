@@ -1,14 +1,20 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export const Payment = () => {
-  let { state } = useLocation();
+  const navigate = useNavigate();
+  const { category, dayPackage } = useSelector((state) => state.cart);
+  console.log("category", category);
+  console.log("dayPackage", dayPackage);
 
   return (
     <div>
-      <p>{state.day}</p>
-      <p>{state.categoryUrl}</p>
-      <Link to="/succespage">odenis et</Link>
+      <p>{dayPackage}</p>
+      <p>{category}</p>
+      <Link replace={true} to="/succespage">
+        odenis et
+      </Link>
     </div>
   );
 };

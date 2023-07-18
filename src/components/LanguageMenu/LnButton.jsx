@@ -60,10 +60,12 @@ const DropMenu = styled.div`
   visibility: hidden;
   opacity: 0;
   transition: all 0.25s;
+  pointer-events: none;
   &.show {
     transform: translateY(0);
     visibility: visible;
     opacity: 1;
+    pointer-events: all;
   }
   & button {
     &.active {
@@ -75,7 +77,7 @@ export const LnButton = () => {
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
   const { open, selected, tapActive, langButton } = useSelector(
-    (state) => state.lang
+    (state) => state.lang,
   );
 
   const handleDropdownClicked = (event) => {

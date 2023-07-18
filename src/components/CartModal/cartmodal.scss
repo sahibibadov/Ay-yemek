@@ -3,41 +3,40 @@
   inset: 0;
   background: rgba(34, 31, 31, 0.51);
   z-index: 999;
-  display: none;
   transition: all 0.2s;
-  &.backdrop-cart.open {
-    display: block;
-  }
+  overflow-y: scroll;
+
   & .cart-modal {
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
     max-width: 600px;
     width: 70%;
     z-index: 9999;
+    padding-block: 50px;
+    padding-inline: 20px;
     background-color: #fff;
 
-    & h1 {
-      font-weight: 600;
-      font-size: 32px;
-      white-space: nowrap;
-      line-height: 39px;
-      text-align: center;
-      text-transform: capitalize;
-      color: #00072d;
-      & span {
-        color: #f75c03;
-      }
-    }
     & .close-cart-modal {
       position: absolute;
-      top: 33px;
-      right: 33px;
+      top: 13px;
+      right: 23px;
       cursor: pointer;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .backdrop-cart {
+    & .cart-modal {
+      width: 90%;
+      padding-block: 40px;
+      padding-inline: 10px;
+    }
+    & .close-cart-modal {
+      top: 13px;
+      right: 23px;
+      scale: 0.8;
     }
   }
 }
