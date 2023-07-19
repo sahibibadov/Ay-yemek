@@ -12,6 +12,9 @@ export const Input = styled.input`
   margin-bottom: 8px;
   color: #797979;
   transition: all 0.2s;
+  &:disabled {
+    pointer-events: none;
+  }
 
   &:focus,
   &:hover,

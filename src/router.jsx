@@ -11,10 +11,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route element={<App />}>
-
         {/* layout route start*/}
         <Route element={<Layout />}>
-
           <Route path="/" element={<Home />} errorElement={<ErrorBoundary />} />
 
           <Route
@@ -64,23 +62,9 @@ const router = createBrowserRouter(
           />
 
           <Route
-            path="payment"
-            lazy={async () => {
-              const { Payment } = await import(
-                "./pages/Payment/Payment"
-              );
-              return {
-                Component: Payment,
-              };
-            }}
-            errorElement={<ErrorBoundary />}
-          />
-          <Route
             path="succespage"
             lazy={async () => {
-              const { SuccesPage } = await import(
-                "./pages/SuccesPage/SuccesPage"
-              );
+              const { SuccesPage } = await import("./pages/SuccesPage/SuccesPage");
               return {
                 Component: SuccesPage,
               };
@@ -111,13 +95,20 @@ const router = createBrowserRouter(
           />
         </Route>
         {/* layout route end */}
-
-        {/* register ve login routlari */}
+        {/* payment route */}
         <Route
-          path="/login"
-          element={<Login />}
+          path="payment"
+          lazy={async () => {
+            const { Payment } = await import("./pages/Payment/Payment");
+            return {
+              Component: Payment,
+            };
+          }}
           errorElement={<ErrorBoundary />}
         />
+
+        {/* register ve login routlari */}
+        <Route path="/login" element={<Login />} errorElement={<ErrorBoundary />} />
         <Route
           path="/register"
           element={<Register />}
@@ -146,7 +137,7 @@ const router = createBrowserRouter(
         /> */}
         <Route path="*" element={<NotFound />} />
       </Route>
-    </>
-  )
+    </>,
+  ),
 );
 export default router;

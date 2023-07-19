@@ -26,7 +26,7 @@ export const ReturnButton = () => {
   const navigate = useNavigate();
   return (
     <Return onClick={() => navigate("/")}>
-      <img src={returnArrow} alt="asdas" />
+      <img src={returnArrow} alt="returnbtn" />
     </Return>
   );
 };

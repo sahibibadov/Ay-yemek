@@ -2,12 +2,8 @@ import styled from "styled-components";
 import Authimg from "../../../public/authimage.png";
 
 const ImgWrapper = styled.div`
-  background: linear-gradient(
-      0deg,
-      rgba(247, 92, 3, 0.28),
-      rgba(247, 92, 3, 0.28)
-    ),
-    url(authimage.png) no-repeat center center / cover;
+  background: linear-gradient(0deg, rgba(247, 92, 3, 0.28), rgba(247, 92, 3, 0.28)),
+    url("../../../public/authimage.png") no-repeat center center / cover;
   position: relative;
   overflow: hidden;
 `;

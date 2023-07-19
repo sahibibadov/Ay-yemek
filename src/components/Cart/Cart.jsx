@@ -3,7 +3,7 @@ import localeData from "dayjs/plugin/localeData";
 import az from "dayjs/locale/az";
 import "./cart.scss";
 import { Input } from "../uikits";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { map } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem, selectCartItemsByType } from "../../redux/cartSlice";
