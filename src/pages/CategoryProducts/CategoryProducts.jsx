@@ -11,6 +11,7 @@ import {
 } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterProduct, setSelected } from "../../redux/categoryProductsSlice";
+import { clearCart } from "../../redux/cartSlice";
 const categoryButtons = [
   { id: 1, title: "ana yemək" },
   { id: 2, title: "garnir" },
@@ -24,9 +25,10 @@ const dayLinkItems = [
   { id: 4, title: "30 günlük", price: "70", link: "30" },
 ];
 export const CategoryProducts = () => {
-  const { categoryUrl } = useParams();
+  const { categoryUrl, day } = useParams();
   const dispatch = useDispatch();
   const { selectedType } = useSelector((state) => state.categoryProductsSlice);
+  const { dayPackage, category } = useSelector((state) => state.cart);
 
   // sehife ilk acildiginda ana yemekleri gostermek ve filter etmek(urlden gelen categoriUrlsi ile meali filter etmek)
   useEffect(() => {
@@ -38,6 +40,12 @@ export const CategoryProducts = () => {
     }
   }, [selectedType, dispatch]);
 
+  // urlde secili paket yoxdursa cartin icin bowaltmaq
+  useEffect(() => {
+    if (categoryUrl != category) {
+      dispatch(clearCart());
+    }
+  }, [categoryUrl, category]);
   // butona klikde active klasin vermek ve type gore filter etmek
   const handleTypeChange = (type) => {
     dispatch(setSelected(type));

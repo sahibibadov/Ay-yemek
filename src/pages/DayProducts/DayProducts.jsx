@@ -5,11 +5,13 @@ import "./dayproducts.scss";
 import { Cart, FilterProducts, Headline, Paragraf, Section } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterProduct, setSelected } from "../../redux/categoryProductsSlice";
+import { clearCart } from "../../redux/cartSlice";
 
 export const DayProducts = () => {
   const { day, categoryUrl } = useParams();
   const dispatch = useDispatch();
   const { selectedType } = useSelector((state) => state.categoryProductsSlice);
+  const { dayPackage } = useSelector((state) => state.cart);
 
   const categoryButtons = [
     { id: 1, title: "ana yemək" },
@@ -32,7 +34,12 @@ export const DayProducts = () => {
   const handleTypeChange = (type) => {
     dispatch(setSelected(type));
   };
-
+  // eger day uygun deyilse cartin icini bosaltmaq
+  useEffect(() => {
+    if (day != dayPackage) {
+      dispatch(clearCart());
+    }
+  }, [dayPackage, day]);
   // sehifede urldeki categoriye gore Headline reng vermek
   const changeUrlColor = (url) => {
     switch (url) {
