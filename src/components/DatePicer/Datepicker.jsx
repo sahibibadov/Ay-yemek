@@ -10,7 +10,7 @@ import az from "dayjs/locale/az";
 
 export const Datepicker = () => {
   const { dayPackage } = useSelector((state) => state.cart);
-  console.log(dayPackage);
+
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
@@ -28,17 +28,17 @@ export const Datepicker = () => {
     setStartDate(start);
     setEndDate(end);
   };
-  // local datei dayjsden geirmek
+  // local datei dayjsden getirmek
   dayjs.extend(localeData);
   dayjs.locale("az");
   const startCurrentDate = dayjs(startDate);
   const startCurrentDay = startCurrentDate.format("D");
   const startCurrentMonth = startCurrentDate.format("MMMM");
-  console.log(startCurrentMonth, "startCurrentMonth");
+
   const endCurrentDate = dayjs(endDate);
   const endCurrentDay = endCurrentDate.format("D");
   const endCurrentMonth = endCurrentDate.format("MMMM");
-  console.log(endCurrentMonth, "endCurrentMonth");
+
   return (
     <div className="payment__content__datepicker">
       <Label>Menyu tarixləri</Label>

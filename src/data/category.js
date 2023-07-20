@@ -1,7 +1,8 @@
 import categoryimage from "../../public/categoryimage.png";
 export const categorys = [
   {
-    category: "Ekonom",
+    title: "Ekonom",
+    category: "/category/Ekonom",
     color: "green",
     id: 1,
     image: categoryimage,
@@ -9,7 +10,8 @@ export const categorys = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ",
   },
   {
-    category: "Gold",
+    title: "Gold",
+    category: "/category/Gold",
     color: "gold",
     id: 2,
     image: categoryimage,
@@ -17,7 +19,8 @@ export const categorys = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ",
   },
   {
-    category: "Premium",
+    title: "Premium",
+    category: "/category/Premium",
     color: "primary",
     id: 3,
     image: categoryimage,
@@ -25,7 +28,8 @@ export const categorys = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ",
   },
   {
-    category: "Ekonom",
+    title: "Ekonom",
+    category: "/category/Ekonom",
     color: "green",
     id: 4,
     image: categoryimage,
@@ -33,7 +37,8 @@ export const categorys = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ",
   },
   {
-    category: "Gold",
+    title: "Gold",
+    category: "/category/Gold",
     color: "gold",
     id: 5,
     image: categoryimage,
@@ -41,7 +46,8 @@ export const categorys = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ",
   },
   {
-    category: "Premium",
+    title: "Premium",
+    category: "/category/Premium",
     color: "primary",
     id: 6,
     image: categoryimage,
@@ -49,7 +55,8 @@ export const categorys = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ",
   },
   {
-    category: "Ekonom",
+    title: "Ekonom",
+    category: "/category/Ekonom",
     color: "green",
     id: 7,
     image: categoryimage,
@@ -57,7 +64,8 @@ export const categorys = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ",
   },
   {
-    category: "Gold",
+    title: "Gold",
+    category: "/category/Gold",
     color: "gold",
     id: 8,
     image: categoryimage,
@@ -65,7 +73,8 @@ export const categorys = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ",
   },
   {
-    category: "Premium",
+    title: "Premium",
+    category: "/category/Premium",
     color: "primary",
     id: 9,
     image: categoryimage,
@@ -73,7 +82,8 @@ export const categorys = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ",
   },
   {
-    category: "Ekonom",
+    title: "Ekonom",
+    category: "/category/Ekonom",
     color: "green",
     id: 10,
     image: categoryimage,
@@ -81,7 +91,8 @@ export const categorys = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ",
   },
   {
-    category: "Gold",
+    title: "Gold",
+    category: "/category/Gold",
     color: "gold",
     id: 11,
     image: categoryimage,
@@ -89,7 +100,8 @@ export const categorys = [
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem ",
   },
   {
-    category: "Premium",
+    title: "Premium",
+    category: "/category/Premium",
     color: "primary",
     id: 12,
     image: categoryimage,

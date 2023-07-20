@@ -17,7 +17,7 @@ export const CategoryCard = ({ item }) => {
         <img src={item.image} alt="img" />
       </div>
       <Headline color={item.color} level={3}>
-        {item.category}
+        {item.title}
       </Headline>
       <p>{item.description}</p>
       <Button to={item.category} color="primary">
