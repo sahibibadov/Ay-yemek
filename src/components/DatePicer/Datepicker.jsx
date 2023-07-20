@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addToOrderDate } from "../../redux/cartSlice";
 import { Label } from "../uikits";
 
 import dayjs from "dayjs";
@@ -9,8 +10,9 @@ import localeData from "dayjs/plugin/localeData";
 import az from "dayjs/locale/az";
 
 export const Datepicker = () => {
+  const dispatch = useDispatch();
   const { dayPackage } = useSelector((state) => state.cart);
-
+  // react-datepicker ucun stateler
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
@@ -22,7 +24,7 @@ export const Datepicker = () => {
     setStartDate(today);
     setEndDate(futureDate);
   }, [dayPackage]);
-
+  //  react-datepickerin funksiyasi
   const handleDateChange = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
@@ -38,6 +40,18 @@ export const Datepicker = () => {
   const endCurrentDate = dayjs(endDate);
   const endCurrentDay = endCurrentDate.format("D");
   const endCurrentMonth = endCurrentDate.format("MMMM");
+
+  // carta orderdate elave etmek
+  useEffect(() => {
+    dispatch(
+      addToOrderDate({
+        startCurrentDay,
+        startCurrentMonth,
+        endCurrentDay,
+        endCurrentMonth,
+      }),
+    );
+  }, [startCurrentDay, startCurrentMonth, endCurrentDay, endCurrentMonth, dispatch]);
 
   return (
     <div className="payment__content__datepicker">

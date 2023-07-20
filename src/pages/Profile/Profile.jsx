@@ -1,4 +1,4 @@
-import { Container, Headline, Section, Profiletab } from "../../components";
+import { Headline, Section, Profiletab } from "../../components";
 import React, { useState } from "react";
 import { map } from "lodash";
 
@@ -10,7 +10,7 @@ import payment from "../../../public/profileacion/payment.svg";
 import user from "../../../public/profileacion/user.svg";
 import { useDispatch } from "react-redux";
 import { openModal } from "../../redux/modalSlice";
-
+import { Information } from "./TabSection/Information";
 export const Profile = () => {
   const [activeTab, setActiveTab] = useState(1);
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export const Profile = () => {
       link: "profile",
       id: 1,
       icon: user,
-      content: "asdas",
+      content: <Information />,
     },
     {
       title: "Aktiv Sifarişlərim",

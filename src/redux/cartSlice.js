@@ -19,20 +19,34 @@ const categoryLocal =
   localStorage.getItem("categoryLocal") !== null
     ? JSON.parse(localStorage.getItem("categoryLocal"))
     : "";
+const orderDatesLocal =
+  localStorage.getItem("orderDatesLocal") !== null
+    ? JSON.parse(localStorage.getItem("orderDatesLocal"))
+    : [];
 
 // her actiondan sonra local storage yazma
-const setItemFunc = (item, daylocalPackage, totalQuantity, categoryLocal) => {
+localStorage.setItem("orderDatesLocal", JSON.stringify(orderDatesLocal));
+const setItemFunc = (
+  item,
+  daylocalPackage,
+  totalQuantity,
+  categoryLocal,
+  orderDatesLocal,
+) => {
   localStorage.setItem("cartItems", JSON.stringify(item));
   localStorage.setItem("daylocalPackage", JSON.stringify(daylocalPackage));
   localStorage.setItem("totalQuantity", JSON.stringify(totalQuantity));
   localStorage.setItem("categoryLocal", JSON.stringify(categoryLocal));
+  localStorage.setItem("orderDatesLocal", JSON.stringify(orderDatesLocal));
 };
 const initialState = {
   cart: items,
   totalPrice: totalQuantity,
   dayPackage: daylocalPackage,
   category: categoryLocal,
+  orderDates: orderDatesLocal,
 };
+
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -45,7 +59,13 @@ const cartSlice = createSlice({
       }
       state.totalPrice = state.cart.reduce((total, item) => total + item.price, 0);
 
-      setItemFunc(state.cart, state.dayPackage, state.totalPrice, state.category);
+      setItemFunc(
+        state.cart,
+        state.dayPackage,
+        state.totalPrice,
+        state.category,
+        state.orderDates,
+      );
     },
 
     removeItem: (state, action) => {
@@ -53,31 +73,74 @@ const cartSlice = createSlice({
       state.cart = removeItem;
       state.totalPrice = state.cart.reduce((total, item) => total + item.price, 0);
 
-      setItemFunc(state.cart, state.dayPackage, state.totalPrice, state.category);
+      setItemFunc(
+        state.cart,
+        state.dayPackage,
+        state.totalPrice,
+        state.category,
+        state.orderDates,
+      );
     },
     clearCart: (state) => {
       state.cart = [];
       state.totalPrice = 0;
       state.dayPackage = "";
       state.category = "";
+      state.orderDates = [];
 
-      setItemFunc(state.cart, state.dayPackage, state.totalPrice, state.category);
+      setItemFunc(
+        state.cart,
+        state.dayPackage,
+        state.totalPrice,
+        state.category,
+        state.orderDates,
+      );
     },
     addToPackage: (state, action) => {
       state.dayPackage = action.payload;
 
-      setItemFunc(state.cart, state.dayPackage, state.totalPrice, state.category);
+      setItemFunc(
+        state.cart,
+        state.dayPackage,
+        state.totalPrice,
+        state.category,
+        state.orderDates,
+      );
     },
     addToCategory: (state, action) => {
       state.category = action.payload;
 
-      setItemFunc(state.cart, state.dayPackage, state.totalPrice, state.category);
+      setItemFunc(
+        state.cart,
+        state.dayPackage,
+        state.totalPrice,
+        state.category,
+        state.orderDates,
+      );
+    },
+    addToOrderDate: (state, action) => {
+      state.orderDates = [action.payload];
+      setItemFunc(
+        state.cart,
+        state.dayPackage,
+        state.totalPrice,
+        state.category,
+        state.orderDates,
+      );
     },
   },
 });
+
+//
 export const selectCartItemsByType = (state, type) => {
-  return state.cart.cart.filter((item) => item.type === type);
+  return state.cart.filter((item) => item.type === type);
 };
-export const { addToCart, removeItem, addToPackage, addToCategory, clearCart } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeItem,
+  addToPackage,
+  addToCategory,
+  clearCart,
+  addToOrderDate,
+} = cartSlice.actions;
 export default cartSlice.reducer;

@@ -17,10 +17,12 @@ export const Cart = () => {
   const { totalPrice, cart } = useSelector((state) => state.cart);
   const cartLength = cart.length;
   // cartda itemlari tiplerine gore filer edib gostermek ucun
-  const anayemek = useSelector((state) => selectCartItemsByType(state, "ana yemək"));
-  const garnir = useSelector((state) => selectCartItemsByType(state, "garnir"));
-  const icki = useSelector((state) => selectCartItemsByType(state, "içki"));
-  const salat = useSelector((state) => selectCartItemsByType(state, "salat"));
+  const anayemek = useSelector((state) =>
+    selectCartItemsByType(state.cart, "ana yemək"),
+  );
+  const garnir = useSelector((state) => selectCartItemsByType(state.cart, "garnir"));
+  const icki = useSelector((state) => selectCartItemsByType(state.cart, "içki"));
+  const salat = useSelector((state) => selectCartItemsByType(state.cart, "salat"));
 
   // klikde odenis rourtuna datani oturmek
   const handlePaymentButton = () => {

@@ -10,8 +10,7 @@ export const Payment = () => {
   const navigate = useNavigate();
 
   const { category, dayPackage, totalPrice } = useSelector((state) => state.cart);
-  console.log("category", category);
-  console.log("dayPackage", dayPackage);
+
   const changeUrlColor = (url) => {
     switch (url) {
       case "Ekonom":
