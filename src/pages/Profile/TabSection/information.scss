@@ -1,0 +1,35 @@
+.profile__pages__information {
+  & .profile__pages__information__orderDate {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 30px;
+    & p {
+      color: #0e6ba8;
+      font-size: 22px;
+      font-weight: 500;
+    }
+    & span {
+      color: #75797f;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+  & .profile__pages__information__content {
+    display: grid;
+    column-gap: 40px;
+    row-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+@media screen and (max-width: 500px) {
+  .profile__pages__information {
+    & .profile__pages__information__orderDate {
+      flex-direction: column;
+      text-align: center;
+    }
+    & .profile__pages__information__content {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+}

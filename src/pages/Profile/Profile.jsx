@@ -11,6 +11,9 @@ import user from "../../../public/profileacion/user.svg";
 import { useDispatch } from "react-redux";
 import { openModal } from "../../redux/modalSlice";
 import { Information } from "./TabSection/Information";
+import { ActiveOrder } from "./TabSection/ActiveOrder";
+import { ChangePassword } from "./TabSection/ChangePassword";
+import { Payments } from "./TabSection/Payments";
 export const Profile = () => {
   const [activeTab, setActiveTab] = useState(1);
   const dispatch = useDispatch();
@@ -28,21 +31,21 @@ export const Profile = () => {
       link: "activeorders",
       id: 2,
       icon: order,
-      content: "dfgsdg",
+      content: <ActiveOrder />,
     },
     {
       title: "Şifrə dəyişdir",
       link: "changepassword",
       id: 3,
       icon: lock,
-      content: "as",
+      content: <ChangePassword />,
     },
     {
       title: "Ödənişlərim",
       link: "payments",
       id: 4,
       icon: payment,
-      content: "aqw123123sdasfas",
+      content: <Payments />,
     },
   ];
   // klikde active klasin vermek
