@@ -12,7 +12,7 @@ import { auth } from "../../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import resolverValidator from "../../validation/login";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./login.scss";
 import { Helmet } from "react-helmet";
@@ -107,6 +107,9 @@ export const Login = () => {
 
               <SubmitButton type="submit">Göndər</SubmitButton>
             </form>
+            <p className="login__register">
+              Hesabınız yoxdur? <Link to="/register"> Qeydiyyatdan keçin</Link>
+            </p>
           </div>
         </div>
         {/* right image */}

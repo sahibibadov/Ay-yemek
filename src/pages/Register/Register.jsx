@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import resolverValidator from "../../validation/register";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
 import { Helmet } from "react-helmet";
 
@@ -132,6 +132,9 @@ export const Register = () => {
               </div>
               <SubmitButton type="submit">Göndər</SubmitButton>
             </form>
+            <p className="login__register">
+              Hesabınız varsa <Link to="/login"> Buradan daxil olun</Link>
+            </p>
           </div>
         </div>
         {/* right image */}
