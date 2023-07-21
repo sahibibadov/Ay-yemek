@@ -12,6 +12,8 @@ export const Payment = () => {
   const navigate = useNavigate();
 
   const { category, dayPackage, totalPrice } = useSelector((state) => state.cart);
+  const { users } = useSelector((state) => state.users);
+  const user = JSON.parse(users);
 
   const changeUrlColor = (url) => {
     switch (url) {
@@ -30,11 +32,16 @@ export const Payment = () => {
   };
   const colorUrl = changeUrlColor(category);
 
-  const toastFunc = () => {
-    toast.success("success payment", {
-      position: "top-right",
-      duration: 3000,
-    });
+  const handlePayment = () => {
+    if (user) {
+      navigate("/succespage", { replace: true });
+      toast.success("success payment", {
+        position: "top-right",
+        duration: 3000,
+      });
+    } else {
+      navigate("/login");
+    }
   };
   return (
     <>
@@ -65,9 +72,7 @@ export const Payment = () => {
             <span>
               Ümumi məbləğ: <strong>{totalPrice}</strong> AZN
             </span>
-            <Link onClick={toastFunc} replace={true} to="/succespage">
-              Ödəniş et
-            </Link>
+            <Link onClick={handlePayment}>Ödəniş et</Link>
           </div>
         </div>
         {/* right image */}
