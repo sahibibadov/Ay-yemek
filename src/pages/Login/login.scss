@@ -30,7 +30,7 @@
       margin-bottom: 40px;
     }
 
-    & .contact__form {
+    & .login__form {
       display: flex;
       flex-direction: column;
       gap: 30px;
@@ -49,6 +49,48 @@
         font-weight: 700;
         letter-spacing: 0.14px;
         text-decoration-line: underline;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .login__page {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    & .login__wrapper {
+      width: min(100% - 2.25rem, 620px);
+      margin-inline: auto;
+      & .login__content {
+        & .login__form {
+          background: #fff;
+          width: 70%;
+          margin-inline: auto;
+          padding: 10px;
+          border-radius: 5px;
+          & label,
+          input::placeholder {
+            font-size: 12px;
+          }
+          & input {
+            margin-bottom: 0;
+            min-width: 150px;
+          }
+          & button {
+            padding: 10px 0;
+            font-size: 13px;
+          }
+        }
+        & > h1 {
+          margin-bottom: 0px;
+        }
+        & > p {
+          color: #fff;
+          margin-bottom: 6px;
+          & a {
+            color: #ff5f02;
+          }
+        }
       }
     }
   }

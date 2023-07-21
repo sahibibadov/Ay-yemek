@@ -6,6 +6,13 @@ const ImgWrapper = styled.div`
     url("../../../public/authimage.png") no-repeat center center / cover;
   position: relative;
   overflow: hidden;
+  @media screen and (max-width: 600px) {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(0deg, rgba(247, 92, 3, 0.15), rgba(247, 92, 3, 0.15)),
+      url("../../../public/authimage.png") no-repeat center center / cover;
+  }
 `;
 
 const Title = styled.div`
@@ -29,6 +36,9 @@ const Title = styled.div`
 
     letter-spacing: 0.05em;
     color: #ffffff;
+  }
+  @media screen and (max-width: 600px) {
+    display: none;
   }
 `;
 

@@ -8,6 +8,13 @@ const CategoryCardWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  @media screen and (max-width: 550px) {
+    scale: 0.9;
+
+    & > p {
+      font-size: 14px;
+    }
+  }
 `;
 
 export const CategoryCard = ({ item }) => {

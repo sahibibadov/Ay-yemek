@@ -68,16 +68,7 @@
     }
   }
 }
-@media screen and (max-width: 1090px) {
-  .category__pages {
-    & .category-itmes {
-      & > div > div {
-        max-width: 450px;
-        text-align: center;
-      }
-    }
-  }
-}
+
 @media screen and (max-width: 1090px) {
   .category__pages {
     & > h1,
@@ -92,6 +83,22 @@
           max-width: 100%;
           text-align: center;
         }
+      }
+    }
+  }
+}
+@media screen and (max-width: 550px) {
+  .category__pages {
+    & > p {
+      margin-bottom: 0px;
+    }
+    & .category-itmes {
+      display: flex;
+      flex-direction: column;
+
+      gap: 30px;
+      & > .category-itmes__wrapper {
+        row-gap: 0px;
       }
     }
   }

@@ -33,6 +33,15 @@
       }
     }
   }
+
+  @media screen and (max-width: 500px) {
+    & .homequest__accordiong {
+      margin-top: 20px;
+      & > button {
+        font-size: 13px;
+      }
+    }
+  }
   // & .bacshadow {
   //   width: 450px;
   //   height: 450px;

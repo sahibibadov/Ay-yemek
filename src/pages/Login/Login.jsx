@@ -16,6 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./login.scss";
 import { Helmet } from "react-helmet";
+import toast from "react-hot-toast";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -40,7 +41,10 @@ export const Login = () => {
         data.email,
         data.password,
       );
-
+      toast.success("success login", {
+        position: "top-right",
+        duration: 3000,
+      });
       navigate("/", { replace: true });
     } catch (error) {
       console.log(error);
@@ -74,7 +78,7 @@ export const Login = () => {
               Lorem ipsum dolor sit amet
             </Paragraf>
             <form
-              className="contact__form"
+              className="login__form"
               onSubmit={handleSubmit(onHandleLogin)}
               noValidate
             >

@@ -7,6 +7,7 @@ import { signOut } from "firebase/auth";
 import { setUsers } from "../../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import toast from "react-hot-toast";
 
 export const Modal = () => {
   const navigate = useNavigate();
@@ -16,6 +17,10 @@ export const Modal = () => {
     try {
       dispatch(setUsers(null));
       await signOut(auth);
+      toast.success("success logout", {
+        position: "top-right",
+        duration: 3000,
+      });
       dispatch(closeModal());
       navigate("/login", { replace: true });
     } catch (error) {

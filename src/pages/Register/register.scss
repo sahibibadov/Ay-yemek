@@ -27,13 +27,13 @@
         object-fit: cover;
       }
     }
-    & .contact__form {
+    & .register__form {
       display: flex;
       flex-direction: column;
       & button {
         align-self: center;
       }
-      & .contact__form__username {
+      & .register__form__username {
         display: flex;
         justify-content: space-between;
         gap: 15px;
@@ -63,5 +63,47 @@
 @media screen and (max-width: 800px) {
   .register__page .register__content .contact__form .contact__form__username {
     display: block;
+  }
+}
+@media screen and (max-width: 600px) {
+  .register__page {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    & .register__wrapper {
+      width: min(100% - 2.25rem, 620px);
+      margin-inline: auto;
+      & .register__content {
+        & .register__form {
+          background: #fff;
+          width: 70%;
+          margin-inline: auto;
+          padding: 10px;
+          border-radius: 5px;
+          & label,
+          input::placeholder {
+            font-size: 12px;
+          }
+          & input {
+            margin-bottom: 0;
+            min-width: 150px;
+          }
+          & button {
+            padding: 10px 0;
+            font-size: 13px;
+          }
+        }
+        & > h1 {
+          margin-bottom: 0px;
+        }
+        & > p {
+          color: #fff;
+          margin-bottom: 6px;
+          & a {
+            color: #ff5f02;
+          }
+        }
+      }
+    }
   }
 }

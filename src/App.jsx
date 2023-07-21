@@ -4,6 +4,7 @@ import { setUsers } from "./redux/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
   }, [auth, dispatch]);
   return (
     <>
+      <Toaster />
       <Outlet />
     </>
   );

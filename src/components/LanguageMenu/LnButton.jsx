@@ -46,6 +46,9 @@ const Dropdown = styled.div`
     cursor: pointer;
     font-size: 16px;
   }
+  @media screen and (max-width: 600px) {
+    scale: 0.8;
+  }
 `;
 const DropMenu = styled.div`
   position: absolute;

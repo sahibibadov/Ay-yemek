@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import "./payment.scss";
 import { Helmet } from "react-helmet";
+import toast from "react-hot-toast";
 
 export const Payment = () => {
   const navigate = useNavigate();
@@ -29,6 +30,12 @@ export const Payment = () => {
   };
   const colorUrl = changeUrlColor(category);
 
+  const toastFunc = () => {
+    toast.success("success payment", {
+      position: "top-right",
+      duration: 3000,
+    });
+  };
   return (
     <>
       <Helmet>
@@ -58,7 +65,7 @@ export const Payment = () => {
             <span>
               Ümumi məbləğ: <strong>{totalPrice}</strong> AZN
             </span>
-            <Link replace={true} to="/succespage">
+            <Link onClick={toastFunc} replace={true} to="/succespage">
               Ödəniş et
             </Link>
           </div>

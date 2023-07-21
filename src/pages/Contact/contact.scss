@@ -192,3 +192,50 @@
     }
   }
 }
+@media screen and (max-width: 530px) {
+  .contact__background .contact .contact__main {
+    & .contact__form {
+      & .form__grid {
+        & label {
+          font-size: 15px;
+          line-height: 100%;
+        }
+        & input {
+          padding: 12px 15px;
+          font-size: 16px;
+          margin-top: 12px;
+        }
+        & textarea {
+          padding: 12px 15px;
+          margin-bottom: 8px;
+          height: 150px;
+          margin-top: 12px;
+          font-size: 16px;
+        }
+      }
+    }
+    .contact__info {
+      & .contact__info__item {
+        padding: 10px;
+        & .contact__info__item__left {
+          gap: 5px;
+          & div {
+            padding: 8px;
+            & svg {
+              scale: 0.7;
+            }
+          }
+          & span {
+            font-size: 10px;
+          }
+        }
+        & .contact__info__item__right {
+          gap: 10px;
+          & p {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}

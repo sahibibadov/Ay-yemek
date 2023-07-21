@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
 import { Helmet } from "react-helmet";
+import toast from "react-hot-toast";
 
 export const Register = () => {
   const [pasError, setPasError] = useState("");
@@ -43,6 +44,10 @@ export const Register = () => {
       );
       const user = userCredential.user;
       updateProfile(user, { displayName: `${data.name} ${data.surname}` });
+      toast.success("success register", {
+        position: "top-right",
+        duration: 3000,
+      });
       navigate("/login");
       dispatch(setUsers(user));
     } catch (error) {
@@ -76,11 +81,11 @@ export const Register = () => {
             </Headline>
             <form
               onSubmit={handleSubmit(onRegister)}
-              className="contact__form"
+              className="register__form"
               noValidate
             >
               <div>
-                <div className="contact__form__username">
+                <div className="register__form__username">
                   <div>
                     <Label errors={errors.name}>Ad </Label>
                     <Input

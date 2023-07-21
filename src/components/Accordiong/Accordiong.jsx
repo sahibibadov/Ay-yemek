@@ -1,5 +1,5 @@
 import { AccordionItem as Item } from "@szhsin/react-accordion";
-import "./style..scss";
+import "./accordiong.scss";
 import questplus from "../../../public/questplus.svg";
 /**
  * @type {React.ExoticComponent<import('@szhsin/react-accordion').AccordionItemProps>}
