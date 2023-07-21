@@ -6,10 +6,14 @@ import {
   Paragraf,
   Section,
 } from "../../components";
+import { Helmet } from "react-helmet";
 
 export const Category = () => {
   return (
     <>
+      <Helmet>
+        <title>Category</title>
+      </Helmet>
       <Section>
         <div className="category__pages">
           <Headline level={1} color="primary">

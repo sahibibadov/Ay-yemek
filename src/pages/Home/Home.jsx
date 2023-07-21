@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import {
   Section,
   CategorySilder,
@@ -12,6 +13,9 @@ import {
 export const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <Section>
         <HomeTitle />
       </Section>

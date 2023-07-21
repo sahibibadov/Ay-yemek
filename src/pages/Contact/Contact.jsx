@@ -12,6 +12,7 @@ import resolverValidator from "../../validation/contactValitation";
 import { TfiEmail } from "react-icons/tfi";
 import { BsTelephone } from "react-icons/bs";
 import "./contact.scss";
+import { Helmet } from "react-helmet";
 
 export const Contact = () => {
   // form validation
@@ -29,6 +30,9 @@ export const Contact = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Contact</title>
+      </Helmet>
       <div className="contact__background">
         <div className="contact">
           <Headline level={1} color="primary">

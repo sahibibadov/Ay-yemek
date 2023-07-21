@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./payment.scss";
+import { Helmet } from "react-helmet";
 
 export const Payment = () => {
   const navigate = useNavigate();
@@ -29,38 +30,43 @@ export const Payment = () => {
   const colorUrl = changeUrlColor(category);
 
   return (
-    <div className="payment__page">
-      <div className="payment__wrapper__container">
-        <div className="payment__content">
-          <div className="payment__content__img">
-            <img src="logo.png" alt="logo" />
+    <>
+      <Helmet>
+        <title>Payment</title>
+      </Helmet>
+      <div className="payment__page">
+        <div className="payment__wrapper__container">
+          <div className="payment__content">
+            <div className="payment__content__img">
+              <img src="logo.png" alt="logo" />
+            </div>
+            <button onClick={() => navigate(-1)} className="return__button"></button>
+
+            <Headline color="primary" level={1}>
+              ÖDƏNİŞ
+            </Headline>
+            <p>Seçdiyiniz kateqoriya ve paket</p>
+            <div
+              style={{ backgroundColor: colorUrl }}
+              className="payment__content__category"
+            >
+              {category} {dayPackage} günlük menyu
+            </div>
+
+            <Datepicker />
+
+            <span>
+              Ümumi məbləğ: <strong>{totalPrice}</strong> AZN
+            </span>
+            <Link replace={true} to="/succespage">
+              Ödəniş et
+            </Link>
           </div>
-          <button onClick={() => navigate(-1)} className="return__button"></button>
-
-          <Headline color="primary" level={1}>
-            ÖDƏNİŞ
-          </Headline>
-          <p>Seçdiyiniz kateqoriya ve paket</p>
-          <div
-            style={{ backgroundColor: colorUrl }}
-            className="payment__content__category"
-          >
-            {category} {dayPackage} günlük menyu
-          </div>
-
-          <Datepicker />
-
-          <span>
-            Ümumi məbləğ: <strong>{totalPrice}</strong> AZN
-          </span>
-          <Link replace={true} to="/succespage">
-            Ödəniş et
-          </Link>
         </div>
+        {/* right image */}
+        <AuthImage />
       </div>
-      {/* right image */}
-      <AuthImage />
-    </div>
+    </>
   );
 };
 

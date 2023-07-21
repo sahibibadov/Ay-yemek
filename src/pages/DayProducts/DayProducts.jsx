@@ -6,6 +6,7 @@ import { Cart, FilterProducts, Headline, Paragraf, Section } from "../../compone
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterProduct, setSelected } from "../../redux/categoryProductsSlice";
 import { clearCart } from "../../redux/cartSlice";
+import { Helmet } from "react-helmet";
 
 export const DayProducts = () => {
   const { day, categoryUrl } = useParams();
@@ -60,6 +61,11 @@ export const DayProducts = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          {categoryUrl} {day} day package
+        </title>
+      </Helmet>
       <Section>
         <div className="products_page">
           <Headline color={colorUrl} level={1}>

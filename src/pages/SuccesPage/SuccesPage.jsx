@@ -2,10 +2,14 @@ import "./succespage.scss";
 import { Button, Section } from "../../components";
 import check from "../../../public/check.svg";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 export const SuccesPage = () => {
   const navigate = useNavigate();
   return (
     <>
+      <Helmet>
+        <title>Succses Page</title>
+      </Helmet>
       <Section>
         <div className="succes-page">
           <div className="succes-page__logo">

@@ -15,6 +15,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./login.scss";
+import { Helmet } from "react-helmet";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ export const Login = () => {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         data.email,
-        data.password
+        data.password,
       );
 
       navigate("/", { replace: true });
@@ -53,59 +54,64 @@ export const Login = () => {
   };
 
   return (
-    <div className="login__page">
-      <div className="login__wrapper">
-        <div className="login__content">
-          <div className="login__content__img">
-            <img src="logo.png" alt="logo" />
+    <>
+      <Helmet>
+        <title> Login</title>
+      </Helmet>
+      <div className="login__page">
+        <div className="login__wrapper">
+          <div className="login__content">
+            <div className="login__content__img">
+              <img src="logo.png" alt="logo" />
+            </div>
+            <ReturnButton />
+
+            {/* form */}
+            <Headline level={1} color="primary">
+              QEYDİYYAT
+            </Headline>
+            <Paragraf size="lg" color="secondary">
+              Lorem ipsum dolor sit amet
+            </Paragraf>
+            <form
+              className="contact__form"
+              onSubmit={handleSubmit(onHandleLogin)}
+              noValidate
+            >
+              <div>
+                <Label errors={errors?.email}>E-poçt </Label>
+                <Input
+                  placeholder="E-poçt"
+                  errors={errors?.email}
+                  {...register("email")}
+                  type="email"
+                />
+                {mailError && <ErrorMessage>{mailError}</ErrorMessage>}
+                {errors.email && (
+                  <ErrorMessage>{errors.email?.message}</ErrorMessage>
+                )}
+              </div>
+              <div>
+                <Label errors={errors?.password}>Parol</Label>
+                <Input
+                  placeholder="Parol"
+                  errors={errors?.password}
+                  {...register("password")}
+                  type="password"
+                />
+                {pasError && <ErrorMessage>{pasError}</ErrorMessage>}
+                {errors.password && (
+                  <ErrorMessage>{errors.password?.message}</ErrorMessage>
+                )}
+              </div>
+
+              <SubmitButton type="submit">Göndər</SubmitButton>
+            </form>
           </div>
-          <ReturnButton />
-
-          {/* form */}
-          <Headline level={1} color="primary">
-            QEYDİYYAT
-          </Headline>
-          <Paragraf size="lg" color="secondary">
-            Lorem ipsum dolor sit amet
-          </Paragraf>
-          <form
-            className="contact__form"
-            onSubmit={handleSubmit(onHandleLogin)}
-            noValidate
-          >
-            <div>
-              <Label errors={errors?.email}>E-poçt </Label>
-              <Input
-                placeholder="E-poçt"
-                errors={errors?.email}
-                {...register("email")}
-                type="email"
-              />
-              {mailError && <ErrorMessage>{mailError}</ErrorMessage>}
-              {errors.email && (
-                <ErrorMessage>{errors.email?.message}</ErrorMessage>
-              )}
-            </div>
-            <div>
-              <Label errors={errors?.password}>Parol</Label>
-              <Input
-                placeholder="Parol"
-                errors={errors?.password}
-                {...register("password")}
-                type="password"
-              />
-              {pasError && <ErrorMessage>{pasError}</ErrorMessage>}
-              {errors.password && (
-                <ErrorMessage>{errors.password?.message}</ErrorMessage>
-              )}
-            </div>
-
-            <SubmitButton type="submit">Göndər</SubmitButton>
-          </form>
         </div>
+        {/* right image */}
+        <AuthImage />
       </div>
-      {/* right image */}
-      <AuthImage />
-    </div>
+    </>
   );
 };

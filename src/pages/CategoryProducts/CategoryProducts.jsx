@@ -12,6 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterProduct, setSelected } from "../../redux/categoryProductsSlice";
 import { clearCart } from "../../redux/cartSlice";
+import { Helmet } from "react-helmet";
 const categoryButtons = [
   { id: 1, title: "ana yemək" },
   { id: 2, title: "garnir" },
@@ -71,6 +72,9 @@ export const CategoryProducts = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Category {categoryUrl}</title>
+      </Helmet>
       <Section>
         <div className="products_page">
           <Headline color={colorUrl} level={1}>

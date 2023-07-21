@@ -14,6 +14,7 @@ import { Information } from "./TabSection/Information";
 import { ActiveOrder } from "./TabSection/ActiveOrder";
 import { ChangePassword } from "./TabSection/ChangePassword";
 import { Payments } from "./TabSection/Payments";
+import { Helmet } from "react-helmet";
 export const Profile = () => {
   const [activeTab, setActiveTab] = useState(1);
   const dispatch = useDispatch();
@@ -54,6 +55,9 @@ export const Profile = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>Profile</title>
+      </Helmet>
       <Section>
         <div className="profile__pages">
           <Headline level={1} color="primary">

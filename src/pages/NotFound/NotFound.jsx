@@ -1,5 +1,13 @@
-import React from "react";
+import { Helmet } from "react-helmet";
+import { Section } from "../../components";
 
 export const NotFound = () => {
-  return <div>NotFound</div>;
+  return (
+    <>
+      <Helmet>
+        <title>404 Not Found</title>
+      </Helmet>
+      <Section>NotFound</Section>
+    </>
+  );
 };
