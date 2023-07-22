@@ -26,6 +26,8 @@ const orderDatesLocal =
 
 // her actiondan sonra local storage yazma
 localStorage.setItem("orderDatesLocal", JSON.stringify(orderDatesLocal));
+
+// local storage yazma funksiyasi
 const setItemFunc = (
   item,
   daylocalPackage,

@@ -17,9 +17,12 @@ import { useState } from "react";
 import "./login.scss";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
+import { setUsers } from "../../redux/userSlice";
+import { useDispatch } from "react-redux";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [pasError, setPasError] = useState("");
   const [mailError, setMailError] = useState("");
   const {
@@ -28,7 +31,6 @@ export const Login = () => {
     formState: { errors },
   } = useForm({
     resolver: resolverValidator, //yup scheamlari yaziriq
-    shouldUseNativeValidation: false, //html default validatorunu baglamaq(default:false)
   });
 
   const onHandleLogin = async (data) => {
@@ -45,6 +47,7 @@ export const Login = () => {
         position: "top-right",
         duration: 3000,
       });
+      dispatch(setUsers(userCredential.user));
       navigate("/", { replace: true });
     } catch (error) {
       console.log(error);

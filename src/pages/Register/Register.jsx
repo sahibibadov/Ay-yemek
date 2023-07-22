@@ -48,8 +48,8 @@ export const Register = () => {
         position: "top-right",
         duration: 3000,
       });
-      navigate("/login");
       dispatch(setUsers(user));
+      navigate("/login");
     } catch (error) {
       console.log(error);
       const errorCode = error?.code;
