@@ -1,6 +1,7 @@
 import "./information.scss";
 import { useSelector } from "react-redux";
 import { Headline, Input, Label } from "../../../components";
+import { Link } from "react-router-dom";
 
 export const Information = () => {
   const { users } = useSelector((state) => state.users);
@@ -20,14 +21,23 @@ export const Information = () => {
       <div className="profile__pages__information__orderDate">
         {orderDates.length > 0 ? (
           <>
-            <p>
-              {category} ({dayPackage} günlük menyu)
-            </p>
-            <span>
-              etibarlidir: {orderDates[0]?.startCurrentDay}{" "}
-              {orderDates[0]?.startCurrentMonth} - {orderDates[0]?.endCurrentDay}{" "}
-              {orderDates[0]?.endCurrentMonth}{" "}
-            </span>
+            <div className="profile__pages__information__orderDate__item">
+              <p>
+                {category} ({dayPackage} günlük menyu)
+              </p>
+              <span>
+                etibarlidir: {orderDates[0]?.startCurrentDay}{" "}
+                {orderDates[0]?.startCurrentMonth} - {orderDates[0]?.endCurrentDay}{" "}
+                {orderDates[0]?.endCurrentMonth}{" "}
+              </span>
+            </div>
+
+            <Link
+              to={`/category/${category}/${dayPackage}`}
+              className="profile__pages__information__orderDate__link"
+            >
+              paketi yenile
+            </Link>
           </>
         ) : (
           <p>Seçdiyiniz kateqoriya yoxdur</p>

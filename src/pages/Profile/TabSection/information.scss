@@ -1,18 +1,42 @@
 .profile__pages__information {
   & .profile__pages__information__orderDate {
     display: flex;
-    align-items: center;
-    gap: 5px;
+    justify-content: space-between;
     margin-bottom: 30px;
-    & p {
-      color: #0e6ba8;
-      font-size: 22px;
-      font-weight: 500;
+    & .profile__pages__information__orderDate__item {
+      & p {
+        color: #0e6ba8;
+        font-size: 22px;
+        font-weight: 500;
+      }
+      & span {
+        color: #75797f;
+        font-size: 14px;
+        font-weight: 400;
+      }
     }
-    & span {
-      color: #75797f;
+    & .profile__pages__information__orderDate__link {
+      width: clamp(80px, 100%, 150px);
+      text-align: center;
+      border-radius: 16px;
+      border: 1px solid #f75c03;
+
+      transition: all 0.2s;
+      display: grid;
+      place-items: center;
+
+      padding: 12px 0px;
+      color: #f75c03;
       font-size: 14px;
-      font-weight: 400;
+      font-weight: 500;
+      text-transform: capitalize;
+      &:hover {
+        box-shadow: 0px 10px 15px 0px rgba(1, 115, 153, 0.2);
+      }
+      &:active {
+        box-shadow: none;
+        opacity: 0.9;
+      }
     }
   }
   & .profile__pages__information__content {
@@ -27,6 +51,8 @@
     & .profile__pages__information__orderDate {
       flex-direction: column;
       text-align: center;
+      align-items: center;
+      gap: 10px;
     }
     & .profile__pages__information__content {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
