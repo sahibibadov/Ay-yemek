@@ -13,7 +13,7 @@ import { openModal } from "../../redux/modalSlice";
 import { Information } from "./TabSection/Information";
 import { ActiveOrder } from "./TabSection/ActiveOrder";
 import { ChangePassword } from "./TabSection/ChangePassword";
-import { Payments } from "./TabSection/Payments";
+import { PaymentsTab } from "./TabSection/PaymentsTab";
 import { Helmet } from "react-helmet";
 export const Profile = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -46,7 +46,7 @@ export const Profile = () => {
       link: "payments",
       id: 4,
       icon: payment,
-      content: <Payments />,
+      content: <PaymentsTab />,
     },
   ];
   // klikde active klasin vermek

@@ -42,6 +42,7 @@ const setItemFunc = (
   localStorage.setItem("orderDatesLocal", JSON.stringify(orderDatesLocal));
 };
 const initialState = {
+  paymentCart: [],
   cart: items,
   totalPrice: totalQuantity,
   dayPackage: daylocalPackage,
@@ -53,6 +54,11 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    // odenis etdikde cart datasin payment carta vurmaq
+    addPaymentCart: (state, action) => {
+      state.paymentCart = [...state.paymentCart, action.payload];
+    },
+
     // butona klikdeki id ile datadan itemi tapib,carta push,yada varsa sayini artiririq
     addToCart: (state, action) => {
       const itemInCart = state.cart.find((item) => item.id === action.payload.id);
@@ -144,5 +150,6 @@ export const {
   addToCategory,
   clearCart,
   addToOrderDate,
+  addPaymentCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;

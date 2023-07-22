@@ -1,17 +1,25 @@
 import { AuthImage } from "../../components/AuthImage/AuthImage";
-import { Headline, SubmitButton, Datepicker } from "../../components";
-import { useSelector } from "react-redux";
+import { Headline, Datepicker } from "../../components";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Link, useNavigate } from "react-router-dom";
 
 import "./payment.scss";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
+import { addPaymentCart } from "../../redux/cartSlice";
+
+import dayjs from "dayjs";
+import localeData from "dayjs/plugin/localeData";
+import az from "dayjs/locale/az";
 
 export const Payment = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const { category, dayPackage, totalPrice } = useSelector((state) => state.cart);
+  const { category, dayPackage, totalPrice, orderDates } = useSelector(
+    (state) => state.cart,
+  );
   const { users } = useSelector((state) => state.users);
   const user = JSON.parse(users);
 
@@ -32,15 +40,34 @@ export const Payment = () => {
   };
   const colorUrl = changeUrlColor(category);
 
-  const handlePayment = () => {
-    if (user) {
-      navigate("/succespage", { replace: true });
-      toast.success("success payment", {
-        position: "top-right",
-        duration: 3000,
-      });
-    } else {
-      navigate("/login");
+  // payment carta tarixi ekleme
+  dayjs.extend(localeData);
+  dayjs.locale("az");
+  const startCurrentDate = dayjs().format("DD/MM/YYYY");
+  const endCurrentDate = dayjs().add(dayPackage, "day").format("DD/MM/YYYY");
+  console.log(endCurrentDate);
+  const handlePayment = async () => {
+    try {
+      if (user) {
+        await dispatch(
+          addPaymentCart({
+            category,
+            dayPackage,
+            totalPrice,
+            startCurrentDate,
+            endCurrentDate,
+          }),
+        );
+        await navigate("/succespage", { replace: true });
+        toast.success("success payment", {
+          position: "top-right",
+          duration: 3000,
+        });
+      } else {
+        await navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -72,7 +99,7 @@ export const Payment = () => {
             <span>
               Ümumi məbləğ: <strong>{totalPrice}</strong> AZN
             </span>
-            <Link onClick={handlePayment}>Ödəniş et</Link>
+            <Link onClick={() => handlePayment()}>Ödəniş et</Link>
           </div>
         </div>
         {/* right image */}
@@ -81,24 +108,3 @@ export const Payment = () => {
     </>
   );
 };
-
-// import React from "react";
-// import { useSelector } from "react-redux";
-// import { Link, useLocation, useNavigate } from "react-router-dom";
-
-// export const Payment = () => {
-//   const navigate = useNavigate();
-//   const { category, dayPackage } = useSelector((state) => state.cart);
-//   console.log("category", category);
-//   console.log("dayPackage", dayPackage);
-
-//   return (
-//     <div>
-//       <p>{dayPackage}</p>
-//       <p>{category}</p>
-//       <Link replace={true} to="/succespage">
-//         odenis et
-//       </Link>
-//     </div>
-//   );
-// };

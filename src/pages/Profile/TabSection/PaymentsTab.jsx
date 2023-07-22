@@ -1,3 +1,5 @@
+import { map } from "lodash";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 const PaymentWrapper = styled.div`
   & table {
@@ -72,42 +74,48 @@ const PaymentWrapper = styled.div`
     }
   }
 `;
-export const Payments = () => {
+const EmptyPayment = styled.h3`
+  text-align: center;
+  display: block;
+  color: #f75c03;
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 50px;
+  @media screen and (max-width: 690px) {
+    font-size: 20px;
+  }
+`;
+export const PaymentsTab = () => {
+  const { paymentCart } = useSelector((state) => state.cart);
+  // const [day, totalPrice, category, orderDates] = paymentCart;
+  console.log("paymentCart", paymentCart);
   return (
     <PaymentWrapper className="profile__pages__payments">
-      <table>
-        <thead>
-          <tr>
-            <th>Kateqoriya</th>
-            <th>Paket</th>
-            <th>Price</th>
-            <th colSpan={2}>Etibarlılıq</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Ekonom</td>
-            <td>Test</td>
-            <td>35 AZN</td>
-            <td>17.01.2023</td>
-            <td>20.01.2023</td>
-          </tr>
-          <tr>
-            <td>Premium</td>
-            <td>10 günlük</td>
-            <td>200 AZN</td>
-            <td>10.01.2023</td>
-            <td>20.01.2023</td>
-          </tr>
-          <tr>
-            <td>Ekonom</td>
-            <td>20 günlük</td>
-            <td>150 AZN</td>
-            <td>01.01.2023</td>
-            <td>20.01.2023</td>
-          </tr>
-        </tbody>
-      </table>
+      {paymentCart.length > 0 ? (
+        <table>
+          <thead>
+            <tr>
+              <th>Kateqoriya</th>
+              <th>Paket</th>
+              <th>Price</th>
+              <th colSpan={2}>Etibarlılıq</th>
+            </tr>
+          </thead>
+          <tbody>
+            {map(paymentCart, (item, index) => (
+              <tr key={index}>
+                <td>{item.category}</td>
+                <td>{item.dayPackage} günlük</td>
+                <td>{item.totalPrice} AZN</td>
+                <td>{item.startCurrentDate}</td>
+                <td>{item.endCurrentDate}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <EmptyPayment>Ödəniş Tapılmadı</EmptyPayment>
+      )}
     </PaymentWrapper>
   );
 };
