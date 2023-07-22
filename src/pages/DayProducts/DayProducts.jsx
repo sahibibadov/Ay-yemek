@@ -6,7 +6,7 @@ import { Cart, FilterProducts, Headline, Paragraf, Section } from "../../compone
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterProduct, setSelected } from "../../redux/categoryProductsSlice";
 import { clearCart } from "../../redux/cartSlice";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 export const DayProducts = () => {
   const { day, categoryUrl } = useParams();

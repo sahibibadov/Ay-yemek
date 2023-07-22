@@ -1,5 +1,5 @@
-import { AboutMain, Container, Section } from "../../components";
-import { Helmet } from "react-helmet";
+import { AboutMain, Section } from "../../components";
+import { Helmet } from "react-helmet-async";
 
 export const About = () => {
   return (

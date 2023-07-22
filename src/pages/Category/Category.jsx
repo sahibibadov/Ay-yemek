@@ -1,12 +1,6 @@
 import "./category.scss";
-import {
-  CategoryItems,
-  Container,
-  Headline,
-  Paragraf,
-  Section,
-} from "../../components";
-import { Helmet } from "react-helmet";
+import { CategoryItems, Headline, Paragraf, Section } from "../../components";
+import { Helmet } from "react-helmet-async";
 
 export const Category = () => {
   return (

@@ -1,7 +1,6 @@
 import "./information.scss";
 import { useSelector } from "react-redux";
 import { Headline, Input, Label } from "../../../components";
-import { Link } from "react-router-dom";
 
 export const Information = () => {
   const { users } = useSelector((state) => state.users);
@@ -11,7 +10,7 @@ export const Information = () => {
   const userSurname = parseUser?.displayName.split(" ")[1];
   const userEmail = parseUser?.email;
 
-  const { category, dayPackage, orderDates } = useSelector((state) => state.cart);
+  const { paymentCart } = useSelector((state) => state.cart);
 
   return (
     <div className="profile__pages__information">
@@ -19,9 +18,22 @@ export const Information = () => {
         Seçdiyiniz Kateqoriya
       </Headline>
       <div className="profile__pages__information__orderDate">
-        {orderDates.length > 0 ? (
+        {paymentCart.length > 0 ? (
           <>
-            <div className="profile__pages__information__orderDate__item">
+            {paymentCart.map((item, index) => (
+              <div
+                key={index}
+                className="profile__pages__information__orderDate__item"
+              >
+                <p>
+                  {item.category} ({item.dayPackage} günlük menyu)
+                </p>
+                <span>
+                  etibarlidir: {item.startCurrentDate} - {item.endCurrentDate}
+                </span>
+              </div>
+            ))}
+            {/* <div className="profile__pages__information__orderDate__item">
               <p>
                 {category} ({dayPackage} günlük menyu)
               </p>
@@ -37,7 +49,7 @@ export const Information = () => {
               className="profile__pages__information__orderDate__link"
             >
               paketi yenile
-            </Link>
+            </Link> */}
           </>
         ) : (
           <p>Seçdiyiniz kateqoriya yoxdur</p>
@@ -62,7 +74,7 @@ export const Information = () => {
         </div>
         <div>
           <Label>Doğum tarixi</Label>
-          <Input type="date" disabled />
+          <Input type="text" placeholder="Doğum tarixi" disabled />
         </div>
         <div>
           <Label>Ünvan</Label>

@@ -16,7 +16,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 
 export const Register = () => {
@@ -43,13 +43,13 @@ export const Register = () => {
         data.password,
       );
       const user = userCredential.user;
-      updateProfile(user, { displayName: `${data.name} ${data.surname}` });
+      await updateProfile(user, { displayName: `${data.name} ${data.surname}` });
+      await dispatch(setUsers(user));
+      await navigate("/login");
       toast.success("success register", {
         position: "top-right",
         duration: 3000,
       });
-      dispatch(setUsers(user));
-      navigate("/login");
     } catch (error) {
       console.log(error);
       const errorCode = error?.code;

@@ -14,7 +14,7 @@ import { Information } from "./TabSection/Information";
 import { ActiveOrder } from "./TabSection/ActiveOrder";
 import { ChangePassword } from "./TabSection/ChangePassword";
 import { PaymentsTab } from "./TabSection/PaymentsTab";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 export const Profile = () => {
   const [activeTab, setActiveTab] = useState(1);
   const dispatch = useDispatch();

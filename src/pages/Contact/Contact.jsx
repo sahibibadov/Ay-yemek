@@ -12,7 +12,7 @@ import resolverValidator from "../../validation/contactValitation";
 import { TfiEmail } from "react-icons/tfi";
 import { BsTelephone } from "react-icons/bs";
 import "./contact.scss";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 export const Contact = () => {
   // form validation

@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./login.scss";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { setUsers } from "../../redux/userSlice";
 import { useDispatch } from "react-redux";
@@ -43,12 +43,12 @@ export const Login = () => {
         data.email,
         data.password,
       );
+      await dispatch(setUsers(userCredential.user));
+      await navigate("/", { replace: true });
       toast.success("success login", {
         position: "top-right",
         duration: 3000,
       });
-      dispatch(setUsers(userCredential.user));
-      navigate("/", { replace: true });
     } catch (error) {
       console.log(error);
       const errorCode = error?.code;

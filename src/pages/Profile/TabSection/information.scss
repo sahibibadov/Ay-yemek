@@ -1,9 +1,15 @@
 .profile__pages__information {
   & .profile__pages__information__orderDate {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+    // justify-content: space-between;
     margin-bottom: 30px;
     & .profile__pages__information__orderDate__item {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       & p {
         color: #0e6ba8;
         font-size: 22px;
@@ -15,29 +21,29 @@
         font-weight: 400;
       }
     }
-    & .profile__pages__information__orderDate__link {
-      width: clamp(80px, 100%, 150px);
-      text-align: center;
-      border-radius: 16px;
-      border: 1px solid #f75c03;
+    // & .profile__pages__information__orderDate__link {
+    //   width: clamp(80px, 100%, 150px);
+    //   text-align: center;
+    //   border-radius: 16px;
+    //   border: 1px solid #f75c03;
 
-      transition: all 0.2s;
-      display: grid;
-      place-items: center;
+    //   transition: all 0.2s;
+    //   display: grid;
+    //   place-items: center;
 
-      padding: 12px 0px;
-      color: #f75c03;
-      font-size: 14px;
-      font-weight: 500;
-      text-transform: capitalize;
-      &:hover {
-        box-shadow: 0px 10px 15px 0px rgba(1, 115, 153, 0.2);
-      }
-      &:active {
-        box-shadow: none;
-        opacity: 0.9;
-      }
-    }
+    //   padding: 12px 0px;
+    //   color: #f75c03;
+    //   font-size: 14px;
+    //   font-weight: 500;
+    //   text-transform: capitalize;
+    //   &:hover {
+    //     box-shadow: 0px 10px 15px 0px rgba(1, 115, 153, 0.2);
+    //   }
+    //   &:active {
+    //     box-shadow: none;
+    //     opacity: 0.9;
+    //   }
+    // }
   }
   & .profile__pages__information__content {
     display: grid;
@@ -46,16 +52,46 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 580px) {
   .profile__pages__information {
     & .profile__pages__information__orderDate {
       flex-direction: column;
       text-align: center;
       align-items: center;
       gap: 10px;
+      & .profile__pages__information__orderDate__item {
+        margin-top: 7px;
+        & p {
+          font-size: 16px;
+        }
+        & span {
+          font-size: 12px;
+        }
+      }
     }
+  }
+}
+@media screen and (max-width: 500px) {
+  .profile__pages__information {
     & .profile__pages__information__content {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+}
+@media screen and (max-width: 430px) {
+  .profile__pages__information {
+    & .profile__pages__information__orderDate {
+      gap: 5px;
+      & .profile__pages__information__orderDate__item {
+        margin-top: 5px;
+        flex-direction: column;
+        & p {
+          font-size: 14px;
+        }
+        & span {
+          font-size: 10px;
+        }
+      }
     }
   }
 }

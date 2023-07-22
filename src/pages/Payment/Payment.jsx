@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./payment.scss";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { addPaymentCart } from "../../redux/cartSlice";
 
@@ -45,7 +45,7 @@ export const Payment = () => {
   dayjs.locale("az");
   const startCurrentDate = dayjs().format("DD/MM/YYYY");
   const endCurrentDate = dayjs().add(dayPackage, "day").format("DD/MM/YYYY");
-  console.log(endCurrentDate);
+
   const handlePayment = async () => {
     try {
       if (user) {

@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import {
   Section,
   CategorySilder,
@@ -7,7 +7,6 @@ import {
   HomeTitle,
   HomeWork,
   HomeAskQuest,
-  Container,
 } from "../../components";
 
 export const Home = () => {

@@ -12,7 +12,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterProduct, setSelected } from "../../redux/categoryProductsSlice";
 import { clearCart } from "../../redux/cartSlice";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+
 const categoryButtons = [
   { id: 1, title: "ana yemək" },
   { id: 2, title: "garnir" },
