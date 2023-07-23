@@ -118,6 +118,7 @@ const cartSlice = createSlice({
         state.totalPrice,
         state.category,
         state.orderDates,
+        state.paymentCart,
       );
     },
     addToPackage: (state, action) => {
@@ -155,6 +156,23 @@ const cartSlice = createSlice({
         state.orderDates,
       );
     },
+    allDataClear: (state, action) => {
+      state.cart = [];
+      state.totalPrice = 0;
+      state.dayPackage = "";
+      state.category = "";
+      state.orderDates = [];
+      state.paymentCart = [];
+
+      setItemFunc(
+        state.cart,
+        state.dayPackage,
+        state.totalPrice,
+        state.category,
+        state.orderDates,
+        state.paymentCart,
+      );
+    },
   },
 });
 
@@ -170,5 +188,6 @@ export const {
   clearCart,
   addToOrderDate,
   addPaymentCart,
+  allDataClear,
 } = cartSlice.actions;
 export default cartSlice.reducer;

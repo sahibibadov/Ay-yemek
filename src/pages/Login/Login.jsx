@@ -75,7 +75,7 @@ export const Login = () => {
 
             {/* form */}
             <Headline level={1} color="primary">
-              QEYDİYYAT
+              Daxİl olun
             </Headline>
             <Paragraf size="lg" color="secondary">
               Lorem ipsum dolor sit amet

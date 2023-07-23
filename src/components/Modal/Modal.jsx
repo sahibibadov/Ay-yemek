@@ -6,8 +6,9 @@ import { auth } from "../../firebase/firebase";
 import { signOut } from "firebase/auth";
 import { setUsers } from "../../redux/userSlice";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import toast from "react-hot-toast";
+import { allDataClear } from "../../redux/cartSlice";
 
 export const Modal = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export const Modal = () => {
     try {
       dispatch(setUsers(null));
       await signOut(auth);
+      await dispatch(allDataClear());
       toast.success("success logout", {
         position: "top-right",
         duration: 3000,
