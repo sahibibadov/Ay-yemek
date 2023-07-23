@@ -7,6 +7,7 @@ import { BsArrowRight } from "react-icons/bs";
 import { map } from "lodash";
 import { removeItem, selectCartItemsByType } from "../../../redux/cartSlice";
 import { FaTrash } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export const ActiveOrder = () => {
   const navigate = useNavigate();
@@ -22,7 +23,13 @@ export const ActiveOrder = () => {
   const salat = useSelector((state) => selectCartItemsByType(state.cart, "salat"));
 
   return (
-    <div className="profile__pages__activeorder">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="profile__pages__activeorder"
+    >
       {/* cart dolu olandaki itemler */}
       {cart.length > 0 ? (
         <div className="profile__pages__activeorder__cart">
@@ -114,6 +121,6 @@ export const ActiveOrder = () => {
           <span>*Sifarişinizi 22:00-a qədər verməyiniz xahiş olunur</span>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };

@@ -1,7 +1,7 @@
 import { Headline, Section, Profiletab } from "../../components";
 import React, { useState } from "react";
 import { map } from "lodash";
-
+import { motion } from "framer-motion";
 import "./profile.scss";
 import lock from "../../../public/profileacion/lock.svg";
 import order from "../../../public/profileacion/order.svg";
@@ -59,7 +59,12 @@ export const Profile = () => {
         <title>Profile</title>
       </Helmet>
       <Section>
-        <div className="profile__pages">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="profile__pages"
+        >
           <Headline level={1} color="primary">
             PROfİLİ MƏLUMATLARIM
           </Headline>
@@ -90,7 +95,7 @@ export const Profile = () => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </Section>
     </>
   );

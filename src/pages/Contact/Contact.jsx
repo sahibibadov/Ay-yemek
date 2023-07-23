@@ -13,6 +13,7 @@ import { TfiEmail } from "react-icons/tfi";
 import { BsTelephone } from "react-icons/bs";
 import "./contact.scss";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 export const Contact = () => {
   // form validation
@@ -33,7 +34,12 @@ export const Contact = () => {
       <Helmet>
         <title>Contact</title>
       </Helmet>
-      <div className="contact__background">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="contact__background"
+      >
         <div className="contact">
           <Headline level={1} color="primary">
             Əlaqə
@@ -110,7 +116,7 @@ export const Contact = () => {
             </form>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

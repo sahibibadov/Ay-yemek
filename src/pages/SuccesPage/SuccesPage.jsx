@@ -3,6 +3,8 @@ import { Button, Section } from "../../components";
 import check from "../../../public/check.svg";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
+
 export const SuccesPage = () => {
   const navigate = useNavigate();
   return (
@@ -11,7 +13,12 @@ export const SuccesPage = () => {
         <title>Succses Page</title>
       </Helmet>
       <Section>
-        <div className="succes-page">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="succes-page"
+        >
           <div className="succes-page__logo">
             <img src={check} alt="check" />
           </div>
@@ -21,7 +28,7 @@ export const SuccesPage = () => {
           <Button to="/" replace={true} color="primary">
             Yemək seçiminə başla
           </Button>
-        </div>
+        </motion.div>
       </Section>
     </>
   );

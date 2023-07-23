@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFilterProduct, setSelected } from "../../redux/categoryProductsSlice";
 import { clearCart } from "../../redux/cartSlice";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 export const DayProducts = () => {
   const { day, categoryUrl } = useParams();
@@ -67,7 +68,12 @@ export const DayProducts = () => {
         </title>
       </Helmet>
       <Section>
-        <div className="products_page">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="products_page"
+        >
           <Headline color={colorUrl} level={1}>
             {day} günlük paket
           </Headline>
@@ -96,7 +102,7 @@ export const DayProducts = () => {
               <Cart />
             </div>
           </div>
-        </div>
+        </motion.div>
       </Section>
     </>
   );

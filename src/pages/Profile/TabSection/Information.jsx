@@ -1,6 +1,7 @@
 import "./information.scss";
 import { useSelector } from "react-redux";
 import { Headline, Input, Label } from "../../../components";
+import { motion } from "framer-motion";
 
 export const Information = () => {
   const { users } = useSelector((state) => state.users);
@@ -13,7 +14,13 @@ export const Information = () => {
   const { paymentCart } = useSelector((state) => state.cart);
 
   return (
-    <div className="profile__pages__information">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="profile__pages__information"
+    >
       <Headline color="primary" level={3}>
         Seçdiyiniz Kateqoriya
       </Headline>
@@ -81,6 +88,6 @@ export const Information = () => {
           <Input type="text" disabled placeholder="Ünvan" />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

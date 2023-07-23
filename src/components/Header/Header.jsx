@@ -22,7 +22,6 @@ export const Header = () => {
   const parseUser = JSON.parse(users);
 
   // cartin icindeki itemlerin sayi
-
   const cartLenght = cart.length;
   // hamburgermenunun klikle acilmasi
   const handleToggleMenu = () => {

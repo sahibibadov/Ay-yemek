@@ -19,6 +19,7 @@ import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { setUsers } from "../../redux/userSlice";
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -65,7 +66,12 @@ export const Login = () => {
       <Helmet>
         <title> Login</title>
       </Helmet>
-      <div className="login__page">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="login__page"
+      >
         <div className="login__wrapper">
           <div className="login__content">
             <div className="login__content__img">
@@ -121,7 +127,7 @@ export const Login = () => {
         </div>
         {/* right image */}
         <AuthImage />
-      </div>
+      </motion.div>
     </>
   );
 };

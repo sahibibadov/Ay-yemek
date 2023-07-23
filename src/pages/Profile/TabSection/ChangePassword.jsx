@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Input, Label, SubmitButton } from "../../../components";
+import { motion } from "framer-motion";
 
-const WrapperDiv = styled.div`
+const WrapperDiv = styled(motion.div)`
   max-width: 520px;
   width: 100%;
   margin-inline: auto;
@@ -19,7 +20,11 @@ const WrapperDiv = styled.div`
 
 export const ChangePassword = () => {
   return (
-    <WrapperDiv>
+    <WrapperDiv
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Label>Köhnə şifrə</Label>
       <Input type="password" placeholder="*****" />
 

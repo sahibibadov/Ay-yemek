@@ -9,6 +9,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeItem, selectCartItemsByType } from "../../redux/cartSlice";
 import { closeCart } from "../../redux/modalSlice";
 import { FaTrash } from "react-icons/fa";
+import { AnimatePresence, motion } from "framer-motion";
+
+const Li = ({ children }) => (
+  <motion.li initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+    {children}
+  </motion.li>
+);
+const H5 = ({ children }) => (
+  <motion.h5 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+    {children}
+  </motion.h5>
+);
 
 export const Cart = () => {
   const navigate = useNavigate();
@@ -57,37 +69,39 @@ export const Cart = () => {
       <ul className="cart-day__product">
         <h3>Seçilən yeməklər</h3>
 
-        {anayemek.length > 0 && <h5>ana yemek</h5>}
-        {map(anayemek, (item) => (
-          <li key={item.id}>
-            <span>{item.title}</span>
-            <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
-          </li>
-        ))}
+        <AnimatePresence>
+          {anayemek.length > 0 && <H5>ana yemek</H5>}
+          {map(anayemek, (item) => (
+            <Li key={item.id}>
+              <span>{item.title}</span>
+              <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
+            </Li>
+          ))}
 
-        {garnir.length > 0 && <h5>garnir</h5>}
-        {map(garnir, (item) => (
-          <li key={item.id}>
-            <span>{item.title}</span>
-            <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
-          </li>
-        ))}
+          {garnir.length > 0 && <H5>garnir</H5>}
+          {map(garnir, (item) => (
+            <Li key={item.id}>
+              <span>{item.title}</span>
+              <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
+            </Li>
+          ))}
 
-        {icki.length > 0 && <h5>icki</h5>}
-        {map(icki, (item) => (
-          <li key={item.id}>
-            <span>{item.title}</span>
-            <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
-          </li>
-        ))}
+          {icki.length > 0 && <H5>icki</H5>}
+          {map(icki, (item) => (
+            <Li key={item.id}>
+              <span>{item.title}</span>
+              <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
+            </Li>
+          ))}
 
-        {salat.length > 0 && <h5>salat</h5>}
-        {map(salat, (item) => (
-          <li key={item.id}>
-            <span>{item.title}</span>
-            <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
-          </li>
-        ))}
+          {salat.length > 0 && <H5>salat</H5>}
+          {map(salat, (item) => (
+            <Li key={item.id}>
+              <span>{item.title}</span>
+              <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
+            </Li>
+          ))}
+        </AnimatePresence>
 
         <p>
           Ümumi məbləğ: <strong>{totalPrice}</strong> AZN
@@ -103,7 +117,3 @@ export const Cart = () => {
     </div>
   );
 };
-
-{
-  /*   */
-}

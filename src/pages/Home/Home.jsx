@@ -8,6 +8,7 @@ import {
   HomeWork,
   HomeAskQuest,
 } from "../../components";
+import { motion } from "framer-motion";
 
 export const Home = () => {
   return (
@@ -15,24 +16,30 @@ export const Home = () => {
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <Section>
-        <HomeTitle />
-      </Section>
-      <Section>
-        <CategorySilder />
-      </Section>
-      <Section>
-        <HomeWork />
-      </Section>
-      <Section>
-        <FoodSilder />
-      </Section>
-      <Section>
-        <CoometSilder />
-      </Section>
-      <Section>
-        <HomeAskQuest />
-      </Section>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Section>
+          <HomeTitle />
+        </Section>
+        <Section>
+          <CategorySilder />
+        </Section>
+        <Section>
+          <HomeWork />
+        </Section>
+        <Section>
+          <FoodSilder />
+        </Section>
+        <Section>
+          <CoometSilder />
+        </Section>
+        <Section>
+          <HomeAskQuest />
+        </Section>
+      </motion.div>
     </>
   );
 };

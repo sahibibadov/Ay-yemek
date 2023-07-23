@@ -5,6 +5,7 @@ import { categorys } from "../../data/category";
 import { CategoryCard } from "../CategoryCard/CategoryCard";
 import { useState } from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import { motion } from "framer-motion";
 
 export const CategoryItems = () => {
   const [itemOffset, setItemOffset] = useState(0);
@@ -17,14 +18,27 @@ export const CategoryItems = () => {
     const newOffset = (event.selected * itemsPerPage) % categorys.length;
     setItemOffset(newOffset);
   };
+  const containerAn = {
+    visible: {
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
 
   return (
     <div className="category-itmes">
-      <div className="category-itmes__wrapper">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={containerAn}
+        className="category-itmes__wrapper"
+      >
         {map(currentItems, (item) => (
           <CategoryCard key={item.id} item={item} />
         ))}
-      </div>
+      </motion.div>
       <ReactPaginate
         className="paginate"
         breakLabel="..."

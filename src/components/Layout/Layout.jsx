@@ -17,23 +17,25 @@ export const Layout = () => {
   const { cartOpen, isOpen } = useSelector((state) => state.modal);
   return (
     <>
-      <ScrollToTop />
       {/* yeni sehifeye kecende en usten baslamasi */}
+      <ScrollToTop />
       <HeaderContact />
       <Header />
       <HideDiv />
       <Container>
         <main>
-          <Outlet />
+          <>
+            <Outlet />
+          </>
         </main>
       </Container>
-
       <Footer />
       <AnimatePresence>
         {isOpen && <Modal />}
+        {/* <CartModal /> */}
         {cartOpen && <CartModal />}
       </AnimatePresence>
-      {/* <CartModal /> */}
+
       <ScrollTop />
     </>
   );

@@ -1,7 +1,9 @@
 import { map } from "lodash";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-const PaymentWrapper = styled.div`
+import { motion } from "framer-motion";
+
+const PaymentWrapper = styled(motion.div)`
   & table {
     width: 100%;
     border-radius: 3px;
@@ -90,7 +92,12 @@ export const PaymentsTab = () => {
   // const [day, totalPrice, category, orderDates] = paymentCart;
   console.log("paymentCart", paymentCart);
   return (
-    <PaymentWrapper className="profile__pages__payments">
+    <PaymentWrapper
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="profile__pages__payments"
+    >
       {paymentCart.length > 0 ? (
         <table>
           <thead>

@@ -1,8 +1,8 @@
 import { AuthImage } from "../../components/AuthImage/AuthImage";
 import { Headline, Datepicker } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
-
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import "./payment.scss";
 import { Helmet } from "react-helmet-async";
@@ -75,7 +75,12 @@ export const Payment = () => {
       <Helmet>
         <title>Payment</title>
       </Helmet>
-      <div className="payment__page">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="payment__page"
+      >
         <div className="payment__wrapper__container">
           <div className="payment__content">
             <div className="payment__content__img">
@@ -104,7 +109,7 @@ export const Payment = () => {
         </div>
         {/* right image */}
         <AuthImage />
-      </div>
+      </motion.div>
     </>
   );
 };

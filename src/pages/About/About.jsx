@@ -1,5 +1,6 @@
 import { AboutMain, Section } from "../../components";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 export const About = () => {
   return (
@@ -7,9 +8,15 @@ export const About = () => {
       <Helmet>
         <title>About</title>
       </Helmet>
-      <Section>
-        <AboutMain />
-      </Section>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Section>
+          <AboutMain />
+        </Section>
+      </motion.div>
     </>
   );
 };

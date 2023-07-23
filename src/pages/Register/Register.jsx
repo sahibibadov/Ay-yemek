@@ -18,6 +18,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 export const Register = () => {
   const [pasError, setPasError] = useState("");
@@ -67,7 +68,12 @@ export const Register = () => {
       <Helmet>
         <title>Register</title>
       </Helmet>
-      <div className="register__page">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="register__page"
+      >
         <div className="register__wrapper">
           <div className="register__content">
             <div className="register__content__img">
@@ -144,7 +150,7 @@ export const Register = () => {
         </div>
         {/* right image */}
         <AuthImage />
-      </div>
+      </motion.div>
     </>
   );
 };

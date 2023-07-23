@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setFilterProduct, setSelected } from "../../redux/categoryProductsSlice";
 import { clearCart } from "../../redux/cartSlice";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 const categoryButtons = [
   { id: 1, title: "ana yemək" },
@@ -76,40 +77,46 @@ export const CategoryProducts = () => {
       <Helmet>
         <title>Category {categoryUrl}</title>
       </Helmet>
-      <Section>
-        <div className="products_page">
-          <Headline color={colorUrl} level={1}>
-            {categoryUrl}
-          </Headline>
-          <Paragraf size="lg" color="secondary">
-            Lorem ipsum dolor sit amet lorem ipsum dolor sit{" "}
-          </Paragraf>
-          <div className="type_buttons">
-            {map(categoryButtons, (item) => (
-              <button
-                className={`type_button ${
-                  selectedType == item.title ? "active" : ""
-                }`}
-                onClick={() => handleTypeChange(item.title)}
-                key={item.id}
-              >
-                {item.title}
-              </button>
-            ))}
-          </div>
-
-          <div className="products_wrapper">
-            <div className="products_list">
-              <FilterProducts />
-            </div>
-            <div className="day_pages_buttons">
-              {map(dayLinkItems, (item) => (
-                <DayLinkItems item={item} key={item.id} />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Section>
+          <div className="products_page">
+            <Headline color={colorUrl} level={1}>
+              {categoryUrl}
+            </Headline>
+            <Paragraf size="lg" color="secondary">
+              Lorem ipsum dolor sit amet lorem ipsum dolor sit{" "}
+            </Paragraf>
+            <div className="type_buttons">
+              {map(categoryButtons, (item) => (
+                <button
+                  className={`type_button ${
+                    selectedType == item.title ? "active" : ""
+                  }`}
+                  onClick={() => handleTypeChange(item.title)}
+                  key={item.id}
+                >
+                  {item.title}
+                </button>
               ))}
             </div>
+
+            <div className="products_wrapper">
+              <div className="products_list">
+                <FilterProducts />
+              </div>
+              <div className="day_pages_buttons">
+                {map(dayLinkItems, (item) => (
+                  <DayLinkItems item={item} key={item.id} />
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+      </motion.div>
     </>
   );
 };

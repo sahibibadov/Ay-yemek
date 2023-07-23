@@ -1,5 +1,7 @@
 import { Button, Headline, Paragraf } from "../../index";
 import "./hometitle.scss";
+import HomePng from "../../../../public/HomeSvg.svg";
+import ellips from "../../../../public/ellips.svg";
 
 export const HomeTitle = () => {
   return (
@@ -16,7 +18,8 @@ export const HomeTitle = () => {
         </Button>
       </div>
       <div className="Home-title__right">
-        <img src="HomePng.svg" alt="hometitleimg" />
+        <img src={HomePng} alt="hometitleimg" />
+        <img src={ellips} alt="ellips" />
       </div>
     </div>
   );

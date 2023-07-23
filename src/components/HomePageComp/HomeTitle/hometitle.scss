@@ -22,17 +22,30 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: #f75c03;
-      opacity: 0.1;
-      z-index: -1;
-      filter: blur(138px);
+    & img:first-child {
+      width: 500px;
+      height: auto;
     }
+    & img:last-child {
+      position: absolute;
+      max-width: 100%;
+      width: 360px;
+      display: block;
+      z-index: -1;
+    }
+    //   &::after {
+    //   //   content: "";
+    //   //   position: absolute;
 
-    // filter: drop-shadow(90px 299px 350px #f75c03);
+    //   //   left: 0;
+    //   //   top: 165px;
+    //   //   width: 100%;
+    //   //   height: 100%;
+    //   //   background: #f75c03;
+    //   //   opacity: 0.2;
+    //   //   z-index: -1;
+    //   //   filter: blur(138px);
+    //   // }
   }
 }
 @media screen and (max-width: 1184px) {
