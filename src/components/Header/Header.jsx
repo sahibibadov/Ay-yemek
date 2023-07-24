@@ -10,8 +10,11 @@ import "./header.scss";
 import logo from "../../../public/logo.png";
 import { FiShoppingCart } from "react-icons/fi";
 import { openCart, openModal } from "../../redux/modalSlice";
+import { useTranslation } from "react-i18next";
 
 export const Header = () => {
+  const { t } = useTranslation("translation", { keyPrefix: "navlink" });
+
   const ref = useRef(null);
   const [hide, setHide] = useState(false);
   const [open, setOpen] = useState(false);
@@ -51,22 +54,22 @@ export const Header = () => {
 
   const navLink = [
     {
-      title: "Ana səhifə",
+      title: t("home"),
       link: "/",
       id: 1,
     },
     {
-      title: "Haqqımızda",
+      title: t("about"),
       link: "about",
       id: 2,
     },
     {
-      title: "Paketlər",
+      title: t("category"),
       link: "category",
       id: 3,
     },
     {
-      title: "Əlaqə",
+      title: t("contact"),
       link: "contact",
       id: 4,
     },
@@ -107,8 +110,8 @@ export const Header = () => {
                 <p>{parseUser.displayName}</p>
                 <RiArrowDropDownLine size={28} color="#0e6ba8" />
                 <div className="profile__name__dropmenu">
-                  <Link to="profile">Profil məlumatlarım</Link>
-                  <button onClick={() => dispatch(openModal())}>Çıxış </button>
+                  <Link to="profile">{t("profileLink")}</Link>
+                  <button onClick={() => dispatch(openModal())}>{t("exit")} </button>
                 </div>
               </div>
             </div>

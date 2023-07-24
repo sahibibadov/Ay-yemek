@@ -14,11 +14,11 @@ const initialState = {
   langButton: [
     {
       id: 1,
-      lang: "Az",
+      lang: "az",
     },
     {
       id: 2,
-      lang: "En",
+      lang: "en",
     },
   ],
 };

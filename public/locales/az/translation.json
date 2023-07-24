@@ -1,0 +1,17 @@
+{
+  "homePage": {
+    "title": "  SİZ YEMƏK FİKİRLƏŞMƏYİN BİZ SİZİN ÜÇÜN  HAZIRLAYARIQ",
+    "description": " Sizin həyat tərzinizə və büdcənizə uyğun yemək planları",
+    "button": "Haqqımızda"
+  },
+  "navlink": {
+    "home": "Ana səhifə",
+    "about": "Haqqımızda",
+    "contact": "Əlaqə",
+    "category": "Paketlər",
+    "profileLink": "Profil məlumatlarım",
+    "exit": "Çıxış",
+    "followus": "Bizi izləyin",
+    "forcall": "Zəng üçün"
+  }
+}

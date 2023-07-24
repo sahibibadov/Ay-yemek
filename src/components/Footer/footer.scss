@@ -34,6 +34,7 @@
       font-size: 18px;
       transition: color 0.2s;
       position: relative;
+      text-transform: capitalize;
       white-space: nowrap;
       transition: all 0.25s;
       &:hover {

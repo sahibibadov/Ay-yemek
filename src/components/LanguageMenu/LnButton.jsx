@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { map } from "lodash";
 import { toggleOpen, close, setSelected } from "../../redux/languageSlice";
+import { useTranslation } from "react-i18next";
 
 const WrapperDiv = styled.div`
   display: grid;
@@ -38,6 +39,7 @@ const Dropdown = styled.div`
 `;
 const ButtonSel = styled.button`
   display: block;
+  text-transform: capitalize;
   border: 0;
   background: transparent;
   outline: 0;
@@ -74,13 +76,19 @@ export const LnButton = () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
+
+  const { t, i18n } = useTranslation();
+  const handleChangeLang = async (item) => {
+    await i18n.changeLanguage(item.lang);
+    await selectFunc(item.lang);
+  };
   return (
     <>
       <WrapperDiv ref={ref} className={open ? "active" : ""}>
         <ButtonSel onClick={openFuc}>{selected}</ButtonSel>
         <Dropdown>
           {map(langButton, (item) => (
-            <ButtonSel key={item.id} onClick={() => selectFunc(item.lang)}>
+            <ButtonSel key={item.id} onClick={() => handleChangeLang(item)}>
               {item.lang}
             </ButtonSel>
           ))}

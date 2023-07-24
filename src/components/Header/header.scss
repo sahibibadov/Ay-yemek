@@ -91,6 +91,7 @@
               white-space: nowrap;
               position: relative;
               padding: 13px;
+              text-transform: capitalize;
               transition: all 0.25s;
             }
             & > button {
@@ -102,6 +103,7 @@
               font-weight: 400;
               cursor: pointer;
               padding: 13px;
+              text-transform: capitalize;
               transition: all 0.25s;
             }
             & > :is(button, a):hover {
@@ -175,6 +177,7 @@
   }
   & a {
     color: #00072d;
+    text-transform: capitalize;
     font-weight: 400;
     font-size: 18px;
     transition: color 0.2s;

@@ -4,6 +4,7 @@ import { BsTelephone, BsWhatsapp, BsInstagram } from "react-icons/bs";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const HeaderStyleCont = styled.div`
   position: fixed;
@@ -75,6 +76,8 @@ const Headercontent = styled.div`
 `;
 
 export const HeaderContact = () => {
+  const { t } = useTranslation("translation", { keyPrefix: "navlink" });
+
   // scrollda gizlenmesi
   const [hide, setHide] = useState(false);
   const hideHeaderContact = () => {
@@ -91,7 +94,7 @@ export const HeaderContact = () => {
       <HeaderStyle>
         <Headercontent>
           <div>
-            <span>Zəng üçün</span>
+            <span>{t("forcall")}</span>
             <BsTelephone size={18} />
             <span>+99412 409 40 94 +99412 409 40 94</span>
           </div>
@@ -102,7 +105,7 @@ export const HeaderContact = () => {
         </Headercontent>
         <Headercontent>
           <div>
-            <span>Bizi izləyin:</span>
+            <span>{t("followus")}:</span>
           </div>
           <div>
             <Link>

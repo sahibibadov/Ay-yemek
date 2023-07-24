@@ -4,23 +4,26 @@ import { Link } from "react-router-dom";
 import { FaInstagram, FaTwitter, FaFacebookF } from "react-icons/fa";
 import "./footer.scss";
 import Logo from "../../../public/logo.png";
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
+  const { t } = useTranslation("translation", { keyPrefix: "navlink" });
+
   const navLink = [
     {
-      title: "Ana səhifə",
+      title: t("home"),
       link: "/",
     },
     {
-      title: "Haqqımızda",
+      title: t("about"),
       link: "about",
     },
     {
-      title: "Paketlər",
+      title: t("category"),
       link: "category",
     },
     {
-      title: "Əlaqə",
+      title: t("contact"),
       link: "contact",
     },
     {

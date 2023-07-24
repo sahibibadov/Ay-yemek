@@ -1,0 +1,17 @@
+{
+  "homePage": {
+    "title": " YOU DON'T THINK ABOUT FOOD WE PREPARE FOR YOU",
+    "description": " Meal plans to fit your lifestyle and budget",
+    "button": "About us"
+  },
+  "navlink": {
+    "home": "home",
+    "about": "about",
+    "contact": "contact",
+    "category": "category",
+    "profileLink": "My profile information",
+    "exit": "exit",
+    "followus": "follow us",
+    "forcall": "for a call"
+  }
+}
