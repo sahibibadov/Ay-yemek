@@ -19,7 +19,7 @@ export const HomeTitle = () => {
       </div>
       <div className="Home-title__right">
         <img src={HomePng} alt="hometitleimg" />
-        <img src={ellips} alt="ellips" />
+        {/* <img src={ellips} alt="ellips" /> */}
       </div>
     </div>
   );
