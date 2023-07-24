@@ -8,17 +8,16 @@ import { setUsers } from "../../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
-import { allDataClear } from "../../redux/cartSlice";
 
 export const Modal = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isOpen } = useSelector((state) => state.modal);
+
   const handleLogout = async () => {
     try {
       dispatch(setUsers(null));
       await signOut(auth);
-      await dispatch(allDataClear());
+
       toast.success("success logout", {
         position: "top-right",
         duration: 3000,
