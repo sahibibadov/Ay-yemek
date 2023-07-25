@@ -3,8 +3,9 @@ import manat from "../../../public/manat.svg";
 import payment from "../../../public/payment.svg";
 
 import { Button } from "../../components";
+import { memo } from "react";
 
-export const DayLinkItems = ({ item }) => {
+export const DayLinkItems = memo(({ item }) => {
   return (
     <>
       <div className="day_pages_buttons_item">
@@ -19,4 +20,4 @@ export const DayLinkItems = ({ item }) => {
       </div>
     </>
   );
-};
+});

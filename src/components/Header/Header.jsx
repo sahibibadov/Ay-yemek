@@ -1,6 +1,6 @@
 import { Container, HmButton, LnButton, LnButton1 } from "../../components";
 import { NavLink, Link } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { map } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -27,9 +27,9 @@ export const Header = () => {
   // cartin icindeki itemlerin sayi
   const cartLenght = cart.length;
   // hamburgermenunun klikle acilmasi
-  const handleToggleMenu = () => {
+  const handleToggleMenu = useCallback(() => {
     setOpen((pre) => !pre);
-  };
+  });
   // routlara klikde menunun baglanmasi ver hamburger butonun deyismesi
   const handleCloseMenu = () => {
     setOpen(false);

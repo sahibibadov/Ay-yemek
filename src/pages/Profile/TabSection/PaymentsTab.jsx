@@ -90,7 +90,7 @@ const EmptyPayment = styled.h3`
 export const PaymentsTab = () => {
   const { paymentCart } = useSelector((state) => state.cart);
   // const [day, totalPrice, category, orderDates] = paymentCart;
-  console.log("paymentCart", paymentCart);
+
   return (
     <PaymentWrapper
       initial={{ opacity: 0 }}

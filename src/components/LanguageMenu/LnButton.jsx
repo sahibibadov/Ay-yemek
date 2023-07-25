@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { map } from "lodash";
 import { toggleOpen, close, setSelected } from "../../redux/languageSlice";
 import { useTranslation } from "react-i18next";
+import { useCallback } from "react";
+import { memo } from "react";
 
 const WrapperDiv = styled.div`
   display: grid;
@@ -51,18 +53,21 @@ const ButtonSel = styled.button`
   }
 `;
 
-export const LnButton = () => {
+export const LnButton = memo(() => {
   const dispatch = useDispatch();
   const { open, selected, langButton } = useSelector((state) => state.lang);
   const ref = useRef(null);
 
-  const openFuc = () => {
+  const openFuc = useCallback(() => {
     dispatch(toggleOpen());
-  };
-  const selectFunc = (item) => {
-    dispatch(setSelected(item));
-    dispatch(close());
-  };
+  }, [dispatch]);
+  const selectFunc = useCallback(
+    (item) => {
+      dispatch(setSelected(item));
+      dispatch(close());
+    },
+    [dispatch],
+  );
   useEffect(() => {
     // kenara klikde menunun baglanmasi
     const handleOutsideClick = (event) => {
@@ -77,11 +82,15 @@ export const LnButton = () => {
     };
   }, []);
 
-  const { t, i18n } = useTranslation();
-  const handleChangeLang = async (item) => {
-    await i18n.changeLanguage(item.lang);
-    await selectFunc(item.lang);
-  };
+  const { i18n } = useTranslation();
+  const handleChangeLang = useCallback(
+    async (item) => {
+      await i18n.changeLanguage(item.lang);
+      await selectFunc(item.lang);
+    },
+    [i18n, selectFunc],
+  );
+
   return (
     <>
       <WrapperDiv ref={ref} className={open ? "active" : ""}>
@@ -96,4 +105,4 @@ export const LnButton = () => {
       </WrapperDiv>
     </>
   );
-};
+});

@@ -2,8 +2,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slider.scss";
+import { memo } from "react";
 
-export const CustomSlider = ({ children, comp }) => {
+export const CustomSlider = memo(({ children, comp }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -38,4 +39,4 @@ export const CustomSlider = ({ children, comp }) => {
     ],
   };
   return <Slider {...settings}>{children}</Slider>;
-};
+});

@@ -160,9 +160,9 @@ const cartSlice = createSlice({
 });
 
 //
-export const selectCartItemsByType = (state, type) => {
-  return state.cart.cart.filter((item) => item.type === type);
-};
+// export const selectCartItemsByType = (state, type) => {
+//   return state.cart?.cart?.filter((item) => item.type === type);
+// };
 export const {
   addToCart,
   removeItem,

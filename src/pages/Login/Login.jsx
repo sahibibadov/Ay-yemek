@@ -13,7 +13,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import resolverValidator from "../../validation/login";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import "./login.scss";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
@@ -26,40 +26,46 @@ export const Login = () => {
   const dispatch = useDispatch();
   const [pasError, setPasError] = useState("");
   const [mailError, setMailError] = useState("");
+  const [allError, setAllError] = useState("");
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     resolver: resolverValidator, //yup scheamlari yaziriq
   });
 
-  const onHandleLogin = async (data) => {
-    if (!data.email || !data.password) {
-      return;
-    }
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password,
-      );
-      await dispatch(setUsers(userCredential.user));
-      await navigate("/", { replace: true });
-      toast.success("success login", {
-        position: "top-right",
-        duration: 3000,
-      });
-    } catch (error) {
-      console.log(error);
-      const errorCode = error?.code;
-      if (errorCode === "auth/wrong-password") {
-        setPasError("yanlis parola");
-      } else if (errorCode === "auth/user-not-found") {
-        setMailError("yanlis e-posta");
+  const onHandleLogin = useCallback(
+    async (data) => {
+      // isvalid ile inputlarin bow olmadigin yoxlayiriq
+      if (!isValid) {
+        return;
       }
-    }
-  };
+      try {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          data.email,
+          data.password,
+        );
+        await dispatch(setUsers(userCredential.user));
+        await navigate("/", { replace: true });
+        toast.success("success login", {
+          position: "top-right",
+          duration: 3000,
+        });
+      } catch (error) {
+        const errorCode = error?.code;
+        if (errorCode === "auth/wrong-password") {
+          setPasError("yanlis parola");
+        } else if (errorCode === "auth/user-not-found") {
+          setMailError("yanlis e-posta");
+        } else {
+          setAllError(error.message);
+        }
+      }
+    },
+    [auth, dispatch, navigate, isValid, setMailError, setPasError, setAllError],
+  );
 
   return (
     <>
@@ -91,6 +97,7 @@ export const Login = () => {
               onSubmit={handleSubmit(onHandleLogin)}
               noValidate
             >
+              {allError && <ErrorMessage>{allError}</ErrorMessage>}
               <div>
                 <Label errors={errors?.email}>E-poçt </Label>
                 <Input

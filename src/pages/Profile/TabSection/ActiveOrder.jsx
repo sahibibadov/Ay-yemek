@@ -5,7 +5,7 @@ import { Headline, Paragraf, SubmitButton } from "../../../components";
 import { useNavigate } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import { map } from "lodash";
-import { removeItem, selectCartItemsByType } from "../../../redux/cartSlice";
+import { removeItem } from "../../../redux/cartSlice";
 import { FaTrash } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -15,12 +15,10 @@ export const ActiveOrder = () => {
   const { cart, orderDates, totalPrice } = useSelector((state) => state.cart);
 
   // cartda itemlari tiplerine gore filer edib gostermek ucun
-  const anayemek = useSelector((state) =>
-    selectCartItemsByType(state.cart, "ana yemək"),
-  );
-  const garnir = useSelector((state) => selectCartItemsByType(state.cart, "garnir"));
-  const icki = useSelector((state) => selectCartItemsByType(state.cart, "içki"));
-  const salat = useSelector((state) => selectCartItemsByType(state.cart, "salat"));
+  // const anayemek = useSelector((state) => selectCartItemsByType(state, "ana yemək"));
+  // const garnir = useSelector((state) => selectCartItemsByType(state, "garnir"));
+  // const icki = useSelector((state) => selectCartItemsByType(state, "içki"));
+  // const salat = useSelector((state) => selectCartItemsByType(state, "salat"));
 
   return (
     <motion.div
@@ -44,62 +42,14 @@ export const ActiveOrder = () => {
             tarixi üçün keçərlidir
           </Paragraf>
           <div className="profile__pages__activeorder__cart__items">
-            {anayemek.length > 0 && (
-              <div>
-                <h5>ana yemək</h5>
-                {map(anayemek, (item) => (
-                  <p key={item.id}>
-                    <span>{item.title}</span>
-                    <FaTrash
-                      size={14}
-                      onClick={() => dispatch(removeItem(item.id))}
-                    />
-                  </p>
-                ))}
+            {map(cart, (item) => (
+              <div key={item.id}>
+                <p>
+                  <span>{item.title}</span>
+                  <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
+                </p>
               </div>
-            )}
-            {garnir.length > 0 && (
-              <div>
-                <h5>garnir</h5>
-                {map(garnir, (item) => (
-                  <p key={item.id}>
-                    <span>{item.title}</span>
-                    <FaTrash
-                      size={14}
-                      onClick={() => dispatch(removeItem(item.id))}
-                    />
-                  </p>
-                ))}
-              </div>
-            )}
-            {icki.length > 0 && (
-              <div>
-                <h5>icki</h5>
-                {map(icki, (item) => (
-                  <p key={item.id}>
-                    <span>{item.title}</span>
-                    <FaTrash
-                      size={14}
-                      onClick={() => dispatch(removeItem(item.id))}
-                    />
-                  </p>
-                ))}
-              </div>
-            )}
-            {salat.length > 0 && (
-              <div>
-                <h5>icki</h5>
-                {map(salat, (item) => (
-                  <p key={item.id}>
-                    <span>{item.title}</span>
-                    <FaTrash
-                      size={14}
-                      onClick={() => dispatch(removeItem(item.id))}
-                    />
-                  </p>
-                ))}
-              </div>
-            )}
+            ))}
           </div>
 
           <p className="profile__pages__activeorder__cart__total">

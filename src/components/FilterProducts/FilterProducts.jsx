@@ -7,18 +7,23 @@ import { useParams } from "react-router-dom";
 import add from "../../../public/add.svg";
 import { addToCart, addToPackage, addToCategory } from "../../redux/cartSlice";
 import { AnimatePresence, motion } from "framer-motion";
+import { useCallback } from "react";
 
 export const FilterProducts = () => {
   const { categoryUrl, day } = useParams();
+  const { filteredProducts } = useSelector((state) => state.categoryProductsSlice);
   const dispatch = useDispatch();
 
-  const addCart = (item) => {
-    dispatch(addToCart(item));
-    dispatch(addToPackage(day));
-    dispatch(addToCategory(categoryUrl));
-  };
+  const addCart = useCallback(
+    (item) => {
+      dispatch(addToCart(item));
+      dispatch(addToPackage(day));
+      dispatch(addToCategory(categoryUrl));
+    },
+    [dispatch, categoryUrl, day],
+  );
 
-  const changeUrlColor = (url) => {
+  const changeUrlColor = useCallback((url) => {
     switch (url) {
       case "Ekonom":
         return "#2BAD3F";
@@ -30,12 +35,12 @@ export const FilterProducts = () => {
         return "#F75C03";
         break;
       default:
-        break;
+        return "";
     }
-  };
+  });
 
   const colorUrl = changeUrlColor(categoryUrl);
-  const { filteredProducts } = useSelector((state) => state.categoryProductsSlice);
+
   return (
     <>
       <AnimatePresence>
@@ -62,7 +67,7 @@ export const FilterProducts = () => {
               {day && (
                 <button onClick={() => addCart(item)} className="add_to_cart">
                   <img src={add} alt="addcart" />
-                  <span> Əlavə et</span>
+                  <span>Əlavə et</span>
                 </button>
               )}
               <strong>

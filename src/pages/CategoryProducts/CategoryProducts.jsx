@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { map } from "lodash";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import "./categoryproducts.scss";
 import {
   DayLinkItems,
@@ -28,10 +28,10 @@ const dayLinkItems = [
   { id: 4, title: "30 günlük", price: "70", link: "30" },
 ];
 export const CategoryProducts = () => {
-  const { categoryUrl, day } = useParams();
+  const { categoryUrl } = useParams();
   const dispatch = useDispatch();
   const { selectedType } = useSelector((state) => state.categoryProductsSlice);
-  const { dayPackage, category } = useSelector((state) => state.cart);
+  const { category } = useSelector((state) => state.cart);
 
   // sehife ilk acildiginda ana yemekleri gostermek ve filter etmek(urlden gelen categoriUrlsi ile meali filter etmek)
   useEffect(() => {
@@ -49,13 +49,14 @@ export const CategoryProducts = () => {
       dispatch(clearCart());
     }
   }, [categoryUrl, category]);
+
   // butona klikde active klasin vermek ve type gore filter etmek
   const handleTypeChange = (type) => {
     dispatch(setSelected(type));
   };
 
   // sehifede urldeki categoriye gore Headline reng vermek
-  const changeUrlColor = (url) => {
+  const changeUrlColor = useCallback((url) => {
     switch (url) {
       case "Ekonom":
         return "green";
@@ -67,9 +68,9 @@ export const CategoryProducts = () => {
         return "primary";
         break;
       default:
-        break;
+        return "";
     }
-  };
+  });
   const colorUrl = changeUrlColor(categoryUrl);
 
   return (

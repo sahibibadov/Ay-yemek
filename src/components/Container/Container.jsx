@@ -5,6 +5,6 @@ export const Container = styled.div`
   margin-inline: auto;
 
   @media screen and (max-width: 700px) {
-    width: min(100% - 3.25rem, 1340px);
+    width: min(100% - 4.25rem, 1340px);
   }
 `;

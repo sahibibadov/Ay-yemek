@@ -7,12 +7,12 @@ import {
   SubmitButton,
   AuthImage,
 } from "../../components";
-import { setUsers } from "../../redux/userSlice";
+
 import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import resolverValidator from "../../validation/register";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./register.scss";
@@ -23,45 +23,61 @@ import { motion } from "framer-motion";
 export const Register = () => {
   const [pasError, setPasError] = useState("");
   const [mailError, setMailError] = useState("");
+  const [allError, setAllError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     resolver: resolverValidator, //yup scheamlari yaziriq
   });
 
-  const onRegister = async (data) => {
-    if (!data.email || !data.password) {
-      return;
-    }
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password,
-      );
-      const user = userCredential.user;
-      await updateProfile(user, { displayName: `${data.name} ${data.surname}` });
-      await dispatch(setUsers(user));
-      await navigate("/login");
-      toast.success("success register", {
-        position: "top-right",
-        duration: 3000,
-      });
-    } catch (error) {
-      console.log(error);
-      const errorCode = error?.code;
-
-      if (errorCode === "auth/wrong-password") {
-        setPasError("yanlis parola");
-      } else if (errorCode === "auth/user-not-found") {
-        setMailError("yanlis e-posta");
+  const onRegister = useCallback(
+    async (data) => {
+      if (!isValid) {
+        return;
       }
-    }
-  };
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          data.email,
+          data.password,
+        );
+        const user = userCredential.user;
+        await updateProfile(user, { displayName: `${data.name} ${data.surname}` });
+
+        await navigate("/login");
+        toast.success("success register", {
+          position: "top-right",
+          duration: 3000,
+        });
+      } catch (error) {
+        const errorCode = error?.code;
+
+        if (errorCode === "auth/wrong-password") {
+          setPasError("yanlis parola");
+        } else if (errorCode === "auth/user-not-found") {
+          setMailError("yanlis e-posta");
+        } else {
+          setAllError(error.message);
+        }
+      }
+    },
+    [
+      auth,
+      dispatch,
+      navigate,
+      isValid,
+      pasError,
+      mailError,
+      allError,
+      setAllError,
+      setMailError,
+      setPasError,
+    ],
+  );
 
   return (
     <>
@@ -91,6 +107,7 @@ export const Register = () => {
               noValidate
             >
               <div>
+                {allError && <ErrorMessage>{allError}</ErrorMessage>}
                 <div className="register__form__username">
                   <div>
                     <Label errors={errors.name}>Ad </Label>

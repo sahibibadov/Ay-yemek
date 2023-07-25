@@ -6,39 +6,29 @@ import { Input } from "../uikits";
 import { useNavigate } from "react-router-dom";
 import { map } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
-import { removeItem, selectCartItemsByType } from "../../redux/cartSlice";
+import { removeItem } from "../../redux/cartSlice";
 import { closeCart } from "../../redux/modalSlice";
 import { FaTrash } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
+import { memo, useCallback } from "react";
 
-const Li = ({ children }) => (
-  <motion.li initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-    {children}
-  </motion.li>
-);
-const H5 = ({ children }) => (
-  <motion.h5 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-    {children}
-  </motion.h5>
-);
-
-export const Cart = () => {
+export const Cart = memo(() => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { totalPrice, cart } = useSelector((state) => state.cart);
   const cartLength = cart.length;
   // cartda itemlari tiplerine gore filer edib gostermek ucun
-  const anayemek = useSelector((state) => selectCartItemsByType(state, "ana yemək"));
-  const garnir = useSelector((state) => selectCartItemsByType(state, "garnir"));
-  const icki = useSelector((state) => selectCartItemsByType(state, "içki"));
-  const salat = useSelector((state) => selectCartItemsByType(state, "salat"));
+  // const anayemek = useSelector((state) => selectCartItemsByType(state, "ana yemək"));
+  // const garnir = useSelector((state) => selectCartItemsByType(state, "garnir"));
+  // const icki = useSelector((state) => selectCartItemsByType(state, "içki"));
+  // const salat = useSelector((state) => selectCartItemsByType(state, "salat"));
 
   // klikde odenis rourtuna datani oturmek
-  const handlePaymentButton = () => {
+  const handlePaymentButton = useCallback(() => {
     navigate("/payment");
     dispatch(closeCart());
-  };
+  }, [navigate, dispatch]);
 
   //  hansi gune kimi kecerli oldugunu gostermek
   dayjs.extend(localeData);
@@ -68,36 +58,16 @@ export const Cart = () => {
         <h3>Seçilən yeməklər</h3>
 
         <AnimatePresence>
-          {anayemek.length > 0 && <H5>ana yemek</H5>}
-          {map(anayemek, (item) => (
-            <Li key={item.id}>
+          {map(cart, (item) => (
+            <motion.li
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              key={item.id}
+            >
               <span>{item.title}</span>
               <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
-            </Li>
-          ))}
-
-          {garnir.length > 0 && <H5>garnir</H5>}
-          {map(garnir, (item) => (
-            <Li key={item.id}>
-              <span>{item.title}</span>
-              <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
-            </Li>
-          ))}
-
-          {icki.length > 0 && <H5>icki</H5>}
-          {map(icki, (item) => (
-            <Li key={item.id}>
-              <span>{item.title}</span>
-              <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
-            </Li>
-          ))}
-
-          {salat.length > 0 && <H5>salat</H5>}
-          {map(salat, (item) => (
-            <Li key={item.id}>
-              <span>{item.title}</span>
-              <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
-            </Li>
+            </motion.li>
           ))}
         </AnimatePresence>
 
@@ -114,4 +84,15 @@ export const Cart = () => {
       </ul>
     </div>
   );
-};
+});
+// {map(cart, (item) => (
+//   <motion.li
+//     initial={{ opacity: 0 }}
+//     animate={{ opacity: 1 }}
+//     exit={{ opacity: 0 }}
+//     key={item.id}
+//   >
+//     <span>{item.title}</span>
+//     <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
+//   </motion.li>
+// ))}

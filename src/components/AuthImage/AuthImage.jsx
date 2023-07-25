@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Authimg from "../../../public/authimage.png";
+import { memo } from "react";
 
 const ImgWrapper = styled.div`
   background: linear-gradient(0deg, rgba(247, 92, 3, 0.28), rgba(247, 92, 3, 0.28)),
@@ -42,7 +43,7 @@ const Title = styled.div`
   }
 `;
 
-export const AuthImage = () => {
+export const AuthImage = memo(() => {
   return (
     <ImgWrapper>
       <Title>
@@ -53,4 +54,4 @@ export const AuthImage = () => {
       </Title>
     </ImgWrapper>
   );
-};
+});

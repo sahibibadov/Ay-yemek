@@ -14,7 +14,7 @@ export const CategorySilder = () => {
       <Paragraf size="lg" color="secondary">
         Sizin həyat tərzinizə və büdcənizə uyğun yemək planları
       </Paragraf>
-      <Link to="category">Hamısına bax</Link>
+      <Link to="/category">Hamısına bax</Link>
 
       <CustomSlider comp={3}>
         {map(categorys, (item) => (

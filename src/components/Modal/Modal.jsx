@@ -8,12 +8,13 @@ import { setUsers } from "../../redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import toast from "react-hot-toast";
+import { useCallback } from "react";
 
 export const Modal = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     try {
       dispatch(setUsers(null));
       await signOut(auth);
@@ -27,7 +28,7 @@ export const Modal = () => {
     } catch (error) {
       console.log("Hata:", error);
     }
-  };
+  }, [dispatch, navigate]);
   return (
     <motion.div
       initial={{ opacity: 0 }}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,8 +8,10 @@ import { Label } from "../uikits";
 import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData";
 import az from "dayjs/locale/az";
+import { useCallback } from "react";
+import { useMemo } from "react";
 
-export const Datepicker = () => {
+export const Datepicker = memo(() => {
   const dispatch = useDispatch();
   const { dayPackage } = useSelector((state) => state.cart);
   // react-datepicker ucun stateler
@@ -17,7 +19,7 @@ export const Datepicker = () => {
   const [endDate, setEndDate] = useState(null);
 
   // sehife ilk yaranda daypackageden gelen gune gore baslangic ve son tarixin secilmesi
-  useEffect(() => {
+  const memoizaDate = useMemo(() => {
     const today = new Date();
     const futureDate = new Date(today);
     futureDate.setDate(today.getDate() + +dayPackage - 1);
@@ -25,11 +27,11 @@ export const Datepicker = () => {
     setEndDate(futureDate);
   }, [dayPackage]);
   //  react-datepickerin funksiyasi
-  const handleDateChange = (dates) => {
+  const handleDateChange = useCallback((dates) => {
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
-  };
+  }, []);
   // local datei dayjsden getirmek
   dayjs.extend(localeData);
   dayjs.locale("az");
@@ -75,4 +77,4 @@ export const Datepicker = () => {
       </span>
     </div>
   );
-};
+});

@@ -1,9 +1,8 @@
-import React from "react";
 import { map } from "lodash";
 import ReactPaginate from "react-paginate";
 import { categorys } from "../../data/category";
 import { CategoryCard } from "../CategoryCard/CategoryCard";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { motion } from "framer-motion";
 
@@ -14,10 +13,10 @@ export const CategoryItems = () => {
   const currentItems = categorys.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(categorys.length / itemsPerPage);
 
-  const handlePageClick = (event) => {
+  const handlePaginationClick = useCallback((event) => {
     const newOffset = (event.selected * itemsPerPage) % categorys.length;
     setItemOffset(newOffset);
-  };
+  }, []);
   const containerAn = {
     visible: {
       transition: {
@@ -43,7 +42,7 @@ export const CategoryItems = () => {
         className="paginate"
         breakLabel="..."
         nextLabel={<GrFormNext />}
-        onPageChange={handlePageClick}
+        onPageChange={handlePaginationClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
         previousLabel={<GrFormPrevious />}

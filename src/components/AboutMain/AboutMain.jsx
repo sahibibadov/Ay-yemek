@@ -8,8 +8,7 @@ export const AboutMain = () => {
         Haqqımızda
       </Headline>
       <Paragraf size="lg" color="secondary">
-        Lorem ipsum dolor sit amet consectetur adipiscing elit interdum
-        ullamcorper .
+        Lorem ipsum dolor sit amet consectetur adipiscing elit interdum ullamcorper .
       </Paragraf>
       <div className="about-main__images">
         <img src="aboutimg1.jpg" alt="aboutimg1" />
@@ -21,14 +20,14 @@ export const AboutMain = () => {
         </Headline>
         <p>
           It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using.
+          readable content of a page when looking at its layout. The point of using
+          Lorem Ipsum is that it has a more-or-less normal distribution of letters,
+          as opposed to using.
           <br />
-          <br /> Content here', making it look like readable English. Many
-          desktop publishing packages and web page editors now use Lorem Ipsum
-          as their default model text, and a search for 'lorem ipsum' will
-          uncover many web sites still in their infancy.{" "}
+          <br /> Content here', making it look like readable English. Many desktop
+          publishing packages and web page editors now use Lorem Ipsum as their
+          default model text, and a search for 'lorem ipsum' will uncover many web
+          sites still in their infancy.{" "}
         </p>
       </div>
     </div>

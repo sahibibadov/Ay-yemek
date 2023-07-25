@@ -1,12 +1,11 @@
 import "./succespage.scss";
 import { Button, Section } from "../../components";
 import check from "../../../public/check.svg";
-import { useNavigate } from "react-router-dom";
+
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 
 export const SuccesPage = () => {
-  const navigate = useNavigate();
   return (
     <>
       <Helmet>

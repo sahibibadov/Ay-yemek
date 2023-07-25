@@ -1,5 +1,5 @@
 import { Headline, Section, Profiletab } from "../../components";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { map } from "lodash";
 import { motion } from "framer-motion";
 import "./profile.scss";
@@ -50,9 +50,10 @@ export const Profile = () => {
     },
   ];
   // klikde active klasin vermek
-  const handleTab = (id) => {
+  const handleTab = useCallback((id) => {
     setActiveTab(id);
-  };
+  }, []);
+
   return (
     <>
       <Helmet>

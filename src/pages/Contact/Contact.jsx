@@ -26,9 +26,7 @@ export const Contact = () => {
     shouldUseNativeValidation: false, //html default validatorunu baglamaq(default:false)
   });
 
-  const onSubmint = (e) => {
-    console.log(e);
-  };
+  const onSubmint = (e) => {};
   return (
     <>
       <Helmet>

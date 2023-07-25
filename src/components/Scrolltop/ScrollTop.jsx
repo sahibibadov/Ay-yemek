@@ -47,21 +47,24 @@ const TopButton = styled.button`
 
 export const ScrollTop = () => {
   // butona klikde yuxari scroll
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
   // asagi scrollda butonun gorsenmesi
   const [hide, setHide] = useState(false);
+
   const hideScrollButton = useCallback(() => {
     let windowHeight = window.scrollY;
     windowHeight > 500 ? setHide(true) : setHide(false);
   }, [hide, setHide]);
+
   useEffect(() => {
     window.addEventListener("scroll", hideScrollButton);
     return () => {
       window.removeEventListener("scroll", hideScrollButton);
     };
   }, []);
+
   return (
     <ScrollContainer>
       <TopButton hide={hide.toString()} onClick={scrollToTop}>

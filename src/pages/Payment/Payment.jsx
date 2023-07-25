@@ -12,18 +12,17 @@ import { addPaymentCart } from "../../redux/cartSlice";
 import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData";
 import az from "dayjs/locale/az";
+import { useCallback } from "react";
 
 export const Payment = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { category, dayPackage, totalPrice, orderDates } = useSelector(
-    (state) => state.cart,
-  );
+  const { category, dayPackage, totalPrice } = useSelector((state) => state.cart);
   const { users } = useSelector((state) => state.users);
   const user = JSON.parse(users);
 
-  const changeUrlColor = (url) => {
+  const changeUrlColor = useCallback((url) => {
     switch (url) {
       case "Ekonom":
         return "#2BAD3F";
@@ -35,9 +34,9 @@ export const Payment = () => {
         return "#F75C03";
         break;
       default:
-        break;
+        return "";
     }
-  };
+  }, []);
   const colorUrl = changeUrlColor(category);
 
   // payment carta tarixi ekleme
@@ -46,7 +45,7 @@ export const Payment = () => {
   const startCurrentDate = dayjs().format("DD/MM/YYYY");
   const endCurrentDate = dayjs().add(dayPackage, "day").format("DD/MM/YYYY");
 
-  const handlePayment = async () => {
+  const handlePayment = useCallback(async () => {
     try {
       if (user) {
         await dispatch(
@@ -69,7 +68,17 @@ export const Payment = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [
+    user,
+    dispatch,
+    category,
+    dayPackage,
+    totalPrice,
+    startCurrentDate,
+    endCurrentDate,
+    navigate,
+  ]);
+
   return (
     <>
       <Helmet>
@@ -86,6 +95,7 @@ export const Payment = () => {
             <div className="payment__content__img">
               <img src="logo.png" alt="logo" />
             </div>
+
             <button onClick={() => navigate(-1)} className="return__button"></button>
 
             <Headline color="primary" level={1}>

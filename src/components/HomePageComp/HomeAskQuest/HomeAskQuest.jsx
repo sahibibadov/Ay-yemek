@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Accordion, AccordionItem as Item } from "@szhsin/react-accordion";
 import { Headline, Paragraf, AccordionItem } from "../../../components";
 import { map, slice } from "lodash";
@@ -8,9 +8,10 @@ import "./homequestion.scss";
 
 export const HomeAskQuest = () => {
   const [showAll, setShowAll] = useState(false);
-  const toggleQuest = () => {
+  const toggleQuest = useCallback(() => {
     setShowAll((prev) => !prev);
-  };
+  });
+
   return (
     <div className="homequest">
       <Headline level={1} color="secondary">
