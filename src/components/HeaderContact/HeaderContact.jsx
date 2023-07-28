@@ -6,6 +6,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+
 const HeaderStyleCont = styled.div`
   position: fixed;
   z-index: 999;
@@ -29,6 +30,8 @@ const HeaderStyleCont = styled.div`
     height: auto;
   }
 `;
+
+
 const HeaderStyle = styled.div`
   width: min(100% - 6.25rem, 1340px);
   height: 52px;
@@ -48,20 +51,20 @@ const HeaderStyle = styled.div`
     }
   }
 `;
+
+
 const Headercontent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
   transition: all 0.3;
-
   & > div {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
   }
-
   & span {
     font-weight: 400;
     font-size: 15px;
@@ -69,13 +72,14 @@ const Headercontent = styled.div`
     color: #ededed;
     white-space: nowrap;
   }
-
   & svg path {
     color: #ededed;
   }
 `;
 
+
 export const HeaderContact = () => {
+
   const { t } = useTranslation("translation", { keyPrefix: "navlink" });
 
   // scrollda gizlenmesi
@@ -89,9 +93,12 @@ export const HeaderContact = () => {
     window.addEventListener("scroll", hideHeaderContact);
     return () => window.removeEventListener("scroll", hideHeaderContact);
   }, []);
+
+
   return (
     <HeaderStyleCont className={`${hide ? "hiden" : ""}`}>
       <HeaderStyle>
+
         <Headercontent>
           <div>
             <span>{t("forcall")}</span>
@@ -103,6 +110,7 @@ export const HeaderContact = () => {
             <span>info@ay-yemek.az</span>
           </div>
         </Headercontent>
+
         <Headercontent>
           <div>
             <span>{t("followus")}:</span>
@@ -119,6 +127,7 @@ export const HeaderContact = () => {
             </Link>
           </div>
         </Headercontent>
+
       </HeaderStyle>
     </HeaderStyleCont>
   );

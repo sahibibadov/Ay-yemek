@@ -3,16 +3,16 @@ import { NavLink, Link } from "react-router-dom";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { map } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
-
-import { AiOutlineUser } from "react-icons/ai";
-import { RiArrowDropDownLine } from "react-icons/ri";
-import "./header.scss";
-import logo from "../../../public/logo.png";
-import { FiShoppingCart } from "react-icons/fi";
 import { openCart, openModal } from "../../redux/modalSlice";
 import { useTranslation } from "react-i18next";
+import { AiOutlineUser } from "react-icons/ai";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import logo from "../../../public/logo.png";
+import { FiShoppingCart } from "react-icons/fi";
+import "./header.scss";
 
 export const Header = () => {
+
   const { t } = useTranslation("translation", { keyPrefix: "navlink" });
 
   const ref = useRef(null);
@@ -24,12 +24,16 @@ export const Header = () => {
   const { cart } = useSelector((state) => state.cart);
   const parseUser = JSON.parse(users);
 
+
   // cartin icindeki itemlerin sayi
   const cartLenght = cart.length;
+
   // hamburgermenunun klikle acilmasi
   const handleToggleMenu = useCallback(() => {
     setOpen((pre) => !pre);
   });
+
+
   // routlara klikde menunun baglanmasi ver hamburger butonun deyismesi
   const handleCloseMenu = () => {
     setOpen(false);
@@ -38,17 +42,18 @@ export const Header = () => {
       node.checked = false;
     }
   };
-  const hideHeaderContact = () => {
+
+
+  //scrolda headerin altina border vermek
+  const hideHeader = () => {
     let windowHeight = window.scrollY;
     windowHeight > 100 ? setHide(true) : setHide(false);
   };
 
-  // logout butonuna klikde firebaseden sigout olmasi
-
   useEffect(() => {
-    window.addEventListener("scroll", hideHeaderContact);
+    window.addEventListener("scroll", hideHeader);
     return () => {
-      window.removeEventListener("scroll", hideHeaderContact);
+      window.removeEventListener("scroll", hideHeader);
     };
   }, []);
 
@@ -78,10 +83,14 @@ export const Header = () => {
   return (
     <header className={`header ${hide ? "scrollshadow" : ""}`}>
       <Container>
+
         <div className="logo">
           <img src={logo} alt="logo" />
         </div>
+
+
         <nav className={`navbar ${open ? "visible" : ""}`}>
+
           <ul>
             {map(navLink, (item) => (
               <li key={item.id}>
@@ -90,6 +99,7 @@ export const Header = () => {
                 </NavLink>
               </li>
             ))}
+
             <div className="mobile-profile">
               {parseUser ? (
                 <></>
@@ -101,19 +111,26 @@ export const Header = () => {
               )}
             </div>
           </ul>
+
         </nav>
+
         <div className="profile">
           {parseUser ? (
             <div className="profile__info">
+
               <div className="profile__name">
+
                 <AiOutlineUser size={28} color="#F75C03" />
                 <p>{parseUser.displayName}</p>
                 <RiArrowDropDownLine size={28} color="#0e6ba8" />
+
                 <div className="profile__name__dropmenu">
                   <Link to="profile">{t("profileLink")}</Link>
                   <button onClick={() => dispatch(openModal())}>{t("exit")} </button>
                 </div>
+
               </div>
+
             </div>
           ) : (
             <>
@@ -121,12 +138,15 @@ export const Header = () => {
               <Link to="register">Qeydiyyat</Link>
             </>
           )}
+
           <div onClick={() => dispatch(openCart())} className="cart_icon">
             <span>{cartLenght}</span>
             <FiShoppingCart color="#F75C03" size={28} />
           </div>
+
           <LnButton />
           <HmButton ref={ref} handleToggleMenu={handleToggleMenu} />
+
         </div>
       </Container>
     </header>

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useCallback } from "react";
 import { memo } from "react";
 
+
 const WrapperDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -35,10 +36,14 @@ const WrapperDiv = styled.div`
     }
   }
 `;
+
+
 const Dropdown = styled.div`
   display: grid;
   transition: all 0.3s;
 `;
+
+
 const ButtonSel = styled.button`
   display: block;
   text-transform: capitalize;
@@ -53,14 +58,20 @@ const ButtonSel = styled.button`
   }
 `;
 
+
 export const LnButton = memo(() => {
+
+  const { i18n } = useTranslation();
   const dispatch = useDispatch();
   const { open, selected, langButton } = useSelector((state) => state.lang);
   const ref = useRef(null);
 
+
   const openFuc = useCallback(() => {
     dispatch(toggleOpen());
   }, [dispatch]);
+
+
   const selectFunc = useCallback(
     (item) => {
       dispatch(setSelected(item));
@@ -68,6 +79,8 @@ export const LnButton = memo(() => {
     },
     [dispatch],
   );
+
+
   useEffect(() => {
     // kenara klikde menunun baglanmasi
     const handleOutsideClick = (event) => {
@@ -75,6 +88,7 @@ export const LnButton = memo(() => {
         dispatch(close());
       }
     };
+
     document.addEventListener("mousedown", handleOutsideClick);
 
     return () => {
@@ -82,7 +96,8 @@ export const LnButton = memo(() => {
     };
   }, []);
 
-  const { i18n } = useTranslation();
+
+  //dil degisdirme funksiyasi
   const handleChangeLang = useCallback(
     async (item) => {
       await i18n.changeLanguage(item.lang);
@@ -94,7 +109,9 @@ export const LnButton = memo(() => {
   return (
     <>
       <WrapperDiv ref={ref} className={open ? "active" : ""}>
+
         <ButtonSel onClick={openFuc}>{selected}</ButtonSel>
+
         <Dropdown>
           {map(langButton, (item) => (
             <ButtonSel key={item.id} onClick={() => handleChangeLang(item)}>
@@ -102,6 +119,7 @@ export const LnButton = memo(() => {
             </ButtonSel>
           ))}
         </Dropdown>
+
       </WrapperDiv>
     </>
   );

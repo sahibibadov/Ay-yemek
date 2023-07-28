@@ -1,17 +1,19 @@
-import "./information.scss";
 import { useSelector } from "react-redux";
 import { Headline, Input, Label } from "../../../components";
 import { motion } from "framer-motion";
+import "./information.scss";
+
 
 export const Information = () => {
   const { users } = useSelector((state) => state.users);
+  const { paymentCart } = useSelector((state) => state.cart);
   const parseUser = JSON.parse(users);
+
 
   const userName = parseUser?.displayName.split(" ")[0];
   const userSurname = parseUser?.displayName.split(" ")[1];
   const userEmail = parseUser?.email;
 
-  const { paymentCart } = useSelector((state) => state.cart);
 
   return (
     <motion.div
@@ -35,12 +37,57 @@ export const Information = () => {
                 <p>
                   {item.category} ({item.dayPackage} günlük menyu)
                 </p>
+
                 <span>
                   etibarlidir: {item.startCurrentDate} - {item.endCurrentDate}
                 </span>
+
               </div>
             ))}
-            {/* <div className="profile__pages__information__orderDate__item">
+          </>
+        ) : (
+          <p>Seçdiyiniz kateqoriya yoxdur</p>
+        )}
+      </div>
+      <div className="profile__pages__information__content">
+
+        <div>
+          <Label>Ad</Label>
+          <Input type="text" disabled placeholder={userName} />
+        </div>
+
+        <div>
+          <Label>Soyad</Label>
+          <Input type="text" disabled placeholder={userSurname} />
+        </div>
+
+        <div>
+          <Label>Parol</Label>
+          <Input type="password" disabled placeholder="******" />
+        </div>
+
+        <div>
+          <Label>E-poçt</Label>
+          <Input type="email" disabled placeholder={userEmail} />
+        </div>
+
+        <div>
+          <Label>Doğum tarixi</Label>
+          <Input type="text" placeholder="Doğum tarixi" disabled />
+        </div>
+
+        <div>
+          <Label>Ünvan</Label>
+          <Input type="text" disabled placeholder="Ünvan" />
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+
+
+{/* <div className="profile__pages__information__orderDate__item">
               <p>
                 {category} ({dayPackage} günlük menyu)
               </p>
@@ -57,37 +104,3 @@ export const Information = () => {
             >
               paketi yenile
             </Link> */}
-          </>
-        ) : (
-          <p>Seçdiyiniz kateqoriya yoxdur</p>
-        )}
-      </div>
-      <div className="profile__pages__information__content">
-        <div>
-          <Label>Ad</Label>
-          <Input type="text" disabled placeholder={userName} />
-        </div>
-        <div>
-          <Label>Soyad</Label>
-          <Input type="text" disabled placeholder={userSurname} />
-        </div>
-        <div>
-          <Label>Parol</Label>
-          <Input type="password" disabled placeholder="******" />
-        </div>
-        <div>
-          <Label>E-poçt</Label>
-          <Input type="email" disabled placeholder={userEmail} />
-        </div>
-        <div>
-          <Label>Doğum tarixi</Label>
-          <Input type="text" placeholder="Doğum tarixi" disabled />
-        </div>
-        <div>
-          <Label>Ünvan</Label>
-          <Input type="text" disabled placeholder="Ünvan" />
-        </div>
-      </div>
-    </motion.div>
-  );
-};

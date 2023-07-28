@@ -1,5 +1,7 @@
 import { forwardRef } from "react";
 import "./hmbutton.scss";
+
+
 export const HmButton = forwardRef(({ handleToggleMenu }, ref) => {
   return (
     <label className="burger" htmlFor="burger">

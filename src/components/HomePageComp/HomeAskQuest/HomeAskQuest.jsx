@@ -7,13 +7,17 @@ import { items } from "../../../data/questions";
 import "./homequestion.scss";
 
 export const HomeAskQuest = () => {
+
   const [showAll, setShowAll] = useState(false);
+
+
   const toggleQuest = useCallback(() => {
     setShowAll((prev) => !prev);
   });
 
   return (
     <div className="homequest">
+
       <Headline level={1} color="secondary">
         TEZ-TEZ SORUŞULAN SUALLAR
       </Headline>
@@ -22,6 +26,7 @@ export const HomeAskQuest = () => {
       </Paragraf>
 
       <div className="homequest__accordiong">
+
         <Accordion transition transitionTimeout={250}>
           {map(slice(items, 0, 3), ({ header, content, id }) => (
             <AccordionItem header={header} key={id}>
@@ -35,6 +40,7 @@ export const HomeAskQuest = () => {
               </AccordionItem>
             ))}
         </Accordion>
+
         <button onClick={toggleQuest}>
           {showAll ? "Bağla" : "Daha çox yüklə"}
           {showAll ? (

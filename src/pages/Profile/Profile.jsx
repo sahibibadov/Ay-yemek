@@ -1,8 +1,7 @@
 import { Headline, Section, Profiletab } from "../../components";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 import { map } from "lodash";
 import { motion } from "framer-motion";
-import "./profile.scss";
 import lock from "../../../public/profileacion/lock.svg";
 import order from "../../../public/profileacion/order.svg";
 import outarrow from "../../../public/profileacion/outarrow.svg";
@@ -15,9 +14,14 @@ import { ActiveOrder } from "./TabSection/ActiveOrder";
 import { ChangePassword } from "./TabSection/ChangePassword";
 import { PaymentsTab } from "./TabSection/PaymentsTab";
 import { Helmet } from "react-helmet-async";
+import "./profile.scss";
+
+
 export const Profile = () => {
+
   const [activeTab, setActiveTab] = useState(1);
   const dispatch = useDispatch();
+
 
   const profileNavItems = [
     {
@@ -49,6 +53,8 @@ export const Profile = () => {
       content: <PaymentsTab />,
     },
   ];
+
+
   // klikde active klasin vermek
   const handleTab = useCallback((id) => {
     setActiveTab(id);
@@ -83,11 +89,14 @@ export const Profile = () => {
                   </li>
                 ))}
               </ul>
+
               <button onClick={() => dispatch(openModal())} className="logout">
                 <img src={outarrow} alt="outarrow" />
                 Çıxış
               </button>
+
             </nav>
+
             <div className="profile__pages__content">
               {map(profileNavItems, (item) => (
                 <Profiletab key={item.id} id={item.id} activeTab={activeTab}>
@@ -95,6 +104,7 @@ export const Profile = () => {
                 </Profiletab>
               ))}
             </div>
+
           </div>
         </motion.div>
       </Section>

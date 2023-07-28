@@ -13,7 +13,7 @@ export const NotFound = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <Section>NotFound</Section>
+        <Section>404 error. NotFound</Section>
       </motion.div>
     </>
   );

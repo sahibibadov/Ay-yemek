@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData";
 import az from "dayjs/locale/az";
-import "./cart.scss";
 import { Input } from "../uikits";
 import { useNavigate } from "react-router-dom";
 import { map } from "lodash";
@@ -11,10 +10,13 @@ import { closeCart } from "../../redux/modalSlice";
 import { FaTrash } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { memo, useCallback } from "react";
+import "./cart.scss";
 
 export const Cart = memo(() => {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
 
   const { totalPrice, cart } = useSelector((state) => state.cart);
   const cartLength = cart.length;
@@ -30,6 +32,7 @@ export const Cart = memo(() => {
     dispatch(closeCart());
   }, [navigate, dispatch]);
 
+
   //  hansi gune kimi kecerli oldugunu gostermek
   dayjs.extend(localeData);
   dayjs.locale("az");
@@ -37,23 +40,29 @@ export const Cart = memo(() => {
   const currentDay = currentDate.format("D");
   const currentMonth = currentDate.format("MMMM");
 
+
   return (
     <div className="cart-day">
+
       <div className="cart-day__orderday">
         Seçdiyiniz menyu {currentDay} {currentMonth} tarixi üçün keçərlidir
       </div>
+
       <div className="cart-day__time">
         <label>Çatdırılma saatını seçin</label>
         <Input type="time" />
       </div>
+
       <div className="cart-day__map">
         <label>Ünvan</label>
         <Input type="text" placeholder="Adresi daxil edin" />
       </div>
+
       <div className="cart-day__textarea">
         <label>Əlavə qeydiniz?</label>
         <textarea type="textarea" placeholder="Bura yazın" />
       </div>
+
       <ul className="cart-day__product">
         <h3>Seçilən yeməklər</h3>
 
@@ -74,6 +83,7 @@ export const Cart = memo(() => {
         <p>
           Ümumi məbləğ: <strong>{totalPrice}</strong> AZN
         </p>
+
         <button
           className="cart-day__button"
           disabled={cartLength === 0}
@@ -81,6 +91,7 @@ export const Cart = memo(() => {
         >
           Menyunu Təsdiqlə
         </button>
+
       </ul>
     </div>
   );

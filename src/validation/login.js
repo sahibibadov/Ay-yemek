@@ -12,6 +12,7 @@ const schema = yup
     password: yup
       .string()
       .min(8, "password is too short")
+      .max(30, "password is too long")
       .required("password is required"),
     email: yup
       .string()

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { FaArrowUp } from "react-icons/fa";
 import { useCallback, useEffect, useState } from "react";
 
+
 export const ScrollContainer = styled.div`
   width: min(100% - 6.25rem, 1340px);
   margin-inline: auto;
@@ -12,6 +13,8 @@ export const ScrollContainer = styled.div`
     width: min(100% - 3.25rem, 1340px);
   }
 `;
+
+
 const TopButton = styled.button`
   width: 70px;
   height: 70px;
@@ -30,7 +33,6 @@ const TopButton = styled.button`
   transition: all 0.25s;
   visibility: ${({ hide }) => (hide === "true" ? "visible" : "hidden")};
   opacity: ${({ hide }) => (hide === "true" ? "1" : "0")};
-
   & svg {
     color: #f75c03;
   }
@@ -45,18 +47,23 @@ const TopButton = styled.button`
   }
 `;
 
+
 export const ScrollTop = () => {
+
+  const [hide, setHide] = useState(false);
+
   // butona klikde yuxari scroll
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-  // asagi scrollda butonun gorsenmesi
-  const [hide, setHide] = useState(false);
 
+
+  // asagi scrollda butonun gorsenmesi
   const hideScrollButton = useCallback(() => {
     let windowHeight = window.scrollY;
     windowHeight > 500 ? setHide(true) : setHide(false);
   }, [hide, setHide]);
+
 
   useEffect(() => {
     window.addEventListener("scroll", hideScrollButton);
@@ -64,6 +71,7 @@ export const ScrollTop = () => {
       window.removeEventListener("scroll", hideScrollButton);
     };
   }, []);
+
 
   return (
     <ScrollContainer>

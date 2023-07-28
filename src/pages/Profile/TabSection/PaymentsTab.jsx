@@ -8,7 +8,6 @@ const PaymentWrapper = styled(motion.div)`
     width: 100%;
     border-radius: 3px;
     border: 1px solid #dfe4ea;
-
     border-collapse: collapse;
     & thead {
       & th {
@@ -76,6 +75,8 @@ const PaymentWrapper = styled(motion.div)`
     }
   }
 `;
+
+
 const EmptyPayment = styled.h3`
   text-align: center;
   display: block;
@@ -87,7 +88,10 @@ const EmptyPayment = styled.h3`
     font-size: 20px;
   }
 `;
+
+
 export const PaymentsTab = () => {
+
   const { paymentCart } = useSelector((state) => state.cart);
   // const [day, totalPrice, category, orderDates] = paymentCart;
 

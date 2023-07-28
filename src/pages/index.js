@@ -9,5 +9,4 @@ export * from "./CategoryProducts/CategoryProducts";
 export * from "./DayProducts/DayProducts";
 export * from "./Payment/Payment";
 export * from "./SuccesPage/SuccesPage";
-
 export * from "./NotFound/NotFound";

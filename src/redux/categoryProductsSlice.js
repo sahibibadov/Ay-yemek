@@ -2,16 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 import { meals } from "../data/meal";
 import { filter } from "lodash";
 
+
 const initialState = {
    allProducts: meals,
    filteredProducts: [],
    selectedType: "ana yemək",
 };
 
+
 const categoryProductsSlice = createSlice({
    name: "categoryProductsSlice",
    initialState,
    reducers: {
+
       setFilterProduct: (state, action) => {
          state.filteredProducts = filter(
             state.allProducts,

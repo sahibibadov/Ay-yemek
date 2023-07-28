@@ -1,4 +1,6 @@
 import styled from "styled-components";
+
+
 export const Headline = styled.h1`
   font-weight: 600;
   text-transform: uppercase;
@@ -11,12 +13,12 @@ export const Headline = styled.h1`
     color === "primary"
       ? "#F75C03"
       : color === "secondary"
-      ? "#0E6BA8"
-      : color === "gold"
-      ? "#E8C50B"
-      : color === "green"
-      ? "#2BAD3F"
-      : "white"};
+        ? "#0E6BA8"
+        : color === "gold"
+          ? "#E8C50B"
+          : color === "green"
+            ? "#2BAD3F"
+            : "white"};
   @media screen and (max-width: 900px) {
     font-size: 34px;
   }

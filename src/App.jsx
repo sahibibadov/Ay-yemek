@@ -7,7 +7,10 @@ import { useDispatch } from "react-redux";
 import { Toaster } from "react-hot-toast";
 
 function App() {
+
   const dispatch = useDispatch();
+
+  // sehife ilk acildiginda userin yoxlanmasi
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -22,6 +25,8 @@ function App() {
       }
     });
   }, [auth, dispatch]);
+
+
   return (
     <>
       <Toaster />

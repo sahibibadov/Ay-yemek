@@ -36,6 +36,7 @@ const router = createBrowserRouter(
             }}
             errorElement={<ErrorBoundary />}
           />
+
           <Route
             path="category/:categoryUrl"
             lazy={async () => {
@@ -48,6 +49,7 @@ const router = createBrowserRouter(
             }}
             errorElement={<ErrorBoundary />}
           />
+
           <Route
             path="category/:categoryUrl/:day"
             lazy={async () => {
@@ -95,6 +97,8 @@ const router = createBrowserRouter(
           />
         </Route>
         {/* layout route end */}
+
+
         {/* payment route */}
         <Route
           path="payment"
@@ -108,14 +112,8 @@ const router = createBrowserRouter(
         />
 
         {/* register ve login routlari */}
-        <Route path="/login" element={<Login />} errorElement={<ErrorBoundary />} />
-        <Route
-          path="/register"
-          element={<Register />}
-          errorElement={<ErrorBoundary />}
-        />
 
-        {/* <Route
+        <Route
           path="login"
           lazy={async () => {
             const { Login } = await import("./pages/Login/Login");
@@ -134,7 +132,14 @@ const router = createBrowserRouter(
             };
           }}
           errorElement={<ErrorBoundary />}
-        /> */}
+        />
+        {/*     <Route path="/login" element={<Login />} errorElement={<ErrorBoundary />} />
+  
+          <Route
+            path="/register"
+            element={<Register />}
+            errorElement={<ErrorBoundary />}
+          /> */}
         <Route path="*" element={<NotFound />} />
       </Route>
     </>,

@@ -1,5 +1,6 @@
-import { AuthImage } from "../../components/AuthImage/AuthImage";
+import { useCallback, useState } from "react";
 import {
+  AuthImage,
   ReturnButton,
   Headline,
   Label,
@@ -13,20 +14,23 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import resolverValidator from "../../validation/login";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useCallback, useState } from "react";
-import "./login.scss";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { setUsers } from "../../redux/userSlice";
 import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
+import "./login.scss";
 
 export const Login = () => {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [pasError, setPasError] = useState("");
   const [mailError, setMailError] = useState("");
   const [allError, setAllError] = useState("");
+
+
+  //form validation
   const {
     register,
     handleSubmit,
@@ -35,6 +39,8 @@ export const Login = () => {
     resolver: resolverValidator, //yup scheamlari yaziriq
   });
 
+
+  // login funcsiyasi
   const onHandleLogin = useCallback(
     async (data) => {
       // isvalid ile inputlarin bow olmadigin yoxlayiriq
@@ -67,11 +73,13 @@ export const Login = () => {
     [auth, dispatch, navigate, isValid, setMailError, setPasError, setAllError],
   );
 
+
   return (
     <>
       <Helmet>
         <title> Login</title>
       </Helmet>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -80,9 +88,11 @@ export const Login = () => {
       >
         <div className="login__wrapper">
           <div className="login__content">
+
             <div className="login__content__img">
               <img src="logo.png" alt="logo" />
             </div>
+
             <ReturnButton />
 
             {/* form */}
@@ -92,12 +102,14 @@ export const Login = () => {
             <Paragraf size="lg" color="secondary">
               Lorem ipsum dolor sit amet
             </Paragraf>
+
             <form
               className="login__form"
               onSubmit={handleSubmit(onHandleLogin)}
               noValidate
             >
               {allError && <ErrorMessage>{allError}</ErrorMessage>}
+
               <div>
                 <Label errors={errors?.email}>E-poçt </Label>
                 <Input
@@ -111,6 +123,7 @@ export const Login = () => {
                   <ErrorMessage>{errors.email?.message}</ErrorMessage>
                 )}
               </div>
+
               <div>
                 <Label errors={errors?.password}>Parol</Label>
                 <Input
@@ -127,11 +140,14 @@ export const Login = () => {
 
               <SubmitButton type="submit">Göndər</SubmitButton>
             </form>
+
             <p className="login__register">
               Hesabınız yoxdur? <Link to="/register"> Qeydiyyatdan keçin</Link>
             </p>
+
           </div>
         </div>
+
         {/* right image */}
         <AuthImage />
       </motion.div>

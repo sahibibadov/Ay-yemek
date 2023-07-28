@@ -1,26 +1,25 @@
+import { useCallback } from "react";
 import { AuthImage } from "../../components/AuthImage/AuthImage";
 import { Headline, Datepicker } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-
-import "./payment.scss";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { addPaymentCart } from "../../redux/cartSlice";
-
 import dayjs from "dayjs";
 import localeData from "dayjs/plugin/localeData";
 import az from "dayjs/locale/az";
-import { useCallback } from "react";
+import "./payment.scss";
 
 export const Payment = () => {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const { category, dayPackage, totalPrice } = useSelector((state) => state.cart);
   const { users } = useSelector((state) => state.users);
   const user = JSON.parse(users);
+
 
   const changeUrlColor = useCallback((url) => {
     switch (url) {
@@ -39,15 +38,18 @@ export const Payment = () => {
   }, []);
   const colorUrl = changeUrlColor(category);
 
+
   // payment carta tarixi ekleme
   dayjs.extend(localeData);
   dayjs.locale("az");
   const startCurrentDate = dayjs().format("DD/MM/YYYY");
   const endCurrentDate = dayjs().add(dayPackage, "day").format("DD/MM/YYYY");
 
+  // klikde odenisin edilmesi
   const handlePayment = useCallback(async () => {
     try {
       if (user) {
+
         await dispatch(
           addPaymentCart({
             category,
@@ -57,12 +59,16 @@ export const Payment = () => {
             endCurrentDate,
           }),
         );
+
         await navigate("/succespage", { replace: true });
+
         toast.success("success payment", {
           position: "top-right",
           duration: 3000,
         });
+
       } else {
+
         await navigate("/login");
       }
     } catch (error) {
@@ -84,6 +90,7 @@ export const Payment = () => {
       <Helmet>
         <title>Payment</title>
       </Helmet>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -101,7 +108,9 @@ export const Payment = () => {
             <Headline color="primary" level={1}>
               ÖDƏNİŞ
             </Headline>
+
             <p>Seçdiyiniz kateqoriya ve paket</p>
+
             <div
               style={{ backgroundColor: colorUrl }}
               className="payment__content__category"
@@ -114,7 +123,9 @@ export const Payment = () => {
             <span>
               Ümumi məbləğ: <strong>{totalPrice}</strong> AZN
             </span>
+
             <Link onClick={() => handlePayment()}>Ödəniş et</Link>
+
           </div>
         </div>
         {/* right image */}

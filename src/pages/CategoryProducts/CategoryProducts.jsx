@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { map } from "lodash";
 import { useCallback, useEffect } from "react";
-import "./categoryproducts.scss";
 import {
   DayLinkItems,
   FilterProducts,
@@ -14,6 +13,8 @@ import { setFilterProduct, setSelected } from "../../redux/categoryProductsSlice
 import { clearCart } from "../../redux/cartSlice";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import "./categoryproducts.scss";
+
 
 const categoryButtons = [
   { id: 1, title: "ana yemək" },
@@ -27,11 +28,15 @@ const dayLinkItems = [
   { id: 3, title: "20 günlük", price: "50", link: "20" },
   { id: 4, title: "30 günlük", price: "70", link: "30" },
 ];
+
+
 export const CategoryProducts = () => {
+
   const { categoryUrl } = useParams();
   const dispatch = useDispatch();
   const { selectedType } = useSelector((state) => state.categoryProductsSlice);
   const { category } = useSelector((state) => state.cart);
+
 
   // sehife ilk acildiginda ana yemekleri gostermek ve filter etmek(urlden gelen categoriUrlsi ile meali filter etmek)
   useEffect(() => {
@@ -43,6 +48,7 @@ export const CategoryProducts = () => {
     }
   }, [selectedType, dispatch]);
 
+
   // urlde secili paket yoxdursa cartin icin bowaltmaq
   useEffect(() => {
     if (categoryUrl != category) {
@@ -50,10 +56,12 @@ export const CategoryProducts = () => {
     }
   }, [categoryUrl, category]);
 
+
   // butona klikde active klasin vermek ve type gore filter etmek
   const handleTypeChange = (type) => {
     dispatch(setSelected(type));
   };
+
 
   // sehifede urldeki categoriye gore Headline reng vermek
   const changeUrlColor = useCallback((url) => {
@@ -73,11 +81,13 @@ export const CategoryProducts = () => {
   });
   const colorUrl = changeUrlColor(categoryUrl);
 
+
   return (
     <>
       <Helmet>
         <title>Category {categoryUrl}</title>
       </Helmet>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -94,9 +104,8 @@ export const CategoryProducts = () => {
             <div className="type_buttons">
               {map(categoryButtons, (item) => (
                 <button
-                  className={`type_button ${
-                    selectedType == item.title ? "active" : ""
-                  }`}
+                  className={`type_button ${selectedType == item.title ? "active" : ""
+                    }`}
                   onClick={() => handleTypeChange(item.title)}
                   key={item.id}
                 >

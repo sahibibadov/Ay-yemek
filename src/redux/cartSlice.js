@@ -28,8 +28,7 @@ const orderDatesLocal =
     ? JSON.parse(localStorage.getItem("orderDatesLocal"))
     : [];
 
-// her actiondan sonra local storage yazma
-localStorage.setItem("orderDatesLocal", JSON.stringify(orderDatesLocal));
+
 
 // local storage yazma funksiyasi
 const setItemFunc = (
@@ -47,6 +46,7 @@ const setItemFunc = (
   localStorage.setItem("categoryLocal", JSON.stringify(categoryLocal));
   localStorage.setItem("orderDatesLocal", JSON.stringify(orderDatesLocal));
 };
+
 const initialState = {
   paymentCart: paymentItems,
   cart: items,
@@ -105,6 +105,7 @@ const cartSlice = createSlice({
         state.orderDates,
       );
     },
+
     clearCart: (state) => {
       state.cart = [];
       state.totalPrice = 0;
@@ -121,6 +122,7 @@ const cartSlice = createSlice({
         state.paymentCart,
       );
     },
+
     addToPackage: (state, action) => {
       state.dayPackage = action.payload;
 
@@ -133,6 +135,7 @@ const cartSlice = createSlice({
         state.orderDates,
       );
     },
+
     addToCategory: (state, action) => {
       state.category = action.payload;
 
@@ -145,6 +148,7 @@ const cartSlice = createSlice({
         state.orderDates,
       );
     },
+
     addToOrderDate: (state, action) => {
       state.orderDates = [action.payload];
       setItemFunc(
@@ -159,10 +163,6 @@ const cartSlice = createSlice({
   },
 });
 
-//
-// export const selectCartItemsByType = (state, type) => {
-//   return state.cart?.cart?.filter((item) => item.type === type);
-// };
 export const {
   addToCart,
   removeItem,
@@ -173,3 +173,9 @@ export const {
   addPaymentCart,
 } = cartSlice.actions;
 export default cartSlice.reducer;
+
+
+
+// export const selectCartItemsByType = (state, type) => {
+//   return state.cart?.cart?.filter((item) => item.type === type);
+// };

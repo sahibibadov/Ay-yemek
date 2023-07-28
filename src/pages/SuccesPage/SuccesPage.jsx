@@ -1,9 +1,8 @@
-import "./succespage.scss";
 import { Button, Section } from "../../components";
 import check from "../../../public/check.svg";
-
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import "./succespage.scss";
 
 export const SuccesPage = () => {
   return (

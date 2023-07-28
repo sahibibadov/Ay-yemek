@@ -1,14 +1,16 @@
 import { map } from "lodash";
-import "./foodslider.scss";
 import { CustomSlider, Headline, Paragraf } from "../../components";
 import { foodImage } from "../../data/foodimage";
+import "./foodslider.scss";
 
 export const FoodSilder = () => {
   return (
     <div className="food__silder">
+
       <Headline level={1} color="secondary">
         SEVİLƏN YEMƏKLƏRİMİZ
       </Headline>
+
       <Paragraf size="lg" color="secondary">
         Lorem Ipsum is simply dummy text of the printing
       </Paragraf>
@@ -21,6 +23,7 @@ export const FoodSilder = () => {
           </div>
         ))}
       </CustomSlider>
+
     </div>
   );
 };

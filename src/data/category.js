@@ -1,4 +1,5 @@
 import categoryimage from "../../public/categoryimage.png";
+
 export const categorys = [
   {
     title: "Ekonom",

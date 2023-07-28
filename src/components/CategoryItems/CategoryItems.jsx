@@ -7,16 +7,20 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import { motion } from "framer-motion";
 
 export const CategoryItems = () => {
+
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 6; //nece denesin gostermek isdediyimiz eded
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = categorys.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(categorys.length / itemsPerPage);
 
+
   const handlePaginationClick = useCallback((event) => {
     const newOffset = (event.selected * itemsPerPage) % categorys.length;
     setItemOffset(newOffset);
   }, []);
+
+
   const containerAn = {
     visible: {
       transition: {
@@ -28,6 +32,7 @@ export const CategoryItems = () => {
 
   return (
     <div className="category-itmes">
+
       <motion.div
         initial="hidden"
         animate="visible"
@@ -38,6 +43,7 @@ export const CategoryItems = () => {
           <CategoryCard key={item.id} item={item} />
         ))}
       </motion.div>
+
       <ReactPaginate
         className="paginate"
         breakLabel="..."
@@ -48,6 +54,7 @@ export const CategoryItems = () => {
         previousLabel={<GrFormPrevious />}
         renderOnZeroPageCount={null}
       />
+
     </div>
   );
 };

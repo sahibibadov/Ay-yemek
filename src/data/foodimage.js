@@ -3,6 +3,7 @@ import noodles from "../../public/foodslider/noodles.png";
 import pizza from "../../public/foodslider/pizza.png";
 import steak from "../../public/foodslider/steak.png";
 import subsandiwch from "../../public/foodslider/subsandiwch.png";
+
 export const foodImage = [
   {
     image: pizza,

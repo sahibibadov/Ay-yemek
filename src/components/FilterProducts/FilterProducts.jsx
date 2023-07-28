@@ -1,19 +1,21 @@
 import { map } from "lodash";
-import { useDispatch, useSelector } from "react-redux";
-import "./filterproducts.scss";
-import kcal from "../../../public/kcal.svg";
-import { GrCircleInformation } from "react-icons/gr";
-import { useParams } from "react-router-dom";
-import add from "../../../public/add.svg";
-import { addToCart, addToPackage, addToCategory } from "../../redux/cartSlice";
-import { AnimatePresence, motion } from "framer-motion";
 import { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, addToPackage, addToCategory } from "../../redux/cartSlice";
+import { useParams } from "react-router-dom";
+import { GrCircleInformation } from "react-icons/gr";
+import kcal from "../../../public/kcal.svg";
+import add from "../../../public/add.svg";
+import { AnimatePresence, motion } from "framer-motion";
+import "./filterproducts.scss";
 
 export const FilterProducts = () => {
+
   const { categoryUrl, day } = useParams();
   const { filteredProducts } = useSelector((state) => state.categoryProductsSlice);
   const dispatch = useDispatch();
 
+  //klikde carta elave etmek
   const addCart = useCallback(
     (item) => {
       dispatch(addToCart(item));
@@ -23,6 +25,7 @@ export const FilterProducts = () => {
     [dispatch, categoryUrl, day],
   );
 
+  //urlden gelen categoryiye gore headlinenin rengi
   const changeUrlColor = useCallback((url) => {
     switch (url) {
       case "Ekonom":
@@ -38,13 +41,14 @@ export const FilterProducts = () => {
         return "";
     }
   });
-
   const colorUrl = changeUrlColor(categoryUrl);
+
 
   return (
     <>
       <AnimatePresence>
         {map(filteredProducts, (item) => (
+
           <motion.div
             layout
             initial={{ opacity: 0 }}
@@ -57,6 +61,7 @@ export const FilterProducts = () => {
             <div className="products_list_item_img">
               <img src={item.image} alt="item" />
             </div>
+
             <div className="products_list_item_info">
               <h3>{item.title}</h3>
               <p>
@@ -77,6 +82,7 @@ export const FilterProducts = () => {
                 {item.category} paket <GrCircleInformation size={16} />
               </span>
             </div>
+
           </motion.div>
         ))}
       </AnimatePresence>

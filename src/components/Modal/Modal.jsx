@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { closeModal } from "../../redux/modalSlice";
 import { GrClose } from "react-icons/gr";
 import "./modal.scss";
@@ -11,9 +11,11 @@ import toast from "react-hot-toast";
 import { useCallback } from "react";
 
 export const Modal = () => {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  //logut funcsiyasi
   const handleLogout = useCallback(async () => {
     try {
       dispatch(setUsers(null));
@@ -29,6 +31,8 @@ export const Modal = () => {
       console.log("Hata:", error);
     }
   }, [dispatch, navigate]);
+
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

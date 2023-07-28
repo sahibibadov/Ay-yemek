@@ -1,3 +1,4 @@
+import { useCallback, useState } from "react";
 import {
   ReturnButton,
   Headline,
@@ -7,25 +8,27 @@ import {
   SubmitButton,
   AuthImage,
 } from "../../components";
-
 import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useForm } from "react-hook-form";
 import resolverValidator from "../../validation/register";
-import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import "./register.scss";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import "./register.scss";
 
 export const Register = () => {
+
   const [pasError, setPasError] = useState("");
   const [mailError, setMailError] = useState("");
   const [allError, setAllError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+
+  // dorm validation
   const {
     register,
     handleSubmit,
@@ -34,6 +37,8 @@ export const Register = () => {
     resolver: resolverValidator, //yup scheamlari yaziriq
   });
 
+
+  // register funksiyasi
   const onRegister = useCallback(
     async (data) => {
       if (!isValid) {
@@ -84,6 +89,7 @@ export const Register = () => {
       <Helmet>
         <title>Register</title>
       </Helmet>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -108,7 +114,9 @@ export const Register = () => {
             >
               <div>
                 {allError && <ErrorMessage>{allError}</ErrorMessage>}
+
                 <div className="register__form__username">
+
                   <div>
                     <Label errors={errors.name}>Ad </Label>
                     <Input
@@ -121,6 +129,7 @@ export const Register = () => {
                       <ErrorMessage>{errors.name?.message}</ErrorMessage>
                     )}
                   </div>
+
                   <div>
                     <Label errors={errors.surname}>Soyad</Label>
                     <Input
@@ -133,6 +142,7 @@ export const Register = () => {
                       <ErrorMessage>{errors.surname?.message}</ErrorMessage>
                     )}
                   </div>
+
                 </div>
 
                 <Label errors={errors.email}>E-poçt </Label>
@@ -146,6 +156,7 @@ export const Register = () => {
                 {errors.email && (
                   <ErrorMessage>{errors.email?.message}</ErrorMessage>
                 )}
+
                 <Label errors={errors.password}>Parol</Label>
                 <Input
                   placeholder="Parol"
@@ -157,14 +168,20 @@ export const Register = () => {
                 {errors.password && (
                   <ErrorMessage>{errors.password?.message}</ErrorMessage>
                 )}
+
               </div>
+
               <SubmitButton type="submit">Göndər</SubmitButton>
+
             </form>
+
             <p className="login__register">
               Hesabınız varsa <Link to="/login"> Buradan daxil olun</Link>
+
             </p>
           </div>
         </div>
+
         {/* right image */}
         <AuthImage />
       </motion.div>

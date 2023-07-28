@@ -8,6 +8,7 @@ export const About = () => {
       <Helmet>
         <title>About</title>
       </Helmet>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -16,6 +17,7 @@ export const About = () => {
         <Section>
           <AboutMain />
         </Section>
+
       </motion.div>
     </>
   );

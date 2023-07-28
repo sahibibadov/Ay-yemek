@@ -1,9 +1,8 @@
-import "./daylinkitems.scss";
+import { memo } from "react";
 import manat from "../../../public/manat.svg";
 import payment from "../../../public/payment.svg";
-
 import { Button } from "../../components";
-import { memo } from "react";
+import "./daylinkitems.scss";
 
 export const DayLinkItems = memo(({ item }) => {
   return (

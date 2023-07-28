@@ -14,4 +14,5 @@ const store = configureStore({
     cart,
   },
 });
+
 export default store;

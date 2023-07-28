@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
+
 const SectionWrapper = styled(motion.section)`
   padding-block: 80px;
   @media screen and (max-width: 1000px) {
@@ -13,10 +14,11 @@ const SectionWrapper = styled(motion.section)`
     padding-block: 25px;
   }
 `;
+
 export const Section = ({ children }) => {
   return (
     <SectionWrapper
-      initial={{ opacity: 0, y: 75 }}
+      initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >

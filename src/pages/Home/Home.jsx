@@ -11,11 +11,13 @@ import {
 import { motion } from "framer-motion";
 
 export const Home = () => {
+
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>Ay Yemək</title>
       </Helmet>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

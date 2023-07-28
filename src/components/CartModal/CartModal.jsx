@@ -1,11 +1,12 @@
 import { useDispatch } from "react-redux";
 import { closeCart } from "../../redux/modalSlice";
 import { GrClose } from "react-icons/gr";
-import "./cartmodal.scss";
 import { motion } from "framer-motion";
 import { Cart } from "../Cart/Cart";
+import "./cartmodal.scss";
 
 export const CartModal = () => {
+
   const dispatch = useDispatch();
 
   return (

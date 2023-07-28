@@ -15,7 +15,6 @@ export const Input = styled.input`
   &:disabled {
     pointer-events: none;
   }
-
   &:focus,
   &:hover,
   &:active {
@@ -26,7 +25,6 @@ export const Input = styled.input`
     border-radius: 6px;
     caret-color: #fa3e3e;
   }
-
   &::placeholder {
     font-weight: 400;
     font-size: 16px;

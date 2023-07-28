@@ -10,6 +10,7 @@ const schema = yup
     email: yup
       .string()
       .email("Invalid email format")
+      .matches(EMAIL_REGX, "Invalid email format")
       .required("Mail is required"),
     textarea: yup.string(),
   })

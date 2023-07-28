@@ -1,10 +1,10 @@
-import React from "react";
 import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
 export const ErrorBoundary = () => {
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {
+
     if (error.status === 404) {
       return <div>This page doesn't exist!</div>;
     }

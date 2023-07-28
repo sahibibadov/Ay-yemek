@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./activeorder.scss";
-import emptycart from "../../../../public/emptycartimg.svg";
 import { Headline, Paragraf, SubmitButton } from "../../../components";
 import { useNavigate } from "react-router-dom";
-import { BsArrowRight } from "react-icons/bs";
 import { map } from "lodash";
 import { removeItem } from "../../../redux/cartSlice";
+import emptycart from "../../../../public/emptycartimg.svg";
+import { BsArrowRight } from "react-icons/bs";
 import { FaTrash } from "react-icons/fa";
 import { motion } from "framer-motion";
+import "./activeorder.scss";
 
 export const ActiveOrder = () => {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cart, orderDates, totalPrice } = useSelector((state) => state.cart);
@@ -41,33 +42,41 @@ export const ActiveOrder = () => {
             </strong>
             tarixi üçün keçərlidir
           </Paragraf>
+
           <div className="profile__pages__activeorder__cart__items">
             {map(cart, (item) => (
+
               <div key={item.id}>
                 <p>
                   <span>{item.title}</span>
                   <FaTrash size={14} onClick={() => dispatch(removeItem(item.id))} />
                 </p>
               </div>
+
             ))}
           </div>
 
           <p className="profile__pages__activeorder__cart__total">
             Ümumi məbləğ <strong>{totalPrice}AZN</strong>
           </p>
+
         </div>
       ) : (
+
         /* cart bos olandd */
         <div className="profile__pages__activeorder__empty">
           <img src={emptycart} alt="emtycart" />
           <h3>Aktiv Sifarişiniz Tapılmadı</h3>
+
           <Paragraf size="md" color="secondary">
             Lorem ipsum dolor sit amet consectetur adipiscing elit interdum
             ullamcorper .
           </Paragraf>
+
           <SubmitButton onClick={() => navigate("/category")}>
             Sabahın menyusunu seç <BsArrowRight size={18} />
           </SubmitButton>
+
           <span>*Sifarişinizi 22:00-a qədər verməyiniz xahiş olunur</span>
         </div>
       )}

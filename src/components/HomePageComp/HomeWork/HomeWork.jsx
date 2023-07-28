@@ -8,6 +8,8 @@ import homework3 from "../../../../public/homework3.png";
 const WordWrapper = styled.div`
   text-align: center;
 `;
+
+
 const Wordcards = styled.div`
   position: relative;
   display: flex;
@@ -27,6 +29,8 @@ const Wordcards = styled.div`
     align-self: flex-end;
   }
 `;
+
+
 const Wordcard = styled.div`
   display: flex;
   flex-direction: column;
@@ -62,6 +66,8 @@ const Wordcard = styled.div`
     }
   }
 `;
+
+
 const Wordsvg1 = styled.div`
   position: absolute;
   @media screen and (max-width: 1430px) {
@@ -79,6 +85,8 @@ const Wordsvg1 = styled.div`
   left: 25%;
   top: 35%;
 `;
+
+
 const Wordsvg2 = styled.div`
   position: absolute;
   @media screen and (max-width: 1430px) {
@@ -96,7 +104,10 @@ const Wordsvg2 = styled.div`
   right: 25%;
   top: 35%;
 `;
+
+
 export const HomeWork = () => {
+
   const workCard = [
     {
       image: homework1,
@@ -114,6 +125,7 @@ export const HomeWork = () => {
       description: "Sürətli bir şəkildə çatdırılma edilsin",
     },
   ];
+
   return (
     <WordWrapper>
       <Headline level={1} color="secondary">

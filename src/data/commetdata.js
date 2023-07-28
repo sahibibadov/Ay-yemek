@@ -1,5 +1,6 @@
 import userImg from "../../public/userphoto.png";
 import userTrick from "../../public/usertick.svg";
+
 export const commetData = [
   {
     commet:
