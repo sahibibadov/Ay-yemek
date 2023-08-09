@@ -1,38 +1,39 @@
 export const items = [
   {
     id: 1,
-    header: "Lorem ipsum dolor sir amet ipsum?",
+    header: " Menyudan necə sifariş verə bilərəm?",
     content:
-      "Yet bed any for  assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment.",
+      " Sifariş vermək üçün saytımıza daxil olun və ya hesab yaradın, istədiyiniz yeməkləri menyudan seçin və ödəniş addımlarını izləyin",
   },
   {
     id: 2,
-    header: "Lorem ipsum dolor sir amet ipsum?",
+    header: "Çatdırılma haqqı nə qədərdir?",
     content:
-      "Yet bed any for  assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment.",
+      " Çatdırılma haqqı sifarişinizin çatdırılma ünvanına və məsafəyə görə dəyişə bilər. Ödəniş mərhələsində doğru haqqı görsəyiniz",
   },
   {
     id: 3,
-    header: "Lorem ipsum dolor sir amet ipsum?",
+    header: " Sifarişim nə vaxt çatdırılacaq",
     content:
-      "Yet bed any for  assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment.",
+      " Çatdırılma müddəti sifarişinizin hazırlanma vaxtına, çatdırılma sahəsinə və trafik vəziyyətinə görə dəyişə bilər. Əsasən, sifarişinizin nƏ vaxt çatdırılacağını ödəniş mərhələsində görə bilərsiniz",
   },
   {
     id: 4,
-    header: "Lorem ipsum dolor sir amet ipsum?",
+    header: " İstədiyim restoranı necə seçə bilərəm?",
     content:
-      "Yet bed any for  assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment.",
+      "Saytımızdakı restoran siyahısından istədiyiniz restoranı seçə bilərsiniz. Restoranların menyularını və qiymətləndirmələrini baxaraq seçiminizi edə bilərsiniz",
   },
   {
     id: 5,
-    header: "Lorem ipsum dolor sir amet ipsum?",
+    header: " Sifarişi necə izləyə bilərəm?",
     content:
-      "Yet bed any for  assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment.",
+      "Hesabınıza daxil olaraq sifariş tarixçənizi görüntüləyə bilər və sifarişinizin hazırlanma və çatdırılma vəziyyətini izləyə bilərsiniz",
   },
   {
     id: 6,
-    header: "Lorem ipsum dolor sir amet ipsum?",
+    header:
+      "Xüsusi qidalanma tələblərini və ya allergiyaları necə qeyd edə bilərəm?",
     content:
-      "Yet bed any for  assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment.",
+      "Sifariş verərkən, Əlavə Məlumatlar bölməsində xüsusi qidalanma tələblərinizi və ya allergiyalarınızı qeyd edə bilərsiniz. Restoranlar bu tələbləri dəyərləndirərək uyğun həllər təqdim edir",
   },
 ];

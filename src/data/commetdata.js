@@ -4,7 +4,7 @@ import userTrick from "../../public/usertick.svg";
 export const commetData = [
   {
     commet:
-      "Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget nec. Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget nec. Eget laoreet eget nec. Donec pellentesque turpis sit dolor nisi, purus. .",
+      "Sizin saytınızın istifadəsi çox asandır, görünüşü təsirli və reseptlər aydındır. Həmçinin, yeməklərin keyfiyyəti hər dəfə məni təəccübləndirir. AyYemek komandasına təşəkkür edirəm, yemək sevgimi tamamilə yaşamağımı təmin etdiyiniz üçün minnətdaram. Həmişə sizi təklif edəcəyəm!.",
     userName: "İbadov Sahib",
     id: 1,
     work: "Frontend developer",
@@ -13,7 +13,7 @@ export const commetData = [
   },
   {
     commet:
-      "Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget nec. Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget nec. Eget laoreet eget nec. Donec pellentesque turpis sit dolor nisi, purus. .",
+      "Sizin saytınızın istifadəsi çox asandır, görünüşü təsirli və reseptlər aydındır. Həmçinin, yeməklərin keyfiyyəti hər dəfə məni təəccübləndirir. AyYemek komandasına təşəkkür edirəm, yemək sevgimi tamamilə yaşamağımı təmin etdiyiniz üçün minnətdaram. Həmişə sizi təklif edəcəyəm!.",
     userName: "İbadov Sahib",
     id: 2,
     work: "Frontend developer",
@@ -22,7 +22,7 @@ export const commetData = [
   },
   {
     commet:
-      "Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget nec. Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget nec. Eget laoreet eget nec. Donec pellentesque turpis sit dolor nisi, purus. .",
+      "Sizin saytınızın istifadəsi çox asandır, görünüşü təsirli və reseptlər aydındır. Həmçinin, yeməklərin keyfiyyəti hər dəfə məni təəccübləndirir. AyYemek komandasına təşəkkür edirəm, yemək sevgimi tamamilə yaşamağımı təmin etdiyiniz üçün minnətdaram. Həmişə sizi təklif edəcəyəm!.",
     userName: "İbadov Sahib",
     id: 3,
     work: "Frontend developer",
@@ -31,7 +31,7 @@ export const commetData = [
   },
   {
     commet:
-      "Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget nec. Donec pellentesque turpis sit dolor nisi, purus. Eget laoreet eget nec. Eget laoreet eget nec. Donec pellentesque turpis sit dolor nisi, purus. .",
+      "Sizin saytınızın istifadəsi çox asandır, görünüşü təsirli və reseptlər aydındır. Həmçinin, yeməklərin keyfiyyəti hər dəfə məni təəccübləndirir. AyYemek komandasına təşəkkür edirəm, yemək sevgimi tamamilə yaşamağımı təmin etdiyiniz üçün minnətdaram. Həmişə sizi təklif edəcəyəm!.",
     userName: "İbadov Sahib",
     id: 4,
     work: "Frontend developer",

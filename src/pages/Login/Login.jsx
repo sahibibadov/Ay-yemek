@@ -22,13 +22,11 @@ import { motion } from "framer-motion";
 import "./login.scss";
 
 export const Login = () => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [pasError, setPasError] = useState("");
   const [mailError, setMailError] = useState("");
   const [allError, setAllError] = useState("");
-
 
   //form validation
   const {
@@ -38,7 +36,6 @@ export const Login = () => {
   } = useForm({
     resolver: resolverValidator, //yup scheamlari yaziriq
   });
-
 
   // login funcsiyasi
   const onHandleLogin = useCallback(
@@ -73,7 +70,6 @@ export const Login = () => {
     [auth, dispatch, navigate, isValid, setMailError, setPasError, setAllError],
   );
 
-
   return (
     <>
       <Helmet>
@@ -88,7 +84,6 @@ export const Login = () => {
       >
         <div className="login__wrapper">
           <div className="login__content">
-
             <div className="login__content__img">
               <img src="logo.png" alt="logo" />
             </div>
@@ -100,7 +95,7 @@ export const Login = () => {
               Daxİl olun
             </Headline>
             <Paragraf size="lg" color="secondary">
-              Lorem ipsum dolor sit amet
+              Buradan daxil ola bilərsiniz!
             </Paragraf>
 
             <form
@@ -144,7 +139,6 @@ export const Login = () => {
             <p className="login__register">
               Hesabınız yoxdur? <Link to="/register"> Qeydiyyatdan keçin</Link>
             </p>
-
           </div>
         </div>
 

@@ -28,5 +28,6 @@ export * from "./DayLinkItems/DayLinkItems";
 export * from "./CartModal/CartModal";
 export * from "./Cart/Cart";
 export * from "./DatePicer/Datepicker";
+export * from "./PrivateRoute/PrivateRoute";
 
 export * from "./uikits";
