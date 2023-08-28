@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 import "./footer.scss";
 
 export const Footer = () => {
-
   const { t } = useTranslation("translation", { keyPrefix: "navlink" });
 
   const navLink = [
@@ -33,18 +32,16 @@ export const Footer = () => {
     },
   ];
 
-
   return (
     <footer className="footer">
       <Container>
-
         <div className="footer__logo">
           <img src={Logo} alt="logo" />
         </div>
 
         <p>
-          Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit, sed do
-          eiusmod tempor incididunt.
+          Ayyemek, zövqülokma yeməklərini ən sürətli və asan şəkildə qapınıza
+          çatdıran bir yemək sifarişi platformasıdır
         </p>
 
         <ul className="footer__nav">
@@ -66,7 +63,6 @@ export const Footer = () => {
             <FaInstagram size={22} />
           </Link>
         </ul>
-
       </Container>
     </footer>
   );

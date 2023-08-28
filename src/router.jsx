@@ -3,9 +3,9 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { Home, Login, NotFound, Register } from "./pages";
+import { Home, NotFound } from "./pages";
 import App from "./App";
-import { ErrorBoundary, Layout } from "./components";
+import { ErrorBoundary, Layout, PrivateRoute } from "./components";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -85,31 +85,34 @@ const router = createBrowserRouter(
             errorElement={<ErrorBoundary />}
           />
 
+          <Route element={<PrivateRoute />}>
+            <Route
+              path="profile"
+              lazy={async () => {
+                const { Profile } = await import("./pages/Profile/Profile");
+                return {
+                  Component: Profile,
+                };
+              }}
+              errorElement={<ErrorBoundary />}
+            />
+          </Route>
+        </Route>
+        {/* layout route end */}
+
+        {/* payment route */}
+        <Route element={<PrivateRoute />}>
           <Route
-            path="profile"
+            path="payment"
             lazy={async () => {
-              const { Profile } = await import("./pages/Profile/Profile");
+              const { Payment } = await import("./pages/Payment/Payment");
               return {
-                Component: Profile,
+                Component: Payment,
               };
             }}
             errorElement={<ErrorBoundary />}
           />
         </Route>
-        {/* layout route end */}
-
-
-        {/* payment route */}
-        <Route
-          path="payment"
-          lazy={async () => {
-            const { Payment } = await import("./pages/Payment/Payment");
-            return {
-              Component: Payment,
-            };
-          }}
-          errorElement={<ErrorBoundary />}
-        />
 
         {/* register ve login routlari */}
 

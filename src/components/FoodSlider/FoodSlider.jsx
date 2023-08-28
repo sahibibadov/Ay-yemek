@@ -6,13 +6,13 @@ import "./foodslider.scss";
 export const FoodSilder = () => {
   return (
     <div className="food__silder">
-
       <Headline level={1} color="secondary">
         SEVİLƏN YEMƏKLƏRİMİZ
       </Headline>
 
       <Paragraf size="lg" color="secondary">
-        Lorem Ipsum is simply dummy text of the printing
+        Bizim sevilən yeməklərimiz, zövqünüzü möhkəm edəcək ləzzət və dadlarla
+        doludur
       </Paragraf>
 
       <CustomSlider comp={5}>
@@ -23,7 +23,6 @@ export const FoodSilder = () => {
           </div>
         ))}
       </CustomSlider>
-
     </div>
   );
 };
