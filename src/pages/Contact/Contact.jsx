@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import "./contact.scss";
 
 
-export const Contact = () => {
+ const Contact = () => {
 
   // form validation
   const {
@@ -138,3 +138,4 @@ export const Contact = () => {
     </>
   );
 };
+export default Contact

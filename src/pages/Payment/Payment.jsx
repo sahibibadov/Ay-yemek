@@ -12,7 +12,7 @@ import localeData from "dayjs/plugin/localeData";
 import az from "dayjs/locale/az";
 import "./payment.scss";
 
-export const Payment = () => {
+ const Payment = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -134,3 +134,4 @@ export const Payment = () => {
     </>
   );
 };
+export default Payment

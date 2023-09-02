@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 
 
-export const Layout = () => {
+const Layout = () => {
 
   const { cartOpen, isOpen } = useSelector((state) => state.modal);
 
@@ -48,3 +48,4 @@ export const Layout = () => {
     </>
   );
 };
+export default Layout

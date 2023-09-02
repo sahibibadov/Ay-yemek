@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import "./dayproducts.scss";
 
-export const DayProducts = () => {
+ const DayProducts = () => {
 
   const { day, categoryUrl } = useParams();
   const dispatch = useDispatch();
@@ -121,3 +121,4 @@ export const DayProducts = () => {
     </>
   );
 };
+export default DayProducts

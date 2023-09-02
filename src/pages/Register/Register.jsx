@@ -19,7 +19,7 @@ import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import "./register.scss";
 
-export const Register = () => {
+ const Register = () => {
 
   const [pasError, setPasError] = useState("");
   const [mailError, setMailError] = useState("");
@@ -188,3 +188,4 @@ export const Register = () => {
     </>
   );
 };
+export default Register

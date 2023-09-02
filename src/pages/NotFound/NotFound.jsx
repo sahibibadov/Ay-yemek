@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Section } from "../../components";
 import { motion } from "framer-motion";
 
-export const NotFound = () => {
+ const NotFound = () => {
   return (
     <>
       <Helmet>
@@ -18,3 +18,4 @@ export const NotFound = () => {
     </>
   );
 };
+export default NotFound

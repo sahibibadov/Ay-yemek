@@ -3,9 +3,12 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { Home, NotFound } from "./pages";
 import App from "./App";
-import { ErrorBoundary, Layout, PrivateRoute } from "./components";
+import Home from "./pages/Home/Home";
+import NotFound from "./pages/NotFound/NotFound";
+import  ErrorBoundary  from "./components/Errorboundary/ErrorBoundary";
+import  Layout from './components/Layout/Layout'
+import  PrivateRoute from './components/PrivateRoute/PrivateRoute'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,7 +21,7 @@ const router = createBrowserRouter(
           <Route
             path="about"
             lazy={async () => {
-              const { About } = await import("./pages/About/About");
+              const { default: About } = await import("./pages/About/About");
               return {
                 Component: About,
               };
@@ -29,7 +32,7 @@ const router = createBrowserRouter(
           <Route
             path="category"
             lazy={async () => {
-              const { Category } = await import("./pages/Category/Category");
+              const { default: Category } = await import("./pages/Category/Category");
               return {
                 Component: Category,
               };
@@ -40,7 +43,7 @@ const router = createBrowserRouter(
           <Route
             path="category/:categoryUrl"
             lazy={async () => {
-              const { CategoryProducts } = await import(
+              const { default: CategoryProducts } = await import(
                 "./pages/CategoryProducts/CategoryProducts"
               );
               return {
@@ -53,7 +56,7 @@ const router = createBrowserRouter(
           <Route
             path="category/:categoryUrl/:day"
             lazy={async () => {
-              const { DayProducts } = await import(
+              const { default: DayProducts } = await import(
                 "./pages/DayProducts/DayProducts"
               );
               return {
@@ -66,7 +69,7 @@ const router = createBrowserRouter(
           <Route
             path="succespage"
             lazy={async () => {
-              const { SuccesPage } = await import("./pages/SuccesPage/SuccesPage");
+              const { default: SuccesPage } = await import("./pages/SuccesPage/SuccesPage");
               return {
                 Component: SuccesPage,
               };
@@ -77,7 +80,7 @@ const router = createBrowserRouter(
           <Route
             path="contact"
             lazy={async () => {
-              const { Contact } = await import("./pages/Contact/Contact");
+              const { default: Contact } = await import("./pages/Contact/Contact");
               return {
                 Component: Contact,
               };
@@ -85,11 +88,16 @@ const router = createBrowserRouter(
             errorElement={<ErrorBoundary />}
           />
 
-          <Route element={<PrivateRoute />}>
+          <Route lazy={async () => {
+                const { default: PrivateRoute } = await import("./components/PrivateRoute/PrivateRoute");
+                return {
+                  Component: PrivateRoute,
+                };
+              }}>
             <Route
               path="profile"
               lazy={async () => {
-                const { Profile } = await import("./pages/Profile/Profile");
+                const { default: Profile } = await import("./pages/Profile/Profile");
                 return {
                   Component: Profile,
                 };
@@ -105,7 +113,7 @@ const router = createBrowserRouter(
           <Route
             path="payment"
             lazy={async () => {
-              const { Payment } = await import("./pages/Payment/Payment");
+              const { default: Payment } = await import("./pages/Payment/Payment");
               return {
                 Component: Payment,
               };
@@ -119,7 +127,7 @@ const router = createBrowserRouter(
         <Route
           path="login"
           lazy={async () => {
-            const { Login } = await import("./pages/Login/Login");
+            const { default: Login } = await import("./pages/Login/Login");
             return {
               Component: Login,
             };
@@ -129,7 +137,7 @@ const router = createBrowserRouter(
         <Route
           path="register"
           lazy={async () => {
-            const { Register } = await import("./pages/Register/Register");
+            const { default: Register } = await import("./pages/Register/Register");
             return {
               Component: Register,
             };

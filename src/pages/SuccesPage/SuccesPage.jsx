@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import "./succespage.scss";
 
-export const SuccesPage = () => {
+ const SuccesPage = () => {
   return (
     <>
       <Helmet>
@@ -31,3 +31,4 @@ export const SuccesPage = () => {
     </>
   );
 };
+export default SuccesPage

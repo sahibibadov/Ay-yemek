@@ -17,7 +17,7 @@ import { Helmet } from "react-helmet-async";
 import "./profile.scss";
 
 
-export const Profile = () => {
+ const Profile = () => {
 
   const [activeTab, setActiveTab] = useState(1);
   const dispatch = useDispatch();
@@ -111,3 +111,4 @@ export const Profile = () => {
     </>
   );
 };
+export default Profile

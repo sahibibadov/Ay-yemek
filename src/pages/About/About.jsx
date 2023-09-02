@@ -2,7 +2,7 @@ import { AboutMain, Section } from "../../components";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 
-export const About = () => {
+ const About = () => {
   return (
     <>
       <Helmet>
@@ -22,3 +22,4 @@ export const About = () => {
     </>
   );
 };
+export default About

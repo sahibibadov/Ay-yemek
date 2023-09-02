@@ -21,7 +21,7 @@ import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import "./login.scss";
 
-export const Login = () => {
+ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [pasError, setPasError] = useState("");
@@ -148,3 +148,4 @@ export const Login = () => {
     </>
   );
 };
+export default Login

@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import "./category.scss";
 
-export const Category = () => {
+ const Category = () => {
   return (
     <>
       <Helmet>
@@ -35,3 +35,4 @@ export const Category = () => {
     </>
   );
 };
+export default Category

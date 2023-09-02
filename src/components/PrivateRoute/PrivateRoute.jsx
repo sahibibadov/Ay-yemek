@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 
-export const PrivateRoute = () => {
+ const PrivateRoute = () => {
   const { users } = useSelector((state) => state.users);
 
   if (!users) {
@@ -9,3 +9,4 @@ export const PrivateRoute = () => {
   }
   return <Outlet />;
 };
+export default PrivateRoute

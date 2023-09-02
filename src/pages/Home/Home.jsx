@@ -10,7 +10,7 @@ import {
 } from "../../components";
 import { motion } from "framer-motion";
 
-export const Home = () => {
+ const Home = () => {
 
   return (
     <>
@@ -45,3 +45,4 @@ export const Home = () => {
     </>
   );
 };
+export default Home

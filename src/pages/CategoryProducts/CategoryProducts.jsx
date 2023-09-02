@@ -30,7 +30,7 @@ const dayLinkItems = [
 ];
 
 
-export const CategoryProducts = () => {
+ const CategoryProducts = () => {
 
   const { categoryUrl } = useParams();
   const dispatch = useDispatch();
@@ -130,3 +130,4 @@ export const CategoryProducts = () => {
     </>
   );
 };
+export default CategoryProducts
