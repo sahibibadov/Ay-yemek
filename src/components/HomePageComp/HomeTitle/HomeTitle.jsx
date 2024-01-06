@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import "./hometitle.scss";
 
 export const HomeTitle = () => {
-
   const { t } = useTranslation("translation", { keyPrefix: "homePage" });
 
   return (
@@ -22,7 +21,7 @@ export const HomeTitle = () => {
         </Button>
       </div>
       <div className="Home-title__right">
-        <img src={HomePng} alt="hometitleimg" />
+        <img src={HomePng} alt="hometitleimg" fetchpriority="high" />
         {/* <img src={ellips} alt="ellips" /> */}
       </div>
     </div>

@@ -12,7 +12,6 @@ import { FiShoppingCart } from "react-icons/fi";
 import "./header.scss";
 
 export const Header = () => {
-
   const { t } = useTranslation("translation", { keyPrefix: "navlink" });
 
   const ref = useRef(null);
@@ -24,7 +23,6 @@ export const Header = () => {
   const { cart } = useSelector((state) => state.cart);
   const parseUser = JSON.parse(users);
 
-
   // cartin icindeki itemlerin sayi
   const cartLenght = cart.length;
 
@@ -32,7 +30,6 @@ export const Header = () => {
   const handleToggleMenu = useCallback(() => {
     setOpen((pre) => !pre);
   });
-
 
   // routlara klikde menunun baglanmasi ver hamburger butonun deyismesi
   const handleCloseMenu = () => {
@@ -42,7 +39,6 @@ export const Header = () => {
       node.checked = false;
     }
   };
-
 
   //scrolda headerin altina border vermek
   const hideHeader = () => {
@@ -83,14 +79,11 @@ export const Header = () => {
   return (
     <header className={`header ${hide ? "scrollshadow" : ""}`}>
       <Container>
-
         <div className="logo">
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" fetchpriority="high" />
         </div>
 
-
         <nav className={`navbar ${open ? "visible" : ""}`}>
-
           <ul>
             {map(navLink, (item) => (
               <li key={item.id}>
@@ -111,26 +104,23 @@ export const Header = () => {
               )}
             </div>
           </ul>
-
         </nav>
 
         <div className="profile">
           {parseUser ? (
             <div className="profile__info">
-
               <div className="profile__name">
-
                 <AiOutlineUser size={28} color="#F75C03" />
                 <p>{parseUser.displayName}</p>
                 <RiArrowDropDownLine size={28} color="#0e6ba8" />
 
                 <div className="profile__name__dropmenu">
                   <Link to="profile">{t("profileLink")}</Link>
-                  <button onClick={() => dispatch(openModal())}>{t("exit")} </button>
+                  <button onClick={() => dispatch(openModal())}>
+                    {t("exit")}{" "}
+                  </button>
                 </div>
-
               </div>
-
             </div>
           ) : (
             <>
@@ -146,7 +136,6 @@ export const Header = () => {
 
           <LnButton />
           <HmButton ref={ref} handleToggleMenu={handleToggleMenu} />
-
         </div>
       </Container>
     </header>

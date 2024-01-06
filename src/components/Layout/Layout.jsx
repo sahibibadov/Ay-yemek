@@ -13,15 +13,13 @@ import {
 import { useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
 
-
 const Layout = () => {
-
   const { cartOpen, isOpen } = useSelector((state) => state.modal);
 
   return (
     <>
       {/* yeni sehifeye kecende en usten baslamasi */}
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
 
       <HeaderContact />
       <Header />
@@ -48,4 +46,4 @@ const Layout = () => {
     </>
   );
 };
-export default Layout
+export default Layout;

@@ -6,9 +6,11 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Inter", sans-serif;
   background: #f7f7f7;
+
 }
 #root {
   overflow: hidden;
@@ -63,4 +65,26 @@ select:-webkit-autofill:focus {
 [type="time"]::-webkit-calendar-picker-indicator {
   opacity: 0;
   flex-basis: 75%;
+}
+
+
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background: #f7f7f7; 
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+  background: #f7f7f7; 
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background: #F75C03;
 }

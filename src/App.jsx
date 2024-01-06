@@ -5,8 +5,14 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Toaster } from "react-hot-toast";
+import { useLocation } from "react-router-dom";
 
 function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const dispatch = useDispatch();
 
@@ -25,7 +31,6 @@ function App() {
       }
     });
   }, [auth, dispatch]);
-
 
   return (
     <>
