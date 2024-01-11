@@ -3,7 +3,11 @@ import Authimg from "../../../public/authimage.png";
 import { memo } from "react";
 
 const ImgWrapper = styled.div`
-  background: linear-gradient(0deg, rgba(247, 92, 3, 0.28), rgba(247, 92, 3, 0.28)),
+  background: linear-gradient(
+      0deg,
+      rgba(247, 92, 3, 0.28),
+      rgba(247, 92, 3, 0.28)
+    ),
     url("../../../public/authimage.png") no-repeat center center / cover;
   position: relative;
   overflow: hidden;
@@ -11,8 +15,7 @@ const ImgWrapper = styled.div`
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(0deg, rgba(247, 92, 3, 0.15), rgba(247, 92, 3, 0.15)),
-      url("../../../public/authimage.png") no-repeat center center / cover;
+    background: #cacaca50;
   }
 `;
 

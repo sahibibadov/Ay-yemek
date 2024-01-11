@@ -68,6 +68,8 @@
           margin-inline: auto;
           padding: 10px;
           border-radius: 5px;
+          gap: 10px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
           & label,
           input::placeholder {
             font-size: 12px;
@@ -79,13 +81,14 @@
           & button {
             padding: 10px 0;
             font-size: 13px;
+            margin-top: 10px;
           }
         }
         & > h1 {
           margin-bottom: 0px;
         }
         & > p {
-          color: #fff;
+          color: #494949;
           margin-bottom: 6px;
           & a {
             color: #ff5f02;
