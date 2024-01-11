@@ -24,7 +24,7 @@
           border-radius: 8px;
           flex: 1;
           max-width: 580px;
-          padding: 34px 38px;
+          padding: 20px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -80,7 +80,7 @@
           text-transform: capitalize;
         }
         & input {
-          padding: 32px 31px;
+          padding: 15px 20px;
           font-size: 20px;
           margin-top: 16px;
         }
@@ -161,7 +161,7 @@
 }
 @media screen and (max-width: 968px) {
   .contact__background {
-    margin-top: 200px;
+    margin-top: 140px;
     .contact {
       & > h1,
       > p {

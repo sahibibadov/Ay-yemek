@@ -1,6 +1,5 @@
 import { Button, Headline, Paragraf } from "../../index";
-import HomePng from "../../../../public/HomeSvg.svg";
-import ellips from "../../../../public/ellips.svg";
+import HomePng from "../../../../public/HomePng.png";
 import { useTranslation } from "react-i18next";
 import "./hometitle.scss";
 

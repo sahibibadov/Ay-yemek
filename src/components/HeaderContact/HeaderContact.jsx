@@ -6,7 +6,6 @@ import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-
 const HeaderStyleCont = styled.div`
   position: fixed;
   z-index: 999;
@@ -27,10 +26,10 @@ const HeaderStyleCont = styled.div`
     }
   }
   @media screen and (max-width: 880px) {
-    height: auto;
+    /* height: auto; */
+    display: none;
   }
 `;
-
 
 const HeaderStyle = styled.div`
   width: min(100% - 6.25rem, 1340px);
@@ -51,7 +50,6 @@ const HeaderStyle = styled.div`
     }
   }
 `;
-
 
 const Headercontent = styled.div`
   display: flex;
@@ -77,9 +75,7 @@ const Headercontent = styled.div`
   }
 `;
 
-
 export const HeaderContact = () => {
-
   const { t } = useTranslation("translation", { keyPrefix: "navlink" });
 
   // scrollda gizlenmesi
@@ -94,20 +90,18 @@ export const HeaderContact = () => {
     return () => window.removeEventListener("scroll", hideHeaderContact);
   }, []);
 
-
   return (
     <HeaderStyleCont className={`${hide ? "hiden" : ""}`}>
       <HeaderStyle>
-
         <Headercontent>
           <div>
             <span>{t("forcall")}</span>
             <BsTelephone size={18} />
-            <span>+99412 409 40 94 +99412 409 40 94</span>
+            <span>+994773142599</span>
           </div>
           <div>
             <HiOutlineMail size={20} />
-            <span>info@ay-yemek.az</span>
+            <span>bdvshb@gmail.com</span>
           </div>
         </Headercontent>
 
@@ -127,7 +121,6 @@ export const HeaderContact = () => {
             </Link>
           </div>
         </Headercontent>
-
       </HeaderStyle>
     </HeaderStyleCont>
   );
