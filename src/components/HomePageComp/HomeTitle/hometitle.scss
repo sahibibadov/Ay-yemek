@@ -23,7 +23,8 @@
     align-items: center;
     position: relative;
     & img:first-child {
-      width: 500px;
+      max-width: 500px;
+      width: 100%;
       height: auto;
     }
     // & img:last-child {

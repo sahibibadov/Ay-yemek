@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Toaster } from "react-hot-toast";
 import { useLocation } from "react-router-dom";
+import { ReactLenis } from "@studio-freight/react-lenis";
 
 function App() {
   const { pathname } = useLocation();
@@ -33,10 +34,10 @@ function App() {
   }, [auth, dispatch]);
 
   return (
-    <>
+    <ReactLenis root>
       <Toaster />
       <Outlet />
-    </>
+    </ReactLenis>
   );
 }
 

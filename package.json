@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
     "@reduxjs/toolkit": "^1.9.5",
+    "@studio-freight/react-lenis": "^0.0.46",
     "@szhsin/react-accordion": "^1.2.1",
     "dayjs": "^1.11.9",
     "firebase": "^9.23.0",
